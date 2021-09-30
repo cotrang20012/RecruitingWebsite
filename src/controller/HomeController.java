@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 
@@ -27,20 +28,23 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Cookie[] Cookies=request.getCookies();
+		HttpSession session = request.getSession();
+		
 		if(Cookies != null) {
 			ObjectId id=Account.getAccountIdFromCookie(Cookies);
 			Boolean is_logged=Account.isLogged(Cookies);
 			
 			if(id==null) {
-				request.setAttribute("is_logged", "true");
+				request.setAttribute("is_logged", "false");
 			}
 			else {
 				if(!is_logged) {
-					request.setAttribute("is_logged", "true");
+					request.setAttribute("is_logged", "false");
 				}
 				else {
 					Account acc=Model.ACCOUNT.find(Filters.eq("_id", id)).first();
-					request.setAttribute("user",acc );
+					request.setAttribute("is_logged", "true");
+					session.setAttribute("user",acc);
 				}
 			}
 			

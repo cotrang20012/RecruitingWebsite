@@ -99,4 +99,15 @@ public class Account extends Model {
 			return confirm.getAccountId();
 		return null;
 	}
+	
+	public static ObjectId getAccountIdFromUsername(String username) {		
+		Account acc=Model.ACCOUNT.find(Filters.eq("username", username)).first();
+		if(acc!=null)
+			return acc.getId();
+		return null;
+	}
+	
+	public void Insert() {
+		ACCOUNT.insertOne(this);
+	}
 }

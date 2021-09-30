@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Account;
+
 /**
  * Servlet implementation class SignupController
  */
@@ -33,11 +35,15 @@ public class SignupController extends HttpServlet {
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullName");
-		
+		String typeUser="EMPLOYEE"; //gán tạm
 		if (username==null||password==null||email==null||fullName==null) {
 			request.getRequestDispatcher("Login/signup.jsp").forward(request, response);
 			return;
 		}
+		Account account=new Account(username, password, email, typeUser);
+		account.Insert();
+		String url = request.getContextPath() + "/login"; 
+		response.sendRedirect(url);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

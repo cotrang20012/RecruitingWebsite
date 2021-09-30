@@ -88,7 +88,7 @@ public class LoginController extends HttpServlet {
 		if (account_id != null) {
 			String uuidString=java.util.UUID.randomUUID().toString();//tạo mã UUID để lưu thông tin xác nhận login lên database
 			Cookie uuid = new Cookie("UUID", uuidString);
-			uuid.setMaxAge(60); //thời gian lưu cookie
+			uuid.setMaxAge(60*10); //thời gian lưu cookie
 			response.addCookie(uuid);
 			
 			request.setAttribute("is_logged", true);
