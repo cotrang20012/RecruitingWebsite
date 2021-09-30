@@ -1,0 +1,145 @@
+@import "member.css";
+@import "assignment.css";
+
+:root{
+    --white-color:#fff;
+    --black-color:#000;
+    --text-color:#333;
+    --org-color:#698;
+    --border-color:#dbdbdb;
+    --primary-color:#D4F1F4;
+    --primary-color-rgba:rgba(207, 72, 18,0.08);
+    --header-height: 120px;
+    --navbar-height:34px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+}
+
+
+
+*{
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    max-width: 100%;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+
+.app {
+    width: 1920px; 
+    max-width: 100%;
+    padding-bottom: 180px;
+    background-color: rgba(255,255,255,0.02);
+}
+
+.container {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
+.img-wrap{
+    width: 100%;
+}
+
+html {
+   margin:0;
+   padding:0;
+   height:100%;
+   
+}
+
+body {
+    min-height:100%;
+    position:relative;
+ }
+ 
+.slide {
+    height: 400px;
+}
+
+#carouselExampleIndicators{
+    padding-top: 15px;
+}
+.img-style {
+    height: 100%;
+}
+
+
+.navbar {
+    margin-top: 4px;
+    background-color: #0a77f3 !important;
+    box-shadow: 0px 0px 6px #888888;
+}
+
+.navbar-nav {
+    height: 100%;
+    width: 100%;
+
+}
+
+.nav-item {
+    height: 100%;
+    padding: 0 10px;
+}
+
+.nav-link {
+    width: max-content;
+    font-size: 1.8rem !important;
+    color: rgb(255, 255, 255) !important;
+    font-weight: 500 !important;
+}
+
+
+
+.profile {
+    display: contents;
+    height:100%;
+    justify-items: end !important;
+}
+
+.text-search {
+    height: 40px;
+    font-size: 1.6rem !important;
+}
+
+.dropdown-item {
+    font-size: 1.6rem;
+}
+
+#carouselExampleIndicators {
+    margin: 20px;
+    border-radius: 6px;
+}
+
+.carousel-inner {
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px #888888;
+}
+
+
+
+footer {
+    height: 180px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    background-color: #293c4e;
+    align-items: center;
+}
+
+.footer-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content {
+    font-size: 2rem;
+    color: #ccc;
+}
