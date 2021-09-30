@@ -16,7 +16,7 @@ import com.mongodb.client.model.Filters;
 import model.Model;
 import model.Account;
 
-@WebServlet("/home")
+@WebServlet(name="home",urlPatterns= {"/home"})
 public class HomeController extends HttpServlet {
 
 	/**

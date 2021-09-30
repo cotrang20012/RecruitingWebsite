@@ -72,32 +72,31 @@ public class Account extends Model {
 	{
 		if (cookies == null)
 			return false;
-		String is_logged = "";
+		String UUID = "";
 		
 		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("is_logged"))
-				is_logged = cookie.getValue();
+			if (cookie.getName().equals("UUID"))
+				UUID = cookie.getValue();
 		}
-		if (is_logged.equals("true"))
-				return true;
-		
+		Confirm confirm=Model.CONFIRM.find(Filters.eq("uuid", UUID)).first();
+		if(confirm!=null)
+			return true;	
 		return false;
 	}
 	
 	public static ObjectId getAccountIdFromCookie(Cookie[] cookies) {
 		if(cookies==null)
 			return null;
-		String accountID="";
+		String UUID="";
 		for (Cookie cookie : cookies) {
-			if(cookie.getName().equals("accountID"))
-				accountID=cookie.getValue();
+			if(cookie.getName().equals("UUID"))
+				UUID=cookie.getValue();
 		}
-		if(accountID.equals(""))
+		if(UUID.equals(""))
 			return null;
-		ObjectId id=new ObjectId(accountID);
-		Account account=Model.ACCOUNT.find(Filters.eq("_id", id)).first();
-		if(account!=null)
-			return account.getId();
+		Confirm confirm=Model.CONFIRM.find(Filters.eq("UUID", UUID)).first();
+		if(confirm!=null)
+			return confirm.getAccountId();
 		return null;
 	}
 }

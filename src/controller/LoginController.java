@@ -16,8 +16,11 @@ import javax.xml.ws.Response;
 
 import model.Account;
 import model.Model;
+import model.Confirm;
+import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.taglibs.standard.tag.common.xml.IfTag;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -83,19 +86,20 @@ public class LoginController extends HttpServlet {
 		HttpSession Session = request.getSession();
 
 		if (account_id != null) {
-			Cookie cookieID = new Cookie("accountID", account_id.toHexString());
-			cookieID.setMaxAge(3600*2); //thời gian lưu cookie
+			String uuidString=java.util.UUID.randomUUID().toString();//tạo mã UUID để lưu thông tin xác nhận login lên database
+			Cookie uuid = new Cookie("UUID", uuidString);
+			uuid.setMaxAge(60); //thời gian lưu cookie
+			response.addCookie(uuid);
 			
-			Cookie logged = new Cookie("is_logged", "true");
-			cookieID.setMaxAge(3600*2); //thời gian lưu cookie
-			
-			response.addCookie(cookieID);
-			response.addCookie(logged);
 			request.setAttribute("is_logged", true);
 			Account acc = Model.ACCOUNT.find(Filters.eq("username", username)).first();
-			session.setAttribute("account", acc);
-//			RequestDispatcher rd = request.getRequestDispatcher("/home");
-//			rd.forward(request, response);
+			session.setAttribute("user", acc);
+			
+			Confirm confirm=new Confirm(account_id,uuidString);
+			if(confirm.Update())//cập nhật lại mã UUID
+			{
+				
+			}
 
 			
 			url = request.getContextPath() + "/home"; 

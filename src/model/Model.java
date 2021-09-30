@@ -41,6 +41,8 @@ public class Model {
 	
     @BsonIgnore
 	public static MongoCollection<Account> ACCOUNT = db.getCollection("ACCOUNT", Account.class);
+    @BsonIgnore
+   	public static MongoCollection<Confirm> CONFIRM = db.getCollection("CONFIRM", Confirm.class);
 	@BsonIgnore
 	Logger logger = Logger.getLogger("org.mongodb.driver");
 
