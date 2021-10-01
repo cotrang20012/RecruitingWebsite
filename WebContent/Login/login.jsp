@@ -48,10 +48,11 @@ br {
 align-content: center;">
 			
 			 <form action="login" method="post">
+			 	<h3>${msg}</h3>
                 <input type="text" class="form-control" placeholder="Tên đăng nhập"
-                name="username" value ="${username }"><br>
+                name="username" value ="${username}"><br>
                 <input type="password" class="form-control" placeholder="Mật khẩu"
-                name="password" value = "${password }"><br>
+                name="password" value = "${password}"><br>
                 <a style = "color: #de6600; text-decoration: none; margin-top:15px;" href="forgot.jsp"> Forgot password/username ?</a> 
 					
 			    <input type="submit" style = "background-color: #625bff;" class="btn btn-primary" value="login"> 

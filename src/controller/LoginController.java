@@ -109,8 +109,9 @@ public class LoginController extends HttpServlet {
 		} else {
 			request.setAttribute("username", username);
 			request.setAttribute("password", password);
-			url = request.getContextPath() + "/login";
-			response.sendRedirect(url);
+			request.setAttribute("msg", "Vui lòng kiểm tra lại username hoặc mật khẩu!");
+			RequestDispatcher rd=request.getRequestDispatcher("/Login/login.jsp");		
+			rd.forward(request, response);
 		}
 	}
 

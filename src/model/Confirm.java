@@ -48,11 +48,11 @@ public class Confirm extends Model{
 	public boolean Update() {
 		if (accountId==null)
 			return false;
-		Confirm confirm = CONFIRM.find(Filters.eq("accountID", this.getAccountId())).first();
+		Confirm confirm = CONFIRM.find(Filters.eq("accountId", this.getAccountId())).first();
 		if (confirm != null)
 		{
-			CONFIRM.updateOne(Filters.eq("accountID", this.getAccountId()), 
-					Updates.combine(Updates.set("UUID", this.getUuid())));
+			CONFIRM.updateOne(Filters.eq("accountId", this.getAccountId()), 
+					Updates.combine(Updates.set("uuid", this.getUuid())));
 		}
 		else
 		{
