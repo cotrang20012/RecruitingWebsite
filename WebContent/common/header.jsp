@@ -2,7 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="model.Account"%>
-<% boolean is_logged = Account.isLogged(request.getCookies()); %>
+<%
+boolean is_logged = Account.isLogged(request.getCookies());
+%>
 <div class="col-sm-12">
 	<div class="img-wrap">
 		<img src="<c:url value='/assets/img/logo.png' />" alt=""
@@ -23,7 +25,8 @@
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" aria-current="page"
 							href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Về chúng tôi</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Về
+								chúng tôi</a></li>
 
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -44,24 +47,20 @@
 										here</a></li>
 							</ul></li>
 					</ul>
-					<div class="nav-animation start-home"></div>
-					<div class="profile">
-						<form class="d-flex">
-							<input class="form-control me-2 text-search" type="search"
-								placeholder="Tìm kiếm" aria-label="Search">
-							<button class="btn btn-success"
-								style="width: 150px !important; padding: 0 10px; margin: 0 10px; font-size: 1.6rem;"
-								type="submit">Tìm kiếm</button>
-						</form>
-						<div class="account-wrap">
-							<%if (is_logged) { %>		
-									<a class="nav-link" href="${pageContext.request.contextPath}/profile">${user.getUsername()}</a>
-								
-								<%} else { %>
-								<a class="nav-link"
-										href="${pageContext.request.contextPath}/login">Đăng nhập</a>
-								<% } %>
-						</div>
+					<div class="account-wrap">
+						<% if (is_logged) { %>
+						<img src="${pageContext.request.contextPath}/assets/img/avatar.png" alt="" style="height: 36px;">
+						<ul class="dropdown-account">
+							<li><a class="dropdown-item" href="#">"${user.username }"</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/profile">Profile</a></li>
+							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
+						</ul>
+						<% } else { %>
+						<a class="nav-link"
+							href="${pageContext.request.contextPath}/login">Đăng nhập</a> <a
+							class="nav-link" href="${pageContext.request.contextPath}/signup">Đăng
+							ký</a>
+						<% } %>
 					</div>
 				</div>
 			</div>
@@ -70,6 +69,8 @@
 
 </header>
 
-<script src="<c:url value='/assets/jquery-3.3.1.min.js' />"></script>
-<script src="<c:url value='/assets/bootstrap/js/bootstrap.min.js' />"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 

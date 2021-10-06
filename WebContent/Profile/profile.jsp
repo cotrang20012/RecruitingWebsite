@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/png" href="<c:url value='/assets/img/favicon.ico'/>">
-        <title>Đồ án Lập trình WEB</title>
+        <title>Thông tin người dùng</title>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/main.css'/>">
         <link rel="stylesheet" type="text/css"

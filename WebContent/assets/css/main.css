@@ -1,19 +1,11 @@
-@import "member.css";
-@import "assignment.css";
 
 :root{
     --white-color:#fff;
     --black-color:#000;
     --text-color:#333;
-    --org-color:#698;
     --border-color:#dbdbdb;
-    --primary-color:#D4F1F4;
-    --primary-color-rgba:rgba(207, 72, 18,0.08);
-    --header-height: 120px;
-    --navbar-height:34px;
-    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+    --primary-color:#0a77f3;
 }
-
 
 
 *{
@@ -59,13 +51,7 @@ body {
     position:relative;
  }
  
-.slide {
-    height: 400px;
-}
 
-#carouselExampleIndicators{
-    padding-top: 15px;
-}
 .img-style {
     height: 100%;
 }
@@ -80,7 +66,6 @@ body {
 .navbar-nav {
     height: 100%;
     width: 100%;
-
 }
 
 .nav-item {
@@ -96,32 +81,40 @@ body {
 }
 
 
-
-.profile {
-    display: contents;
+.account-wrap {
+    display: flex;
     height:100%;
-    justify-items: end !important;
 }
 
-.text-search {
-    height: 40px;
-    font-size: 1.6rem !important;
-}
 
 .dropdown-item {
     font-size: 1.6rem;
 }
 
-#carouselExampleIndicators {
-    margin: 20px;
-    border-radius: 6px;
+
+.dropdown-account {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    right: 0px;
+    top: 42px;
+    list-style: none;
+    padding: 0;
+    border: 1px solid #888;
+    border-radius: 3px;
 }
 
-.carousel-inner {
-    border-radius: 6px;
-    box-shadow: 0px 4px 10px #888888;
+.dropdown-account::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    height: 10px;
+    width: 100%;
 }
 
+.nav-account:hover .dropdown-account {
+    display: block;
+}
 
 
 footer {
