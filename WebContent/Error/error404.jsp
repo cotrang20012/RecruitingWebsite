@@ -237,7 +237,7 @@
   </svg>
 
   <p id="errorText">O-o-oh! Liên kết không tồn tại</p>
-  <a id="errorLink" href="${pageContext.request.contextPath}">Về trang chủ</a>
+  <a id="errorLink" href="${pageContext.request.contextPath}/home">Về trang chủ</a>
 </main>
 </main>
 		

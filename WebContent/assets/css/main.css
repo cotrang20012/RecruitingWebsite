@@ -1,11 +1,4 @@
-
-:root{
-    --white-color:#fff;
-    --black-color:#000;
-    --text-color:#333;
-    --border-color:#dbdbdb;
-    --primary-color:#0a77f3;
-}
+@import "base.css";
 
 
 *{
@@ -18,33 +11,20 @@ html{
     max-width: 100%;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+    
+   margin:0;
+   padding:0;
+   height:100%;
 }
 
 
 .app {
     width: 1920px; 
     max-width: 100%;
-    padding-bottom: 180px;
     background-color: rgba(255,255,255,0.02);
+    min-height:400px;
 }
 
-.container {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
-}
-
-
-.img-wrap{
-    width: 100%;
-}
-
-html {
-   margin:0;
-   padding:0;
-   height:100%;
-   
-}
 
 body {
     min-height:100%;
@@ -112,19 +92,8 @@ body {
     width: 100%;
 }
 
-.nav-account:hover .dropdown-account {
+.account-wrap:hover .dropdown-account {
     display: block;
-}
-
-
-footer {
-    height: 180px;
-    width: 100%;
-    display: block;
-    position: absolute;
-    bottom: 0px;
-    background-color: #293c4e;
-    align-items: center;
 }
 
 .footer-wrap {

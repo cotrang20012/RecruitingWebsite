@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png"
 	href="<c:url value='/assets/img/favicon.ico'/>">
-<title>Đăng nhập</title>
+<title>Đổi mật khẩu</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -41,30 +41,32 @@
 				<div class="col-md-8 col-xs-12 col-sm-12 login_form">
 					<div class="container-fluid" style="padding: 10px">
 						<div class="row justify-content-center">
-							<h1>Log In</h1>
+							<h1>Đổi mật khẩu</h1>
 						</div>
 						<div class="row">
 							<h3>${msg}</h3>
 						</div>
 
 						<div class="row">
-							<form action="login" method="post" class="form-group w-100">
+							<form action="changepw" method="post" class="form-group w-100">
 								<div class="row">
 									<input type="text" name="username" id="username"
 										class="form__input" placeholder="Username">
 								</div>
 								<div class="row">
-									<!-- <span class="fa fa-lock"></span> -->
-									<input type="password" name="password" id="password"
-										class="form__input" placeholder="Password">
+									<input type="password" name="password_old" id="password"
+										class="form__input" placeholder="Mật khẩu cũ">
 								</div>
-								<div class="row align-items-baseline w-100">
-									<input type="checkbox" name="remember_me" id="remember_me"
-										class="" style="margin-right: 4px;"> <label
-										for="remember_me">Ghi nhớ tài khoản!</label>
-								</div>
+								<div class="row">
+                                	<input type="password" class="form__input" name="password_new" id="password"
+                                    	placeholder="Mật khẩu mới" required>
+                            	</div>
+                            	<div class="row">
+                                <input type="password" class="form__input" id="confirm_password"
+                                    placeholder="Xác nhận mật khẩu mới" required>
+                            	</div>
 								<div class="row justify-content-center">
-									<input type="submit" value="Đăng nhập" class="btn btn-login"
+									<input type="submit" value="Đổi mật khẩu" class="btn btn-login"
 										style="font-size: 1.6rem;">
 								</div>
 							</form>
@@ -80,8 +82,22 @@
 		</section>
 	</div>
 
-
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	<script type="text/javascript">
+	var password = document.getElementById("password_new")
+	  , confirm_password = document.getElementById("confirm_password");
+
+	function validatePassword(){
+	  if(password.value != confirm_password.value) {
+	    confirm_password.setCustomValidity("Mật khẩu không trùng khớp!");
+	  } else {
+	    confirm_password.setCustomValidity('');
+	  }
+	}
+
+	password.onchange = validatePassword;
+	confirm_password.onkeyup = validatePassword;
+	</script>
 
 
 </body>
