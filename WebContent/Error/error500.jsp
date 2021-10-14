@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png"
 	href="<c:url value='/assets/img/favicon.ico'/>">
-<title>Page 404</title>
+<title>Page 500</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -30,26 +30,30 @@
 
 
 	<div class="app">
-	<h1>500</h1>
-  <h2>Unexpected Error <b>:(</b></h2>
-  <div class="gears">
-    <div class="gear one">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <div class="gear two">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <div class="gear three">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-  </div>
-
+	<main>
+		<h1>500</h1>
+		<h2>
+			Unexpected Error <b>:(</b>
+		</h2>
+		<div class="gears">
+			<div class="gear one">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+			<div class="gear two">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+			<div class="gear three">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+		</div>
+		<a id="errorLink" href="${pageContext.request.contextPath}/home">Về trang chủ</a>
+	</main>
 	</div>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>

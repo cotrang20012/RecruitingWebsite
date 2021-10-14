@@ -48,12 +48,12 @@ public class LoginController extends HttpServlet {
 
 			String _password_ = acc.getPassword();
 
-			// String hashed_password = DigestUtils.sha256Hex(password);
+			String hash_password = DigestUtils.sha256Hex(password);
 
 			// System.out.print(hashed_password +" AND " +_password_ );
 
 			// if (hashed_password.equals(_password_))
-			if (password.equals(_password_)) {
+			if (hash_password.equals(_password_)) {
 				// Đăng nhập thành công
 				return acc.getId();
 			} else

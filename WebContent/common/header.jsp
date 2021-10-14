@@ -49,7 +49,7 @@ boolean is_logged = Account.isLogged(request.getCookies());
 					</ul>
 					<div class="account-wrap">
 						<% if (is_logged) { %>
-						<img src="${pageContext.request.contextPath}/assets/img/avatar.png" alt="" style="height: 36px;">
+						<img class="account-avatar" src="${pageContext.request.contextPath}/assets/img/avatar.png" alt="" style="height: 36px;">
 						<ul class="dropdown-account">
 							<li><a class="dropdown-item" href="#">"${user.username }"</a></li>
 							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/profile">Profile</a></li>

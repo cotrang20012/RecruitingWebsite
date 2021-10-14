@@ -5,3 +5,11 @@
     --border-color:#dbdbdb;
     --primary-color:#0a77f3;
 }
+
+p,a,input,div,label {
+	font-size:1.4rem;
+}
+
+.fs-primary {
+	font-size:1.4rem;
+}

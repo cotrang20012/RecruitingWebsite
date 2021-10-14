@@ -1,30 +1,26 @@
 package model;
+
 import java.util.Date;
-import java.util.Iterator;
-import javax.servlet.http.Cookie;
-import org.bson.Document;
+
 import org.bson.types.ObjectId;
 
-public class UserEmployee extends Model {
-	
+public class UserEmployer extends Model{
 	protected ObjectId _id;
 	protected ObjectId accountID;
-	protected String fullName;
+	protected String companyName;
 	protected String phone;
 	protected String address;
-	protected Date birthday;
-	
 	public ObjectId getAccountID() {
 		return accountID;
 	}
 	public void setAccountID(ObjectId accountID) {
 		this.accountID = accountID;
 	}
-	public String getFullName() {
-		return fullName;
+	public String getCompanyName() {
+		return companyName;
 	}
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 	public String getPhone() {
 		return phone;
@@ -38,26 +34,18 @@ public class UserEmployee extends Model {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
 	
-	public UserEmployee() {
+	public UserEmployer() {
 		
 	}
-	public UserEmployee(ObjectId accountID, String fullName, String phone, String address,Date birthDate ) {
+	public UserEmployer(ObjectId accountID, String companyName, String phone, String address ) {
 		this._id=new ObjectId();
 		this.accountID=accountID;
-		this.fullName=fullName;
+		this.companyName=companyName;
 		this.phone=phone;
 		this.address=address;
-		this.birthday=birthDate;
 	}
-	
 	public void Insert() {
-		USEREMPLOYEE.insertOne(this);
+		USEREMPLOYER.insertOne(this);
 	}
 }

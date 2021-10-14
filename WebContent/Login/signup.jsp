@@ -42,7 +42,8 @@
                                 EMPLOYER
                             </button>
                         </div>
-                        <form action="employee" class="form-active" id="employee-form">
+                        <form action="signup" class="form-active" id="employee-form">
+                        	<input type="hidden" name="action" value="EMPLOYEE">
                             <div class="row">
                                 <input type="text" class="form__input" name="fullName" placeholder="Họ và tên"
                                     required>
@@ -68,7 +69,8 @@
                                     class="btn btn-register" value="Đăng ký">
                             </div>
                         </form>
-                        <form action="employer" id="employer-form">
+                        <form action="signup" id="employer-form">
+                        	<input type="hidden" name="action" value="EMPLOYER">
                             <div class="row">
                                 <input type="text" class="form__input" name="fullName" placeholder="Tên công ty"
                                     required>

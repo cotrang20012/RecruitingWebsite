@@ -27,7 +27,7 @@
 	<jsp:include page="/common/header.jsp"></jsp:include>
 
 	<main>
-		<div class="container-fluid">
+		<section class="container-fluid">
 			<div class="row seperate_border"
 				style="margin: 0 20px; background-color: #fff;">
 				<div class="col">
@@ -142,12 +142,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 
 		<!-- carousel -->
-
-
-
 
 
 		<section class="container-fluid">
@@ -165,9 +162,7 @@
 									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
 									alt="" class="img-fluid card-img-top">
 								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
+									<a href="#" class="text-dark"><h2>Red paint cup</h2></a>
 									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
 										consectetur adipisicing elit</p>
 									<div
@@ -175,239 +170,14 @@
 										<p class="mb-0">
 											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
 										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
+										<div class="badge badge-danger px-3 rounded-pill fs-primary">1
 											Giờ trước</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
-						<!-- Gallery item -->
-						<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
-							<div class="bg-white rounded shadow-sm work-item">
-								<img
-									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
-									alt="" class="img-fluid card-img-top">
-								<div class="p-4">
-									<h2>
-										<a href="#" class="text-dark">Red paint cup</a>
-									</h2>
-									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit</p>
-									<div
-										class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-										<p class="mb-0">
-											<span class="text-muted"></span>Quận 3, Hồ Chí Minh
-										</p>
-										<div
-											class="badge badge-danger px-3 rounded-pill font-weight-normal">1
-											Giờ trước</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- End -->
+						
 					</div>
 				</div>
 			</div>
