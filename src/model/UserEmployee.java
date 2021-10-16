@@ -13,7 +13,19 @@ public class UserEmployee extends Model {
 	protected String phone;
 	protected String address;
 	protected Date birthday;
+	protected String email;
 	
+	public UserEmployee() {
+		
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+
 	public ObjectId getAccountID() {
 		return accountID;
 	}
@@ -45,9 +57,6 @@ public class UserEmployee extends Model {
 		this.birthday = birthday;
 	}
 	
-	public UserEmployee() {
-		
-	}
 	public UserEmployee(ObjectId accountID, String fullName, String phone, String address,Date birthDate ) {
 		this._id=new ObjectId();
 		this.accountID=accountID;

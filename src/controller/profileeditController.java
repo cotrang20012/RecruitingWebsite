@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,25 +19,31 @@ import model.Model;
 import model.UserEmployee;
 
 /**
- * Servlet implementation class profileController
+ * Servlet implementation class profileeditController
  */
-@WebServlet("/profile")
-public class profileController extends HttpServlet {
+@WebServlet("/profileedit")
+public class profileeditController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public profileController() {
+    public profileeditController() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession Session = 	request.getSession();
@@ -52,7 +57,7 @@ public class profileController extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("userProfile", userEmployee);
-		RequestDispatcher rd=request.getRequestDispatcher("/Profile/profile.jsp");		
+		RequestDispatcher rd=request.getRequestDispatcher("/Profile/profileedit.jsp");		
 		rd.forward(request, response);
 	}
 

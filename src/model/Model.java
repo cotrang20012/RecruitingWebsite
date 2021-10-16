@@ -45,7 +45,7 @@ public class Model {
    	public static MongoCollection<Confirm> CONFIRM = db.getCollection("CONFIRM", Confirm.class);
 	@BsonIgnore
 	public static MongoCollection<UserEmployee> USEREMPLOYEE = db.getCollection("USEREMPLOYEE",UserEmployee.class);
-	
+	@BsonIgnore
 	public static MongoCollection<UserEmployer> USEREMPLOYER = db.getCollection("USEREMPLOYER",UserEmployer.class);
 	@BsonIgnore
 	Logger logger = Logger.getLogger("org.mongodb.driver");
