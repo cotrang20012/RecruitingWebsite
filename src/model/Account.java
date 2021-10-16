@@ -94,7 +94,7 @@ public class Account extends Model {
 		}
 		if(UUID.equals(""))
 			return null;
-		Confirm confirm=Model.CONFIRM.find(Filters.eq("uuid", UUID)).first();
+		Confirm confirm=Model.CONFIRM.find(Filters.eq("UUID", UUID)).first();
 		if(confirm!=null)
 			return confirm.getAccountId();
 		return null;
@@ -109,9 +109,5 @@ public class Account extends Model {
 	
 	public void Insert() {
 		ACCOUNT.insertOne(this);
-	}
-	
-	public static void ChangePassword(String username,String password) {
-		ACCOUNT.updateOne(Filters.eq("username",username), Updates.set("password", password));
 	}
 }

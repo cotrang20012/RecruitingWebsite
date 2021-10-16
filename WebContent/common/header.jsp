@@ -51,9 +51,8 @@ boolean is_logged = Account.isLogged(request.getCookies());
 						<% if (is_logged) { %>
 						<img class="account-avatar" src="${pageContext.request.contextPath}/assets/img/avatar.png" alt="" style="height: 36px;">
 						<ul class="dropdown-account">
-							<li><a class="dropdown-item" href="#">${user.username}</a></li>
+							<li><a class="dropdown-item" href="#">"${user.username }"</a></li>
 							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/profile">Profile</a></li>
-							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/changepw">Đổi mật khẩu</a></li>							
 							<li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
 						</ul>
 						<% } else { %>
