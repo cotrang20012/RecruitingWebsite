@@ -52,7 +52,7 @@ public class Confirm extends Model{
 		if (confirm != null)
 		{
 			CONFIRM.updateOne(Filters.eq("accountId", this.getAccountId()), 
-					Updates.combine(Updates.set("uuid", this.getUuid())));
+					Updates.set("uuid", this.getUuid()));
 		}
 		else
 		{
@@ -63,5 +63,9 @@ public class Confirm extends Model{
 	
 	public void Insert() {
 		CONFIRM.insertOne(this);
+	}
+	
+	public static void DeleteConfirm(ObjectId accountId) {
+		CONFIRM.deleteOne(Filters.eq("accountId",accountId));
 	}
 }

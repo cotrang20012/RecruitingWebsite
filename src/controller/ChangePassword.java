@@ -9,6 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.bson.types.ObjectId;
+
+import com.mongodb.client.model.Filters;
+
+import model.Account;
+import model.Model;
+
 /**
  * Servlet implementation class ChangePassword
  */
@@ -23,9 +31,29 @@ public class ChangePassword extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    public ObjectId Login(String username, String password) {
+		Account acc = Model.ACCOUNT.find(Filters.eq("username", username)).first();
+		if (acc != null) {
+
+			String _password_ = acc.getPassword();
+
+			String hash_password = DigestUtils.sha256Hex(password);
+
+			// System.out.print(hashed_password +" AND " +_password_ );
+
+			// if (hashed_password.equals(_password_))
+			if (hash_password.equals(_password_)) {
+				// Đăng nhập thành công
+				return acc.getId();
+			} else
+				return null;
+		}
+		return null;
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username=request.getParameter("usename");
+		String username=request.getParameter("username");
 		String pw_old=request.getParameter("password_old");
 		String pw_new=request.getParameter("password_new");
 		
@@ -35,7 +63,21 @@ public class ChangePassword extends HttpServlet {
 			return;
 		}
 		
+		ObjectId accountID=Login(username, pw_old);
+		String msg="Đổi mật khẩu thất bại";
+		if(accountID!=null) {
+			String hash_password = DigestUtils.sha256Hex(pw_new);//hash password
+			Account.ChangePassword(username, hash_password);
+			msg="Đổi mật khẩu thành công";
+		}
+		else {
+			msg="Sai tên đăng nhập hoặc mật khẩu";
+		}
+		request.setAttribute("msg", msg);
 		
+		RequestDispatcher rd = request.getRequestDispatcher("Login/changepw.jsp");
+		rd.forward(request, response);
+				
 	}
 
 	/**
