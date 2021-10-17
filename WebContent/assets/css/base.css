@@ -7,9 +7,9 @@
 }
 
 p,a,input,div,label {
-	font-size:1.4rem;
+	font-size:1.4rem !important;
 }
 
 .fs-primary {
-	font-size:1.4rem;
+	font-size:1.4rem !important;
 }

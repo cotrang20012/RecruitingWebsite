@@ -61,7 +61,7 @@ public class SignupController extends HttpServlet {
 		}
 		else {
 			if (typeUser.equals("EMPLOYER")) {
-				UserEmployer employer=new UserEmployer(account.getId(),fullName,"","");
+				UserEmployer employer=new UserEmployer(account.getId(),fullName,"","",email);
 				employer.Insert();
 			}
 		}

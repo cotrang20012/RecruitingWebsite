@@ -1,0 +1,36 @@
+@import "base.css";
+@import "profile.css";
+.sidebar-left {
+    background-color:var(--primary-color) ;
+}
+
+.sidebar-left{
+    margin: 0;
+    padding: 0;
+}
+
+.page-content {
+    min-height: 780px;
+}
+
+.sidebar-list {
+    padding: 0;
+    padding-top: 10px;
+} 
+
+.item-link:hover .sidebar-item ,.item-link:hover{
+    text-decoration: none !important;
+    background-color: rgb(17, 57, 167);
+
+}
+
+.item--active{
+    background-color: rgb(17, 57, 167);
+}
+.sidebar-item {
+    text-decoration: none;
+    color: white;
+    list-style: none;
+    padding: 10px 10px;
+    margin: 0;
+}
