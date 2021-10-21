@@ -2,6 +2,8 @@ package controller;
 
 import java.io.Serializable;
 
+import org.apache.http.cookie.Cookie;
+
 public class User implements Serializable {
 	private String firstName;
 	public String getFirstName() {
@@ -43,4 +45,6 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.email = email;
 	}
+
+	
 }
