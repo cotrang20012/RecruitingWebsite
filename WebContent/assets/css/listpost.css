@@ -1,0 +1,17 @@
+
+.list-group-item {background-color: rgba(255,255,255,0.7); border: 1px solid #ccc;display: flex;}
+
+
+
+/* ==== SOME BOOTSTRAP MODS/STYLING ==== */
+.btn-default {background-color: rgba(255,255,255,0.3); border-color:rgba(0,0,0,0.2);}
+.img-rounded, .btn, .label {border-radius: 6px;}
+.btn {
+    padding: 3px 18px;
+    margin: 2px 0px;
+    font-size: 1.4rem;
+}
+
+
+
+.active a {color:#c7ddef;}

@@ -36,7 +36,7 @@
                         </li>
                     </a>
 
-                    <a href="" class="item-link">
+                    <a href="<c:url value='/Dashboard/dashboard_listpost.jsp'/>" class="item-link">
                         <li class="sidebar-item">
                             <h2>Post</h2>
                         </li>
