@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 
@@ -37,8 +38,11 @@ public class LogoutController extends HttpServlet {
 		String url="/home";
 		Cookie[] cookies=request.getCookies();
 		ObjectId accountId=Account.getAccountIdFromCookie(cookies);
+		HttpSession session = request.getSession();
+		
 		if(accountId!=null) {
 			Confirm.DeleteConfirm(accountId);
+			session.invalidate();
 		}
 		url = request.getContextPath() + "/home"; 
 		response.sendRedirect(url);

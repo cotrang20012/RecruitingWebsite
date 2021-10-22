@@ -59,7 +59,7 @@
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-                        <span  class="font-weight-bold">Edogaru</span>
+                        <span  class="font-weight-bold"> <c:out value='${userProfile.companyName}'/> </span>
                     </div>
                     </div>
                     <div class="col-md-5 border-right">
@@ -71,25 +71,25 @@
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Tên công ty</label>
                                     <input type="text" class="form-control" placeholder="Tên công ty"
-                                        value="${userProfile.companyName}">
+                                        value="<c:out value='${userProfile.companyName}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Số điện thoại</label>
                                     <input type="text" class="form-control" placeholder="Số điện thoại"
-                                        value="${userProfile.phone}">
+                                        value="<c:out value='${userProfile.phone}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Địa chỉ</label>
                                     <input type="text" class="form-control" placeholder="Địa chỉ"
-                                        value="${userProfile.address}">
+                                        value="<c:out value='${userProfile.address}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text"
-                                        class="form-control" placeholder="Email" value="${userProfile.email}">
+                                        class="form-control" placeholder="Email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
                                 </div>
                             </div>
 
                             <div class="mt-5 text-center">
-                   				<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Save Profile</button>
+                   				<button class="btn btn-primary profile-button" type="button" onclick="EnableReadonly()">Save Profile</button>
                     			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
                 			</div>
                         </div>
@@ -115,10 +115,14 @@
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
     <script>
-        const inputPropertise = document.getElementById("testSubject");
+        const inputPropertise = document.getElementsByClassName("form-control");
 
         function RemoveReadonly(){
         	inputPropertise.removeAttribute("readonly");
+        }
+        
+        function EnableReadonly(){
+        	inputPropertise.setAttribute("readonly","readonly");
         }
     </script>
 </body>

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,30 +46,29 @@ public class profileController extends HttpServlet {
 		HttpSession Session = request.getSession();
 		Account acc = (Account) Session.getAttribute("user");
 
-		String type_user = acc.getTypeUser();
 		String urlString = "/home.jsp";
-
-		if (type_user.equals("EMPLOYEE")) {
-			UserEmployee userEmployee = Model.USEREMPLOYEE.find(Filters.eq("accountID", acc.getId())).first();
-			SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
-			String tempFormatString = tempFormat.format(userEmployee.getBirthday());
-			try {
-				userEmployee.setBirthday(tempFormat.parse(tempFormatString));
-			} catch (ParseException e) {
-				e.printStackTrace();
+		if (acc == null) {
+			urlString ="/home.jsp";
+		} else {
+			String type_user = acc.getTypeUser();
+			if (type_user.equals("EMPLOYEE")) {
+				UserEmployee userEmployee = Model.USEREMPLOYEE.find(Filters.eq("accountID", acc.getId())).first();
+				SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
+				String tempFormatString = tempFormat.format(userEmployee.getBirthday());
+				try {
+					userEmployee.setBirthday(tempFormat.parse(tempFormatString));
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				request.setAttribute("userProfile", userEmployee);
+				urlString = "/Profile/profileEmployee.jsp";
+			} else if (type_user.equals("EMPLOYER")) {
+				UserEmployer userEmployer = Model.USEREMPLOYER.find(Filters.eq("accountID", acc.getId())).first();
+				request.setAttribute("userProfile", userEmployer);
+				urlString = "/Profile/profileEmployer.jsp";
 			}
-			request.setAttribute("userProfile", userEmployee);
-			urlString="/Profile/profileEmployee.jsp";
 		}
-		else if(type_user.equals("EMPLOYER")) {
-			UserEmployer userEmployer = Model.USEREMPLOYER.find(Filters.eq("accountID", acc.getId())).first();
-			request.setAttribute("userProfile", userEmployer);
-			urlString="/Profile/profileEmployer.jsp";
-		}
-
-		
 		RequestDispatcher rd = request.getRequestDispatcher(urlString);
 		rd.forward(request, response);
 	}
-
 }

@@ -76,30 +76,31 @@
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Họ và tên</label>
                                     <input type="text" class="form-control" placeholder="Tên công ty"
-                                        value="${userProfile.fullName}">
+                                        value="${userProfile.fullName}" readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Số điện thoại</label>
                                     <input type="text" class="form-control" placeholder="Số điện thoại"
-                                        value="${userProfile.phone}">
+                                        value="${userProfile.phone}" readonly="readonly" >
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Địa chỉ</label>
                                     <input type="text" class="form-control" placeholder="Địa chỉ"
-                                        value="${userProfile.address}">
+                                        value="${userProfile.address}" readonly="readonly" >
                                 </div>
-                                <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text"
-                                        class="form-control" placeholder="Email" value="${userProfile.email}">
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">Email</label>
+                                    <input type="text"class="form-control" placeholder="Email" value="${userProfile.email}" readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Giới tính</label>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="radio" name="genger" id="male" value="male">
+                                            <input type="radio" name="genger" id="male" value="male" readonly="readonly">
                                             <label for="male">Nam</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="radio" name="genger" id="female" value="female">
+                                            <input type="radio" name="genger" id="female" value="female" readonly="readonly">
                                             <label for="female">Nữ</label>
                                         </div>
                                     </div>
@@ -107,7 +108,7 @@
                             </div>
 
                             <div class="mt-5 text-center">
-                   				<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Save Profile</button>
+                   				<button class="btn btn-primary profile-button" type="button" onclick="EnableReadonly()">Save Profile</button>
                     			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
                 			</div>
                         </div>
@@ -133,10 +134,14 @@
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
     <script>
-        const inputPropertise = document.getElementById("testSubject");
+        const inputPropertise = document.getElementsByClassName("form-control");
 
         function RemoveReadonly(){
         inputPropertise.removeAttribute("readonly");
+        }
+
+        function EnableReadonly(){
+        inputPropertise.setAttribute("readonly","readonly");
         }
     </script>
 </body>
