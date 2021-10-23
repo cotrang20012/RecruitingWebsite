@@ -39,7 +39,7 @@
 
                     <a href="<c:url value='/Dashboard/dashboard_listpost_employee.jsp' />" class="item-link">
                         <li class="sidebar-item">
-                            <h2>Post</h2>
+                            <h2>Ứng tuyển</h2>
                         </li>
                     </a>
 

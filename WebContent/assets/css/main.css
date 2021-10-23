@@ -5,6 +5,10 @@
     box-sizing: inherit;
 }
 
+a{
+	text-decoration: none !important;
+}
+
 html{
     font-size: 62.5%;
     line-height: 1.6rem;
@@ -127,6 +131,7 @@ body {
 
 .search button {
     position: absolute;
+    font-size:1.4rem;
     top: 5px;
     right: 5px;
     height: 40px;

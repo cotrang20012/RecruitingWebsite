@@ -123,7 +123,7 @@
 									src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
 									alt="" class="img-fluid card-img-top">
 								<div class="p-4">
-									<a href="#" class="text-dark"><h2>Red paint cup</h2></a>
+									<a href="${pageContext.request.contextPath}/post" class="text-dark"><h2>Tuyển lập trình viên Java</h2></a>
 									<p class="text-muted mb-0">Lorem ipsum dolor sit amet,
 										consectetur adipisicing elit</p>
 									<div
