@@ -60,7 +60,4 @@ public class UserEmployer extends Model{
 		this.address=address;
 		this.email=email;
 	}
-	public void Insert() {
-		USEREMPLOYER.insertOne(this);
-	}
 }

@@ -1,10 +1,14 @@
+<%@page import="com.mongodb.client.MongoClient"%>
+<%@page import="DAO.AccountDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="model.Account"%>
+<%@page import="DAO.AccountDAO"%>
 <%
-boolean is_logged = Account.isLogged(request.getCookies());
-boolean is_employer = Account.isEmployer(request.getCookies());
+MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+AccountDAO accountDAO=new AccountDAO(mongoClient);
+boolean is_logged = accountDAO.isLogged(request.getCookies());
+boolean is_employer = accountDAO.isEmployer(request.getCookies());
 %>
 <div class="col-sm-12">
 	<div class="img-wrap">
@@ -32,8 +36,7 @@ boolean is_employer = Account.isEmployer(request.getCookies());
 						<li class="nav-item"><a class="nav-link" aria-current="page"
 							href="${pageContext.request.contextPath}/Post/create_post.jsp">Đăng tuyển</a></li>
 						<% } %>
-
-						
+					
 					</ul>
 					<div class="account-wrap">
 						<% if (is_logged) { %>

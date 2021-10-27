@@ -11,7 +11,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
-public class Account extends Model {
+public class Account extends Model{
 	protected ObjectId _id;
 	protected String username;
 	protected String password;
@@ -68,68 +68,4 @@ public class Account extends Model {
 		this.setTypeUser(typeUser);
 	}
 	
-	public static boolean isLogged(Cookie[] cookies)
-	{
-		if (cookies == null)
-			return false;
-		String UUID = "";
-		
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("UUID"))
-				UUID = cookie.getValue();
-		}
-		Confirm confirm=Model.CONFIRM.find(Filters.eq("uuid", UUID)).first();
-		if(confirm!=null)
-			return true;	
-		return false;
-	}
-	
-	public static ObjectId getAccountIdFromCookie(Cookie[] cookies) {
-		if(cookies==null)
-			return null;
-		String UUID="";
-		for (Cookie cookie : cookies) {
-			if(cookie.getName().equals("UUID"))
-				UUID=cookie.getValue();
-		}
-		if(UUID.equals(""))
-			return null;
-		Confirm confirm=Model.CONFIRM.find(Filters.eq("uuid", UUID)).first();
-		if(confirm!=null)
-			return confirm.getAccountId();
-		return null;
-	}
-	
-	public static ObjectId getAccountIdFromUsername(String username) {		
-		Account acc=Model.ACCOUNT.find(Filters.eq("username", username)).first();
-		if(acc!=null)
-			return acc.getId();
-		return null;
-	}
-	
-	public static Account getAccountFromAccountId(ObjectId accountId) {
-		Account acc=ACCOUNT.find(Filters.eq("_id",accountId)).first();
-		return acc;
-	}
-	
-	public static boolean isEmployer(Cookie[] cookies) {
-		if(cookies==null)
-			return false;
-		ObjectId accountId=Account.getAccountIdFromCookie(cookies);
-		Account account=Account.getAccountFromAccountId(accountId);
-		
-		
-		if(account!=null)
-			if(account.getTypeUser().equals("EMPLOYER"))
-				return true;
-		return false;
-	}
-	
-	public void Insert() {
-		ACCOUNT.insertOne(this);
-	}
-	
-	public static void ChangePassword(String username,String password) {
-		ACCOUNT.updateOne(Filters.eq("username",username), Updates.set("password", password));
-	}
 }

@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 
+import DAO.AccountDAO;
 import model.Model;
 import model.Account;
 
@@ -29,10 +31,12 @@ public class HomeController extends HttpServlet {
 		
 		Cookie[] Cookies=request.getCookies();
 		HttpSession session = request.getSession();
+		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		
 		if(Cookies != null) {
-			ObjectId id=Account.getAccountIdFromCookie(Cookies);
-			Boolean is_logged=Account.isLogged(Cookies);
+			AccountDAO accountDAO=new AccountDAO(mongoClient);
+			ObjectId id=accountDAO.getAccountIdFromCookie(Cookies);
+			Boolean is_logged=accountDAO.isLogged(Cookies);
 			
 			if(id==null) {
 				request.setAttribute("is_logged", "false");
@@ -42,7 +46,7 @@ public class HomeController extends HttpServlet {
 					request.setAttribute("is_logged", "false");
 				}
 				else {
-					Account acc=Model.ACCOUNT.find(Filters.eq("_id", id)).first();
+					Account acc=accountDAO.getAccountFromAccountId(id);
 					request.setAttribute("is_logged", "true");
 					session.setAttribute("user",acc);
 				}

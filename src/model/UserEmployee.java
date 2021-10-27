@@ -5,7 +5,7 @@ import javax.servlet.http.Cookie;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
-public class UserEmployee extends Model {
+public class UserEmployee extends Model{
 	
 	protected ObjectId _id;
 	protected ObjectId accountID;
@@ -66,7 +66,5 @@ public class UserEmployee extends Model {
 		this.birthday=birthDate;
 	}
 	
-	public void Insert() {
-		USEREMPLOYEE.insertOne(this);
-	}
+	
 }

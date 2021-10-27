@@ -13,6 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 
+import com.mongodb.client.MongoClient;
+
+import DAO.AccountDAO;
+import DAO.ConfirmDAO;
 import model.Account;
 import model.Confirm;
 
@@ -37,11 +41,14 @@ public class LogoutController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="/home";
 		Cookie[] cookies=request.getCookies();
-		ObjectId accountId=Account.getAccountIdFromCookie(cookies);
+		MongoClient mongoClient=(MongoClient)request.getAttribute("MONGODB_CLIENT");
+		AccountDAO accountDAO=new AccountDAO(mongoClient);
+		ObjectId accountId=accountDAO.getAccountIdFromCookie(cookies);
 		HttpSession session = request.getSession();
 		
 		if(accountId!=null) {
-			Confirm.DeleteConfirm(accountId);
+			ConfirmDAO confirmDAO=new ConfirmDAO(mongoClient);
+			confirmDAO.DeleteConfirm(accountId);
 			session.invalidate();
 		}
 		url = request.getContextPath() + "/home"; 

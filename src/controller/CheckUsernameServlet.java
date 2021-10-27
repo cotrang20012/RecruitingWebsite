@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Account;
 import org.bson.types.ObjectId;
+
+import com.mongodb.client.MongoClient;
+
 import java.io.PrintWriter;
 /**
  * Servlet implementation class CheckUsernameServlet
@@ -41,6 +44,7 @@ public class CheckUsernameServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
+		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		ObjectId id=Account.getAccountIdFromUsername(username);
 		if(id==null) {
 			out.print("<span style="+'"'+"color:green;"+'"'+">Username hợp lệ</span>");

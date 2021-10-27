@@ -10,7 +10,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
-public class Confirm extends Model{
+public class Confirm extends Model {
 	private ObjectId id;
 	private ObjectId accountId;
 	private String uuid;
@@ -45,27 +45,4 @@ public class Confirm extends Model{
 	}
 	
 	
-	public boolean Update() {
-		if (accountId==null)
-			return false;
-		Confirm confirm = CONFIRM.find(Filters.eq("accountId", this.getAccountId())).first();
-		if (confirm != null)
-		{
-			CONFIRM.updateOne(Filters.eq("accountId", this.getAccountId()), 
-					Updates.set("uuid", this.getUuid()));
-		}
-		else
-		{
-			this.Insert();
-		}
-		return true;
-	}
-	
-	public void Insert() {
-		CONFIRM.insertOne(this);
-	}
-	
-	public static void DeleteConfirm(ObjectId accountId) {
-		CONFIRM.deleteOne(Filters.eq("accountId",accountId));
-	}
 }

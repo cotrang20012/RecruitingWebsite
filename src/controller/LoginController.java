@@ -15,8 +15,8 @@ import javax.servlet.http.HttpSession;
 import javax.xml.ws.Response;
 
 import model.Account;
-import model.Model;
 import model.Confirm;
+import DAO.*;
 import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -24,6 +24,7 @@ import org.apache.taglibs.standard.tag.common.xml.IfTag;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 import com.mongodb.session.SessionContext;
 
@@ -42,8 +43,7 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ObjectId Login(String username, String password) {
-		Account acc = Model.ACCOUNT.find(Filters.eq("username", username)).first();
+	public ObjectId Login(Account acc,String password) {
 		if (acc != null) {
 
 			String _password_ = acc.getPassword();
@@ -69,6 +69,7 @@ public class LoginController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
+		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String url = "/home";
@@ -81,27 +82,29 @@ public class LoginController extends HttpServlet {
 			 */
 			return;
 		}
-
-		ObjectId account_id = Login(username, password);
+		AccountDAO accountDAO=new AccountDAO(mongo);
+		Account acc = accountDAO.getAccountFromUsername(username);
+		
+		ObjectId account_id = Login(acc,password);
 		HttpSession Session = request.getSession();
 
 		if (account_id != null) {
 			String uuidString=java.util.UUID.randomUUID().toString();//tạo mã UUID để lưu thông tin xác nhận login lên database
 			Cookie uuid = new Cookie("UUID", uuidString);
+			
 			uuid.setMaxAge(60*10); //thời gian lưu cookie
 			response.addCookie(uuid);
 			
 			request.setAttribute("is_logged", true);
-			Account acc = Model.ACCOUNT.find(Filters.eq("username", username)).first();
 			session.setAttribute("user", acc);
 			
 			Confirm confirm=new Confirm(account_id,uuidString);
-			if(confirm.Update())//cập nhật lại mã UUID
+			
+			ConfirmDAO confirmDAO=new ConfirmDAO(mongo);
+			if(confirmDAO.Update(confirm))//cập nhật lại mã UUID
 			{
 				
 			}
-
-			
 			url = request.getContextPath() + "/home"; 
 			response.sendRedirect(url);
 			 

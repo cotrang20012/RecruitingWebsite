@@ -15,10 +15,14 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/assets/css/main.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/assets/css/carousel.css'/>">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+ <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/simditor.css' />" />
+
+  <script type="text/javascript" src="<c:url value='/assets/script/jquery.min.js'/>"></script>
+  <script type="text/javascript" src="<c:url value='/assets/script/module.js' />"></script>
+<script type="text/javascript" src="<c:url value='/assets/script/hotkeys.js' />"></script>
+<script type="text/javascript" src="<c:url value='/assets/script/uploader.js' />"></script>
+<script type="text/javascript" src="<c:url value='/assets/script/simditor.js' />"></script>
+
 </head>
 <body style="background: #eee; position: relative;">
 	<jsp:include page="/common/header.jsp"></jsp:include>
@@ -30,7 +34,7 @@
             <form action="" class="col-10">
                 <div class="form-group">
                     <label class="fs-16">Tiêu đề</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="tilte">
                     
                 </div>
                 <div class="form-group">
@@ -39,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label class="fs-16">Nội dung</label>
-                    <textarea class="form-control"></textarea>
+                    <textarea id="editor" name="content"></textarea>
                 </div>
                 
                 <div class="form-group row justify-content-center">
@@ -56,7 +60,13 @@
 
 	
 	<jsp:include page="/common/footer.jsp"></jsp:include>
-    
+    <script type="text/javascript">
+
+    var editor = new Simditor({
+      textarea: $('#editor')
+      //optional options
+    });
+  </script>
 
 </body>
 </html>

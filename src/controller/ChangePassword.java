@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.types.ObjectId;
 
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 
 import model.Account;
@@ -56,6 +57,7 @@ public class ChangePassword extends HttpServlet {
 		String username=request.getParameter("username");
 		String pw_old=request.getParameter("password_old");
 		String pw_new=request.getParameter("password_new");
+		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		
 		if (username == null || pw_old == null || pw_new==null) {
 			RequestDispatcher rd = request.getRequestDispatcher("Login/changepw.jsp");
