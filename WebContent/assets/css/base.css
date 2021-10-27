@@ -6,10 +6,68 @@
     --primary-color:#0a77f3;
 }
 
-p,a,input,div,label {
+p,a,input {
 	font-size:1.4rem !important;
 }
 
 .fs-primary {
 	font-size:1.4rem !important;
+}
+
+
+.btn--common {
+    transition: all .5s ease;
+	width: 40%;
+	border-radius: 30px;
+	color:var(--primary-color);
+	font-weight: 600;
+	background-color: #fff;
+	border: 1px solid var(--primary-color);
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+    min-height: 40px;
+}
+
+.form-control {
+    height: 45px;
+    font-size: 15px;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: none;
+}
+
+.fs-15{
+    font-size: 15px !important;
+}
+.fs-16{
+    font-size: 16px !important;
+}
+.fs-14{
+    font-size: 14px !important;
+}
+.fs-18{
+    font-size: 18px !important;
+}
+.fs-20{
+    font-size: 20px !important;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+
+section {
+    background-color: #eee;
+}
+
+form {
+    background-color: #fff;
+}
+
+.btn--common:hover, .btn--common:focus{
+	background-color: var(--primary-color);
+	color:#fff;
 }

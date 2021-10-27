@@ -4,6 +4,7 @@
 <%@page import="model.Account"%>
 <%
 boolean is_logged = Account.isLogged(request.getCookies());
+boolean is_employer = Account.isEmployer(request.getCookies());
 %>
 <div class="col-sm-12">
 	<div class="img-wrap">
@@ -27,25 +28,12 @@ boolean is_logged = Account.isLogged(request.getCookies());
 							href="${pageContext.request.contextPath}/home">Trang chủ</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Về
 								chúng tôi</a></li>
+						<% if (is_employer) { %>
+						<li class="nav-item"><a class="nav-link" aria-current="page"
+							href="${pageContext.request.contextPath}/Post/create_post.jsp">Đăng tuyển</a></li>
+						<% } %>
 
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-expanded="false">
-								Bài tập </a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/assignment1">Bài
-										tập 1</a></li>
-								<li><a class="dropdown-item"
-									href="${pageContext.request.contextPath}/assignment2">Bài
-										tập 2</a></li>
-								<li><a class="dropdown-item" href="#">Bài tập 3</a></li>
-								<li><a class="dropdown-item" href="#">Bài tập 4</a></li>
-								<li><a class="dropdown-item" href="#">Bài tập 5</a></li>
-								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#">Something else
-										here</a></li>
-							</ul></li>
+						
 					</ul>
 					<div class="account-wrap">
 						<% if (is_logged) { %>

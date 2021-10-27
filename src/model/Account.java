@@ -107,6 +107,24 @@ public class Account extends Model {
 		return null;
 	}
 	
+	public static Account getAccountFromAccountId(ObjectId accountId) {
+		Account acc=ACCOUNT.find(Filters.eq("_id",accountId)).first();
+		return acc;
+	}
+	
+	public static boolean isEmployer(Cookie[] cookies) {
+		if(cookies==null)
+			return false;
+		ObjectId accountId=Account.getAccountIdFromCookie(cookies);
+		Account account=Account.getAccountFromAccountId(accountId);
+		
+		
+		if(account!=null)
+			if(account.getTypeUser().equals("EMPLOYER"))
+				return true;
+		return false;
+	}
+	
 	public void Insert() {
 		ACCOUNT.insertOne(this);
 	}
