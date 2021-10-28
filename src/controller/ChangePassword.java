@@ -15,6 +15,7 @@ import org.bson.types.ObjectId;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 
+import DAO.AccountDAO;
 import model.Account;
 import model.Model;
 
@@ -33,8 +34,10 @@ public class ChangePassword extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public ObjectId Login(String username, String password) {
-		Account acc = Model.ACCOUNT.find(Filters.eq("username", username)).first();
+    public ObjectId Login(HttpServletRequest request,String username, String password) {
+    	MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		AccountDAO accountDAO = new AccountDAO(mongoClient);
+		Account acc = accountDAO.getAccountFromUsername(username);
 		if (acc != null) {
 
 			String _password_ = acc.getPassword();
@@ -58,6 +61,7 @@ public class ChangePassword extends HttpServlet {
 		String pw_old=request.getParameter("password_old");
 		String pw_new=request.getParameter("password_new");
 		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		AccountDAO accountDAO = new AccountDAO(mongoClient);
 		
 		if (username == null || pw_old == null || pw_new==null) {
 			RequestDispatcher rd = request.getRequestDispatcher("Login/changepw.jsp");
@@ -65,11 +69,11 @@ public class ChangePassword extends HttpServlet {
 			return;
 		}
 		
-		ObjectId accountID=Login(username, pw_old);
+		ObjectId accountID=Login(request,username, pw_old);
 		String msg="Đổi mật khẩu thất bại";
 		if(accountID!=null) {
 			String hash_password = DigestUtils.sha256Hex(pw_new);//hash password
-			Account.ChangePassword(username, hash_password);
+			accountDAO.ChangePassword(username, hash_password);
 			msg="Đổi mật khẩu thành công";
 		}
 		else {

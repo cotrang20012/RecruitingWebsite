@@ -11,6 +11,8 @@ import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
 
+import DAO.AccountDAO;
+
 import java.io.PrintWriter;
 /**
  * Servlet implementation class CheckUsernameServlet
@@ -45,7 +47,8 @@ public class CheckUsernameServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
-		ObjectId id=Account.getAccountIdFromUsername(username);
+		AccountDAO accountDAO = new AccountDAO(mongoClient);
+		ObjectId id=accountDAO.getAccountIdFromUsername(username);
 		if(id==null) {
 			out.print("<span style="+'"'+"color:green;"+'"'+">Username hợp lệ</span>");
 		}

@@ -14,8 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 
+import DAO.UserEmployeeDAO;
+import DAO.UserEmployerDAO;
 import model.Account;
 import model.Model;
 import model.UserEmployee;
@@ -45,14 +48,18 @@ public class profileController extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession Session = request.getSession();
 		Account acc = (Account) Session.getAttribute("user");
-
+		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
+		UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
+		
+		
 		String urlString = "/home.jsp";
 		if (acc == null) {
 			urlString ="/home.jsp";
 		} else {
 			String type_user = acc.getTypeUser();
 			if (type_user.equals("EMPLOYEE")) {
-				UserEmployee userEmployee = Model.USEREMPLOYEE.find(Filters.eq("accountID", acc.getId())).first();
+				UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
 				SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
 				String tempFormatString = tempFormat.format(userEmployee.getBirthday());
 				try {
@@ -63,7 +70,7 @@ public class profileController extends HttpServlet {
 				request.setAttribute("userProfile", userEmployee);
 				urlString = "/Profile/profileEmployee.jsp";
 			} else if (type_user.equals("EMPLOYER")) {
-				UserEmployer userEmployer = Model.USEREMPLOYER.find(Filters.eq("accountID", acc.getId())).first();
+				UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
 				request.setAttribute("userProfile", userEmployer);
 				urlString = "/Profile/profileEmployer.jsp";
 			}

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.apache.http.cookie.Cookie;
@@ -26,6 +27,13 @@ import javax.servlet.annotation.MultipartConfig;
 
 import com.cloudinary.*;
 import com.cloudinary.utils.ObjectUtils;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.model.Filters;
+
+import DAO.UserEmployeeDAO;
+import model.Account;
+import model.Model;
+import model.UserEmployee;
 
 /**
  * Servlet implementation class uploadController
@@ -81,6 +89,14 @@ public class uploadController extends HttpServlet {
 		 * request, response);
 		 */
 
+		
+		HttpSession session = request.getSession();
+		Account acc = (Account) session.getAttribute("user");
+		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
+		UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
+		
+		
 		// configures upload settings
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		// sets memory threshold - beyond which files are stored in disk
@@ -127,8 +143,9 @@ public class uploadController extends HttpServlet {
 						Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name",
 								  "dlwoxocw3", "api_key", "763753897849765", "api_secret",
 								  "NvKoAXjdLpPsKG3M5F7O4c4LLew"));
-						
-						cloudinary.uploader().upload(filePath,ObjectUtils.emptyMap());
+						String public_id = acc.getUsername()+"pic";
+						cloudinary.uploader().upload(filePath,ObjectUtils.asMap("public_id",public_id));
+						//userEmployee.setProfile_url(public_id);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
