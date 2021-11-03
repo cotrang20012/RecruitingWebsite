@@ -16,7 +16,6 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 
 import DAO.AccountDAO;
-import model.Model;
 import model.Account;
 
 @WebServlet(name="home",urlPatterns= {"/home"})
@@ -54,6 +53,8 @@ public class HomeController extends HttpServlet {
 			
 		}
 				
+		
+		
 		RequestDispatcher rd=request.getRequestDispatcher("/home.jsp");		
 		
 		rd.forward(request, response);

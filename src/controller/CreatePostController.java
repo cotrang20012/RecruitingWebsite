@@ -1,36 +1,30 @@
 package controller;
 
 import java.io.IOException;
-import java.net.HttpCookie;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
 
-import DAO.AccountDAO;
-import DAO.ConfirmDAO;
-import model.Account;
-import model.Confirm;
+import DAO.PostDAO;
+import model.Post;
 
 /**
- * Servlet implementation class LogoutController
+ * Servlet implementation class CreatePostController
  */
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
+@WebServlet("/create-post")
+public class CreatePostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutController() {
+    public CreatePostController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,21 +33,14 @@ public class LogoutController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url="/home";
-		Cookie[] cookies=request.getCookies();
-		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
-		AccountDAO accountDAO=new AccountDAO(mongoClient);
-		ObjectId accountId=accountDAO.getAccountIdFromCookie(cookies);
-		HttpSession session = request.getSession();
+		// TODO Auto-generated method stub
+		Post post=new Post();
 		
-		if(accountId!=null) {
-			ConfirmDAO confirmDAO=new ConfirmDAO(mongoClient);
-			confirmDAO.DeleteConfirm(accountId);
-			session.invalidate();
-		}
-		url = request.getContextPath() + "/home"; 
-		response.sendRedirect(url);
-		
+		post.TestCreate();
+		ObjectId id=new ObjectId();
+		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		PostDAO postDAO=new PostDAO(mongo);
+		postDAO.Insert(post);
 	}
 
 	/**

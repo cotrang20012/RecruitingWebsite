@@ -2,7 +2,6 @@ package DAO;
 
 import javax.servlet.http.Cookie;
 
-import org.bson.codecs.pojo.annotations.BsonIgnore;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
@@ -18,6 +17,10 @@ public class AccountDAO extends Model{
 	
 	private MongoCollection<Account> ACCOUNT;
 	private MongoClient mongoClient;
+	
+	public AccountDAO() {
+		
+	}
 	
 	public AccountDAO(MongoClient mongo) {
 		mongoClient=mongo;

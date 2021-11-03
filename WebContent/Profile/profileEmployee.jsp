@@ -93,6 +93,10 @@
                                     <input type="text"class="form-control" placeholder="Email" value="${userProfile.email}" readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
+                                    <label class="labels">Ngày sinh</label>
+                                    <input type="text"class="form-control" placeholder="" value="${formatedBirthday}" readonly="readonly">
+                                </div>
+                                <div class="col-md-12 mt-3">
                                     <label class="labels">Giới tính</label>
                                     <div class="row">
                                         <div class="col-md-6">

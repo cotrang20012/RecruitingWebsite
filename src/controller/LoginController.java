@@ -3,7 +3,7 @@ package controller;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
-import javax.servlet.GenericServlet;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,12 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.Response;
 
 import model.Account;
 import model.Confirm;
 import DAO.*;
-import java.util.UUID;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.taglibs.standard.tag.common.xml.IfTag;

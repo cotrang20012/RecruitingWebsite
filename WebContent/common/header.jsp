@@ -1,9 +1,9 @@
-<%@page import="com.mongodb.client.MongoClient"%>
-<%@page import="DAO.AccountDAO"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="DAO.AccountDAO"%>
+<%@page import="com.mongodb.client.MongoClient"%>
+<%@page import="DAO.AccountDAO"%>	
 <%
 MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 AccountDAO accountDAO=new AccountDAO(mongoClient);

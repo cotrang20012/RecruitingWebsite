@@ -37,8 +37,7 @@ public class MongoDBContextListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent sce) {
 		// TODO Auto-generated method stub
 		MongoClient mongo=(MongoClient)sce.getServletContext().getAttribute("MONGODB_CLIENT");
-		mongo.close();
-		
+		mongo.close();		
 	}
 
 }
