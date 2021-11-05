@@ -14,10 +14,6 @@ public class PostDAO extends Model {
 	private MongoCollection<Post> POST;
 	private MongoClient mongoClient;
 	
-	public PostDAO() {
-		
-	}
-	
 	public PostDAO(MongoClient mongo) {
 		mongoClient=mongo;
 		POST = mongo.getDatabase("Webfit").getCollection("POST", Post.class);
