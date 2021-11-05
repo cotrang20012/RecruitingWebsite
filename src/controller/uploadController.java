@@ -154,7 +154,7 @@ public class uploadController extends HttpServlet {
 				}
 			}
 		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Upload/thanks.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Profile/thanks.jsp");
 		dispatcher.forward(request, response);
 	}
 

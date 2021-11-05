@@ -45,37 +45,74 @@ public class profileController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession Session = request.getSession();
-		Account acc = (Account) Session.getAttribute("user");
-		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
-		UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
-		UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
-		
-		
-		String urlString = "/home.jsp";
-		if (acc == null) {
-			urlString ="/home.jsp";
-		} else {
-			String type_user = acc.getTypeUser();
-			if (type_user.equals("EMPLOYEE")) {
-				UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
-				SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
-				String tempFormatString = tempFormat.format(userEmployee.getBirthday());
-				try {
-					userEmployee.setBirthday(tempFormat.parse(tempFormatString));
-				} catch (ParseException e) {
-					e.printStackTrace();
-				}
-				request.setAttribute("userProfile", userEmployee);
-				urlString = "/Profile/profileEmployee.jsp";
-			} else if (type_user.equals("EMPLOYER")) {
-				UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
-				request.setAttribute("userProfile", userEmployer);
-				urlString = "/Profile/profileEmployer.jsp";
-			}
+		String action = request.getParameter("action");
+		if (action == null) {
+			action = "view";
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(urlString);
-		rd.forward(request, response);
+		
+		if (action.equals("view")) {
+			HttpSession Session = request.getSession();
+			Account acc = (Account) Session.getAttribute("user");
+			MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
+			UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
+			UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
+
+			String urlString = "/home.jsp";
+			if (acc == null) {
+				urlString = "/home.jsp";
+			} else {
+				String type_user = acc.getTypeUser();
+				if (type_user.equals("EMPLOYEE")) {
+					UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
+					SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
+					String tempFormatString = tempFormat.format(userEmployee.getBirthday());
+					try {
+						userEmployee.setBirthday(tempFormat.parse(tempFormatString));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					request.setAttribute("userProfile", userEmployee);
+					urlString = "/Profile/profileEmployee.jsp";
+				} else if (type_user.equals("EMPLOYER")) {
+					UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
+					request.setAttribute("userProfile", userEmployer);
+					urlString = "/Profile/profileEmployer.jsp";
+				}
+			}
+			RequestDispatcher rd = request.getRequestDispatcher(urlString);
+			rd.forward(request, response);
+		}
+		if(action.equals("update")) {
+			HttpSession Session = request.getSession();
+			Account acc = (Account) Session.getAttribute("user");
+			MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
+			UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
+			UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
+			
+			String urlString = "/home.jsp";
+			if (acc == null) {
+				urlString = "/home.jsp";
+			} else {
+				String type_user = acc.getTypeUser();
+				if (type_user.equals("EMPLOYEE")) {
+					UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
+					SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
+					String tempFormatString = tempFormat.format(userEmployee.getBirthday());
+					try {
+						userEmployee.setBirthday(tempFormat.parse(tempFormatString));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					request.setAttribute("userProfile", userEmployee);
+					urlString = "/Profile/profileEmployee.jsp";
+				} else if (type_user.equals("EMPLOYER")) {
+					UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
+					request.setAttribute("userProfile", userEmployer);
+					urlString = "/Profile/profileEmployer.jsp";
+				}
+			}
+			RequestDispatcher rd = request.getRequestDispatcher(urlString);
+			rd.forward(request, response);
+		}
 	}
 }
