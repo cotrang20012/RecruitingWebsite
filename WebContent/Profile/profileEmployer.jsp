@@ -70,26 +70,29 @@
                             <div class="row mt-2">
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Tên công ty</label>
-                                    <input type="text" class="form-control" placeholder="Tên công ty"
+                                    <input type="text" class="form-control" placeholder="Tên công ty" name="companyname"
                                         value="<c:out value='${userProfile.companyName}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Số điện thoại</label>
-                                    <input type="text" class="form-control" placeholder="Số điện thoại"
+                                    <input type="text" class="form-control" placeholder="Số điện thoại" name="phone"
                                         value="<c:out value='${userProfile.phone}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Địa chỉ</label>
-                                    <input type="text" class="form-control" placeholder="Địa chỉ"
+                                    <input type="text" class="form-control" placeholder="Địa chỉ" name="address"
                                         value="<c:out value='${userProfile.address}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text"
-                                        class="form-control" placeholder="Email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
                                 </div>
                             </div>
 
                             <div class="mt-5 text-center">
+                   				<form action="profile" method="POST" >
+                            	<input type="hidden" name="action" value="update">
                    				<button class="btn btn-primary profile-button" type="button" onclick="EnableReadonly()">Save Profile</button>
+                   				</form>
                     			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
                 			</div>
                         </div>

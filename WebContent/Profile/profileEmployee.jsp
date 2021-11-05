@@ -75,36 +75,36 @@
                             <div class="row mt-2">
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Họ và tên</label>
-                                    <input type="text" class="form-control" placeholder="Tên công ty"
+                                    <input type="text" class="form-control" placeholder="Tên công ty" name="username"
                                         value="${userProfile.fullName}" readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Số điện thoại</label>
-                                    <input type="text" class="form-control" placeholder="Số điện thoại"
+                                    <input type="text" class="form-control" placeholder="Số điện thoại" name="phone"
                                         value="${userProfile.phone}" readonly="readonly" >
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Địa chỉ</label>
-                                    <input type="text" class="form-control" placeholder="Địa chỉ"
+                                    <input type="text" class="form-control" placeholder="Địa chỉ" name="address"
                                         value="${userProfile.address}" readonly="readonly" >
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Email</label>
-                                    <input type="text"class="form-control" placeholder="Email" value="${userProfile.email}" readonly="readonly">
+                                    <input type="text"class="form-control" placeholder="Email" name="email" value="${userProfile.email}" readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Ngày sinh</label>
-                                    <input type="text"class="form-control" placeholder="" value="${formatedBirthday}" readonly="readonly">
+                                    <input type="text"class="form-control" placeholder="" name="birthday" value="${formatedBirthday}" readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Giới tính</label>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="radio" name="genger" id="male" value="male" readonly="readonly">
+                                            <input type="radio" name="gender" id="male" value="male" readonly="readonly">
                                             <label for="male">Nam</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="radio" name="genger" id="female" value="female" readonly="readonly">
+                                            <input type="radio" name="gender" id="female" value="female" readonly="readonly">
                                             <label for="female">Nữ</label>
                                         </div>
                                     </div>
@@ -112,7 +112,10 @@
                             </div>
 
                             <div class="mt-5 text-center">
+                            	<form action="profile" method="POST" >
+                            	<input type="hidden" name="action" value="update">
                    				<button class="btn btn-primary profile-button" type="button" onclick="EnableReadonly()">Save Profile</button>
+                   				</form>
                     			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
                 			</div>
                         </div>
