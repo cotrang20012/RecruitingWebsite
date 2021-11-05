@@ -1,12 +1,11 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.mongodb.client.MongoClient"%>
-<%@page import="DAO.AccountDAO"%>	
+<%@page import="com.mongodb.client.MongoClient" %>
+<%@page import="DAO.*" %>
 <%
 MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
-AccountDAO accountDAO=new AccountDAO(mongoClient);
+AccountDAO accountDAO=new AccountDAO(mongoClient); 
 boolean is_logged = accountDAO.isLogged(request.getCookies());
 boolean is_employer = accountDAO.isEmployer(request.getCookies());
 %>

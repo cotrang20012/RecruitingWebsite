@@ -31,6 +31,7 @@ public class HomeController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		Cookie[] Cookies=request.getCookies();
 		HttpSession session = request.getSession();
 		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
