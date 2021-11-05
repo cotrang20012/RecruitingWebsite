@@ -1,5 +1,6 @@
 package controller;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.*;
 import javax.servlet.ServletException;
@@ -16,7 +17,9 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.model.Filters;
 
 import DAO.AccountDAO;
+import DAO.PostDAO;
 import model.Account;
+import model.Post;
 
 @WebServlet(name="home",urlPatterns= {"/home"})
 public class HomeController extends HttpServlet {
@@ -52,6 +55,15 @@ public class HomeController extends HttpServlet {
 			}
 			
 		}
+		
+		PostDAO postDAO=new PostDAO(mongoClient);
+		ArrayList<Post> listPost=postDAO.GetListPost(0, 5);
+
+		if(listPost==null) {
+			System.out.println("Không có listpost");
+		}
+		
+		request.setAttribute("posts", listPost);
 				
 		
 		
@@ -61,7 +73,7 @@ public class HomeController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request, response);
 	}
 	
 	
