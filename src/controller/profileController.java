@@ -45,6 +45,9 @@ public class profileController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		if (action == null) {
 			action = "view";
@@ -71,6 +74,7 @@ public class profileController extends HttpServlet {
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
+					
 					request.setAttribute("userProfile", userEmployee);
 					urlString = "/Profile/profileEmployee.jsp";
 				} else if (type_user.equals("EMPLOYER")) {
@@ -101,7 +105,15 @@ public class profileController extends HttpServlet {
 					userEmployee.setAddress(request.getParameter("address"));
 					userEmployee.setPhone(request.getParameter("phone"));
 					userEmployee.setEmail(request.getParameter("email"));
-					userEmployee.setBirthday((Date)request.getAttribute("birthday"));
+					System.out.println(userEmployee.get_id().toString());
+					
+					Date date1 = new Date();
+					try {
+						date1 = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("birthday"));
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}  
+					userEmployee.setBirthday(date1);
 					
 					userEmployeeDAO.UpdateUserEmployer(userEmployee);
 					

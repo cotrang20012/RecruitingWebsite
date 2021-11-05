@@ -67,7 +67,9 @@
 						</form>
                     </div>
                     </div>
+                    
                     <div class="col-md-5 border-right">
+                    <form action="profile" method="POST" >
                         <div class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-right">Cài đặt Profile</h4>
@@ -111,14 +113,15 @@
                                 </div>
                             </div>
 
-                            <div class="mt-5 text-center">
-                            	<form action="profile" method="POST" >
+                            <div class="mt-5 text-center">                           	
+                            	<div>
                             	<input type="hidden" name="action" value="update">
-                   				<button class="btn btn-primary profile-button" type="button" onclick="EnableReadonly()">Save Profile</button>
-                   				</form>
+                   				<button class="btn btn-primary profile-button" type="submit" onclick="EnableReadonly()">Save Profile</button>                  				
                     			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
+                    			</div>                   
                 			</div>
                         </div>
+                        </form>
                     </div>
                     <div class="col-md-4">
                         <div class="p-3 py-5">
@@ -144,11 +147,17 @@
         const inputPropertise = document.getElementsByClassName("form-control");
 
         function RemoveReadonly(){
-        inputPropertise.removeAttribute("readonly");
+        	var i;
+        	for (i = 0; i < inputPropertise.length; i++) {
+        	  inputPropertise[i].removeAttribute("readonly");
+        	}
         }
 
         function EnableReadonly(){
-        inputPropertise.setAttribute("readonly","readonly");
+        	var i;
+        	for (i = 0; i < inputPropertise.length; i++) {
+        		inputPropertise[i].setAttribute("readonly","readonly");
+        	}
         }
     </script>
 </body>
