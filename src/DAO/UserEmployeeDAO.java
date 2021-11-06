@@ -25,8 +25,8 @@ private MongoCollection<UserEmployee> USEREMPLOYEE;
 		return USEREMPLOYEE.find(Filters.eq("accountID", id)).first();
 	}
 	
-	public void UpdateUserEmployer(UserEmployee user) {
-		Bson update1 = Updates.set("fullname", user.getFullName());
+	public void UpdateUserEmployee(UserEmployee user) {
+		Bson update1 = Updates.set("fullName", user.getFullName());
 		Bson update2 = Updates.set("phone", user.getPhone());
 		Bson update3 = Updates.set("address", user.getAddress());
 		Bson update4 = Updates.set("email", user.getEmail());
@@ -34,5 +34,11 @@ private MongoCollection<UserEmployee> USEREMPLOYEE;
 		
 				
 		USEREMPLOYEE.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1, update2, update3, update4, update5));
+	}
+	
+	public void UpdateUserEmployeeUrl(UserEmployee user) {
+		Bson update1 = Updates.set("profile_url", user.getProfile_url());
+						
+		USEREMPLOYEE.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1));
 	}
 }

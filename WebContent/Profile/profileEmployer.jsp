@@ -60,6 +60,10 @@
                         <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                         <span  class="font-weight-bold"> <c:out value='${userProfile.companyName}'/> </span>
+                        <form action="upload" method="post" enctype="multipart/form-data" class="form-group w-100">
+						<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+						<input type="submit" value="upload">
+						</form>
                     </div>
                     </div>
                     <div class="col-md-5 border-right">

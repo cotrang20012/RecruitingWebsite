@@ -114,7 +114,7 @@ public class profileController extends HttpServlet {
 					}  
 					userEmployee.setBirthday(date1);
 					
-					userEmployeeDAO.UpdateUserEmployer(userEmployee);
+					userEmployeeDAO.UpdateUserEmployee(userEmployee);
 					
 					SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
 					String tempFormatString = tempFormat.format(userEmployee.getBirthday());
@@ -132,6 +132,9 @@ public class profileController extends HttpServlet {
 					userEmployer.setCompanyName(request.getParameter("companyname"));
 					userEmployer.setPhone(request.getParameter("phone"));
 					userEmployer.setEmail(request.getParameter("email"));
+					
+					userEmployerDAO.UpdateUserEmployer(userEmployer);
+			
 					request.setAttribute("userProfile", userEmployer);
 					urlString = "/Profile/profileEmployer.jsp";
 				}

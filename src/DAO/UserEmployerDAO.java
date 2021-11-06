@@ -33,4 +33,10 @@ private MongoCollection<UserEmployer> USEREMPLOYER;
 				
 		USEREMPLOYER.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1, update2, update3, update4));
 	}
+	
+	public void UpdateUserEmployerUrl(UserEmployer user) {
+		Bson update1 = Updates.set("profile_url", user.getProfile_url());
+						
+		USEREMPLOYER.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1));
+	}
 }

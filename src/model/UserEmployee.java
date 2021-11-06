@@ -14,7 +14,14 @@ public class UserEmployee extends Model{
 	protected String address;
 	protected Date birthday;
 	protected String email;
+	protected String profile_url;
 	
+	public String getProfile_url() {
+		return profile_url;
+	}
+	public void setProfile_url(String profile_url) {
+		this.profile_url = profile_url;
+	}
 	public UserEmployee() {
 		
 	}
