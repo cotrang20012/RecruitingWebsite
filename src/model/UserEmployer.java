@@ -12,10 +12,11 @@ public class UserEmployer extends Model{
 	protected String phone;
 	protected String address;
 	protected String email;
-	public ObjectId get_id() {
+	
+	public ObjectId getId() {
 		return _id;
 	}
-	public void set_id(ObjectId _id) {
+	public void setId(ObjectId _id) {
 		this._id = _id;
 	}
 	public String getEmail() {

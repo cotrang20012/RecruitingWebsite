@@ -8,10 +8,11 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
+import model.Model;
 import model.UserEmployee;
 import model.UserEmployer;
 
-public class UserEmployeeDAO {
+public class UserEmployeeDAO extends Model{
 private MongoCollection<UserEmployee> USEREMPLOYEE;
 	
 	public UserEmployeeDAO(MongoClient mongo) {
@@ -32,6 +33,6 @@ private MongoCollection<UserEmployee> USEREMPLOYEE;
 		Bson update5 = Updates.set("birthday", user.getBirthday());
 		
 				
-		USEREMPLOYEE.updateOne(Filters.eq("_id",user.get_id()),Updates.combine(update1, update2, update3, update4, update5));
+		USEREMPLOYEE.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1, update2, update3, update4, update5));
 	}
 }

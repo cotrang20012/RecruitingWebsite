@@ -105,7 +105,6 @@ public class profileController extends HttpServlet {
 					userEmployee.setAddress(request.getParameter("address"));
 					userEmployee.setPhone(request.getParameter("phone"));
 					userEmployee.setEmail(request.getParameter("email"));
-					System.out.println(userEmployee.get_id().toString());
 					
 					Date date1 = new Date();
 					try {

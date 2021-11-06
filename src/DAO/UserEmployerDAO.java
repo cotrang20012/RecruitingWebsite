@@ -31,6 +31,6 @@ private MongoCollection<UserEmployer> USEREMPLOYER;
 		Bson update3 = Updates.set("address", user.getAddress());
 		Bson update4 = Updates.set("email", user.getEmail());
 				
-		USEREMPLOYER.updateOne(Filters.eq("_id",user.get_id()),Updates.combine(update1, update2, update3, update4));
+		USEREMPLOYER.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1, update2, update3, update4));
 	}
 }

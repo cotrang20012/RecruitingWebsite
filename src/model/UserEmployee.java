@@ -18,26 +18,20 @@ public class UserEmployee extends Model{
 	public UserEmployee() {
 		
 	}
-	public ObjectId get_id() {
+	public ObjectId getId() {
 		return _id;
 	}
-	public void set_id(ObjectId _id) {
+	public void setId(ObjectId _id) {
 		this._id = _id;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
 
 	public ObjectId getAccountID() {
 		return accountID;
 	}
 	public void setAccountID(ObjectId accountID) {
 		this.accountID = accountID;
-	}
+	}	
+
 	public String getFullName() {
 		return fullName;
 	}
@@ -63,8 +57,14 @@ public class UserEmployee extends Model{
 		this.birthday = birthday;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public UserEmployee(ObjectId accountID, String fullName, String phone, String address,Date birthDate ) {
-		this._id=new ObjectId();
+		this.setId(new ObjectId());
 		this.accountID=accountID;
 		this.fullName=fullName;
 		this.phone=phone;
