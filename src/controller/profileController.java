@@ -55,7 +55,7 @@ public class profileController extends HttpServlet {
 		
 		if (action.equals("view")) {
 			HttpSession Session = request.getSession();
-			Account acc = (Account) Session.getAttribute("user");
+			Account acc = (Account) Session.getAttribute("acc");
 			MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 			UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
 			UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);

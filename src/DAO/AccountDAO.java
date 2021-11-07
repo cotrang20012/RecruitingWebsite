@@ -12,6 +12,7 @@ import com.mongodb.client.model.Updates;
 import model.Account;
 import model.Confirm;
 import model.Model;
+import model.UserEmployer;
 
 public class AccountDAO extends Model{
 	
@@ -100,4 +101,6 @@ public class AccountDAO extends Model{
 	public void ChangePassword(String username,String password) {
 		ACCOUNT.updateOne(Filters.eq("username",username), Updates.set("password", password));
 	}
+	
+	
 }

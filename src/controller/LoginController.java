@@ -15,7 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import model.Account;
 import model.Confirm;
+import model.UserEmployee;
+import model.UserEmployer;
 import DAO.*;
+
+import org.apache.catalina.tribes.ChannelSender;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.taglibs.standard.tag.common.xml.IfTag;
@@ -47,10 +51,6 @@ public class LoginController extends HttpServlet {
 			String _password_ = acc.getPassword();
 
 			String hash_password = DigestUtils.sha256Hex(password);
-
-			// System.out.print(hashed_password +" AND " +_password_ );
-
-			// if (hashed_password.equals(_password_))
 			if (hash_password.equals(_password_)) {
 				// Đăng nhập thành công
 				return acc.getId();
@@ -74,10 +74,6 @@ public class LoginController extends HttpServlet {
 		if (username == null || password == null) {
 			RequestDispatcher rd = request.getRequestDispatcher("Login/login.jsp");
 			rd.forward(request, response);
-			/*
-			 * url= request.getContextPath() + "/Login/login.jsp";
-			 * response.sendRedirect(url);
-			 */
 			return;
 		}
 		AccountDAO accountDAO=new AccountDAO(mongo);
@@ -94,7 +90,18 @@ public class LoginController extends HttpServlet {
 			response.addCookie(uuid);
 			
 			request.setAttribute("is_logged", true);
-			session.setAttribute("user", acc);
+			session.setAttribute("acc", acc);
+			if(acc.getTypeUser().equals("EMPLOYER")) {
+				UserEmployerDAO dao=new UserEmployerDAO(mongo);
+				UserEmployer userEmployer=dao.findEmployerWithID(account_id);
+				session.setAttribute("user", userEmployer);
+			}
+			else if(acc.getTypeUser().equals("EMPLOYEE")) {
+				UserEmployeeDAO dao=new UserEmployeeDAO(mongo);
+				UserEmployee userEmployee=dao.findEmployeeWithID(account_id);
+				session.setAttribute("user", userEmployee);
+			}
+			
 			
 			Confirm confirm=new Confirm(account_id,uuidString);
 			
