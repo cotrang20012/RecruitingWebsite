@@ -1,10 +1,39 @@
 package model;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+import org.bson.Document;
+import org.bson.codecs.pojo.annotations.BsonIgnore;
+import org.bson.types.ObjectId;
+//import org.eclipse.persistence.nosql.annotations.Field;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+
 import java.util.Date;
 
 import org.bson.types.ObjectId;
 
+import webfit.Utilities;
+
+
 public class Post extends Model{
+	private ObjectId author_id;
+	private String url;
+	private String published_at;
+	private String updated_at;
+	private int views_count;
+	private int points;
+	private boolean is_public;
+	private String thumbnail_url;
+	private String status;
+	private String category;
 	private ObjectId _id;
 	public ObjectId get_id() {
 		return _id;
@@ -31,12 +60,6 @@ public class Post extends Model{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getSalary() {
-		return salary;
-	}
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
 	public Date getDateStart() {
 		return dateStart;
 	}
@@ -53,7 +76,6 @@ public class Post extends Model{
 	private ObjectId accountId;
 	private String title="";
 	private String content;
-	private String salary="";
 	private Date dateStart=new Date();
 	private Date dateEnd =new Date();
 	
@@ -88,5 +110,91 @@ public class Post extends Model{
 		long days=hours/24;
 		return String.valueOf(days)+" ngày trước";
 	}
+	
 
+	public ObjectId getAuthor_id() {
+		return author_id;
+	}
+
+	public void setAuthor_id(ObjectId author_id) {
+		this.author_id = author_id;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+
+	public String getPublished_at() {
+		return published_at;
+	}
+	public void setPublished_at(String published_at) {
+		this.published_at = published_at;
+	}
+
+	public String getUpdated_at() {
+		return updated_at;
+	}
+	public void setUpdated_at(String updated_at) {
+		this.updated_at = updated_at;
+	}
+
+	public int getViews_count() {
+		return views_count;
+	}
+	public void setViews_count(int views_count) {
+		this.views_count = views_count;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	public boolean getIs_public() {
+		return is_public;
+	}
+	public void setIs_public(boolean is_public) {
+		this.is_public = is_public;
+	}
+
+	public String getThumbnail_url() {
+		if (thumbnail_url == null || thumbnail_url.equals(""))
+			return "thumbnail.jpg";
+		return thumbnail_url;
+	}
+	public void setThumbnail_url(String thumbnail_url) {
+		this.thumbnail_url = thumbnail_url;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	
+	public String getShortContent()
+	{
+		if(this.getContent().length() < 150)
+			return this.getContent();
+		return (this.getContent().substring(0, 150) + "...");
+		
+	}
+	
+
+	
 }
