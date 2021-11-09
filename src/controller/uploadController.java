@@ -22,6 +22,7 @@ import javax.servlet.http.Part;
 
 import org.apache.http.cookie.Cookie;
 import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileItemIterator;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
@@ -97,15 +98,8 @@ public class uploadController extends HttpServlet {
 		 * request, response);
 		 */
 
-		HttpSession session = request.getSession();
-		Account acc = (Account) session.getAttribute("user");
-		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
-		String action = request.getParameter("action");
-		UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
-		UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
 		String urlString = "/home.jsp";
 		
-
 		// configures upload settings
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		// sets memory threshold - beyond which files are stored in disk
@@ -125,12 +119,13 @@ public class uploadController extends HttpServlet {
 		if (!uploadDir.exists()) {
 			uploadDir.mkdir();
 		}
+				
 		// parses the request's content to extract file data
 		List<FileItem> formItems = upload.parseRequest(new ServletRequestContext(request));
 		if (formItems != null && formItems.size() > 0) {
-			System.out.println("if");
+			
 			for (FileItem item : formItems) {
-				System.out.println("for");
+				
 				// processes only fields that are not form fields
 				if (!item.isFormField()) {
 					String fileName = new File(item.getName()).getName();
@@ -139,17 +134,29 @@ public class uploadController extends HttpServlet {
 
 					// saves the file on disk
 					try {
+						HttpSession session = request.getSession();
+						Account acc = (Account) session.getAttribute("user");
+						MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
+						UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
+						UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
+						urlString = "/home.jsp";
+						
+						
 						item.write(storeFile);
 						String type_user = acc.getTypeUser();
-						System.out.println("1234512345");
+						
 						if (type_user.equals("EMPLOYEE")) {
 							Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "dlwoxocw3", "api_key",
 									"763753897849765", "api_secret", "NvKoAXjdLpPsKG3M5F7O4c4LLew"));
+							
 							String public_id = acc.getUsername() + "pic";
-							cloudinary.uploader().upload(filePath, ObjectUtils.asMap("public_id", public_id));
-							ApiResponse result = cloudinary.search().expression(public_id).execute();
-							String profile_url = result.get("url").toString();
-							System.out.println(profile_url);
+							
+							Map uploadResult = cloudinary.uploader().upload(filePath, ObjectUtils.asMap("public_id", public_id));
+							
+							String profile_url = uploadResult.get("url").toString();	
+							
+							//ApiResponse result = cloudinary.search().expression("public_id="+public_id).execute();					
+							//ObjectUtils profile_url = (ObjectUtils) result.get("resources");						
 							UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
 							userEmployee.setProfile_url(profile_url);
 							userEmployeeDAO.UpdateUserEmployeeUrl(userEmployee);
@@ -161,9 +168,8 @@ public class uploadController extends HttpServlet {
 									"763753897849765", "api_secret", "NvKoAXjdLpPsKG3M5F7O4c4LLew"));
 							String public_id = acc.getUsername() + "pic";
 							cloudinary.uploader().upload(filePath, ObjectUtils.asMap("public_id", public_id));
-							
-							ApiResponse result = cloudinary.search().expression(public_id).execute();
-							String profile_url = result.get("url").toString();
+							Map uploadResult = cloudinary.uploader().upload(filePath, ObjectUtils.asMap("public_id", public_id));	
+							String profile_url = uploadResult.get("url").toString();
 							UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
 							userEmployer.setProfile_url(profile_url);
 							userEmployerDAO.UpdateUserEmployerUrl(userEmployer);
@@ -172,7 +178,7 @@ public class uploadController extends HttpServlet {
 							urlString = "/Profile/profileEmployer.jsp";
 						}
 					} catch (Exception e) {
-						
+						System.out.println(e);
 					}
 				}
 			}
