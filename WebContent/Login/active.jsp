@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" type="image/png"
 	href="<c:url value='/assets/img/favicon.ico'/>">
-<title>Đổi mật khẩu</title>
+<title>Kích hoạt tài khoản</title>
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -31,8 +31,8 @@
 	<div class="app">
 		<section class="container-fluid">
 			<div class="row text-center d-flex justify-content-center" 
-			style="max-width:720px;margin:auto">
-				<div class="col-8" style="border-radius: 20px;
+			style="max-width:720px;min-height:400px;margin:auto">
+				<div class="col-8 mt-5 fs-16" style="border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);">
 				<c:choose>
 					<c:when test="${result== 'non-active' }"> 
