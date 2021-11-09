@@ -13,6 +13,9 @@
 <title>Thông tin người dùng</title>
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>  
+<script src="<c:url value = "/template/paging/jquery.twbsPagination.js"/>"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -29,7 +32,7 @@
 
 <body style="background: #eee; position: relative;">
 
-	<jsp:include page="../common/header.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"></jsp:include> 
 	<fmt:formatDate value="${userProfile.birthday}" var="formatedBirthday"
 		type="date" pattern="dd/MM/yyyy" />
 
@@ -153,6 +156,7 @@
 
 					</li>
 				</ul>
+				<ul class="pagination" id="pagination"></ul>
 			</div>
 
 		</div>
@@ -161,6 +165,19 @@
 
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	<script type="text/javascript">
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: 10,
+            visiblePages: 5,
+            onPageClick: function (event, page) {
+                console.info(page + ' (from options)');
+            }
+        }).on('page', function (event, page) {
+            console.info(page + ' (from event listening)');
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -18,6 +18,10 @@
 	href="<c:url value='/assets/css/carousel.css'/>">
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+    <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body style="background: #eee; position: relative;">
 	<jsp:include page="/common/header.jsp"></jsp:include>
@@ -223,3 +227,4 @@
 
 </body>
 </html>
+1
