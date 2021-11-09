@@ -49,11 +49,11 @@ public class HomeController extends HttpServlet {
 			if (id == null) {
 				request.setAttribute("is_logged", "false");
 			} else {
-				Boolean is_logged = (Boolean) session.getAttribute("is_logged");
-				if (is_logged == null) {
+				boolean is_logged=false;
+				if (session.getAttribute("is_logged") == null) {
 					is_logged = accountDAO.isLogged(Cookies);
 				}
-				//
+				is_logged=(boolean) session.getAttribute("is_logged") ;
 				if (!is_logged) {
 					session.setAttribute("is_logged", "false");
 				} else {

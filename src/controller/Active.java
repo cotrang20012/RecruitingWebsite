@@ -54,10 +54,18 @@ public class Active extends HttpServlet {
 		// TODO Auto-generated method stub
 		String url = "/home";
 		String action = request.getParameter("action");
-		if(action==null) {
-			action="send";
-		}
 		HttpSession Session = request.getSession();
+		if(action==null) {
+			Account account = (Account) Session.getAttribute("acc");
+			if(account==null) {
+				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+			}
+			else {
+				getServletContext().getRequestDispatcher("/Login/active.jsp").forward(request, response);
+			}
+			return;
+		}
+		
 		if (action.equals("send")) {
 			String resultMessage = "";
 			Account account = (Account) Session.getAttribute("acc");
@@ -66,7 +74,7 @@ public class Active extends HttpServlet {
 					String id = account.getId().toHexString().substring(10);
 					String email=account.getEmail();
 					String activeString = DigestUtils.sha256Hex(id);
-					String urlString = request.getContextPath() + File.separator + "active?action=active&"
+					String urlString = request.getContextPath() + "/active?action=active&"
 							+ "email="+email+"&code="
 							+ activeString;
 					EmailUtility.sendEmail(host, port, user, pass, "tranbaoduy4@gmail.com", "Kích hoạt tài khoản",

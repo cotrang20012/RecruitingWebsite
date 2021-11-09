@@ -81,7 +81,7 @@ public class LoginController extends HttpServlet {
 		
 		ObjectId account_id = Login(acc,password);
 		HttpSession Session = request.getSession();
-
+		
 		if (account_id != null) {
 			String uuidString=java.util.UUID.randomUUID().toString();//tạo mã UUID để lưu thông tin xác nhận login lên database
 			Cookie uuid = new Cookie("UUID", uuidString);
@@ -93,6 +93,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("acc", acc);
 			String status=acc.getStatus();
 			if(status.equals("non-active")) {
+				request.setAttribute("result", "none");
 				url = getServletContext().getContextPath() + "/active";
 				response.sendRedirect(url);
 				return;

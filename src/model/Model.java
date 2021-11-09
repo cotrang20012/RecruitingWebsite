@@ -14,7 +14,7 @@ public class Model {
 	
 	public static CodecRegistry pojoCodecRegistry = CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build());
 	public static CodecRegistry codecRegistry = CodecRegistries.fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
-
+	
 	@BsonIgnore
 	Logger logger = Logger.getLogger("org.mongodb.driver");
 
