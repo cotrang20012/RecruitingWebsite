@@ -3,9 +3,12 @@ package DAO;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.bson.types.ObjectId;
+
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
 
 import model.Model;
 import model.Post;
@@ -33,5 +36,6 @@ public class PostDAO extends Model {
 		return posts;
 		
 	}
+	
 
 }
