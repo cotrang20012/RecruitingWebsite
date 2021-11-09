@@ -89,8 +89,15 @@ public class LoginController extends HttpServlet {
 			uuid.setMaxAge(60*10); //thời gian lưu cookie
 			response.addCookie(uuid);
 			
-			request.setAttribute("is_logged", true);
+			session.setAttribute("is_logged", true);
 			session.setAttribute("acc", acc);
+			String status=acc.getStatus();
+			if(status.equals("non-active")) {
+				url = getServletContext().getContextPath() + "/active";
+				response.sendRedirect(url);
+				return;
+			}
+			
 			if(acc.getTypeUser().equals("EMPLOYER")) {
 				UserEmployerDAO dao=new UserEmployerDAO(mongo);
 				UserEmployer userEmployer=dao.findEmployerWithID(account_id);

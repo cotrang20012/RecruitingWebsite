@@ -17,6 +17,13 @@ public class Account extends Model{
 	protected String password;
 	protected String email;
 	protected String typeUser;
+	protected String status;
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getTypeUser() {
 		return typeUser;
 	}
@@ -58,6 +65,7 @@ public class Account extends Model{
 		this.setEmail(email);
 		this.setPassword(password);
 		this.setTypeUser(typeUser);
+		this.status="non-active";
 	}
 	
 	public Account(ObjectId id,String username, String password, String email,String typeUser) {
@@ -66,6 +74,15 @@ public class Account extends Model{
 		this.setEmail(email);
 		this.setPassword(password);
 		this.setTypeUser(typeUser);
+		this.status="non-active";
+	}
+	public Account(ObjectId id,String username, String password, String email,String typeUser,String status) {
+		this.setId(id);
+		this.setUsername(username);
+		this.setEmail(email);
+		this.setPassword(password);
+		this.setTypeUser(typeUser);
+		this.status=status;
 	}
 	
 }

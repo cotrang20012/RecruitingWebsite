@@ -69,6 +69,13 @@ public class AccountDAO extends Model{
 		return null;
 	}
 	
+	public ObjectId getAccountIdFromEmail(String email) {		
+		Account acc=ACCOUNT.find(Filters.eq("email", email)).first();
+		if(acc!=null)
+			return acc.getId();
+		return null;
+	}
+	
 	public Account getAccountFromUsername(String username) {		
 		Account acc=ACCOUNT.find(Filters.eq("username", username)).first();
 		if(acc!=null)
@@ -100,6 +107,10 @@ public class AccountDAO extends Model{
 	
 	public void ChangePassword(String username,String password) {
 		ACCOUNT.updateOne(Filters.eq("username",username), Updates.set("password", password));
+	}
+	
+	public void Active(String email) {
+		ACCOUNT.updateOne(Filters.eq("email",email), Updates.set("status", "active"));
 	}
 	
 	
