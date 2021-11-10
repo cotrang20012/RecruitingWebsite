@@ -92,6 +92,18 @@
                                 <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text"
                                         class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
                                 </div>
+                                <div class="col-md-12 mt-3"><label class="labels">Website</label><input type="text"
+                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                </div>
+                                <div class="col-md-12 mt-3"><label class="labels">Quy mô</label><input type="text"
+                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                </div>
+                                <div class="col-md-12 mt-3"><label class="labels">Ngành nghề</label><input type="text"
+                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                </div>
+                                <div class="col-md-12 mt-3"><label class="labels">Tech stack</label><input type="text"
+                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                </div>
                             </div>
 
                             <div class="mt-5 text-center">

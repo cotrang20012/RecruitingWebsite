@@ -60,8 +60,16 @@
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <!-- <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
-                        <img class="rounded-circle mt-5" width="150px"
+                        <c:if test="${userProfile.profile_url == null}"> 
+						<img class="rounded-circle mt-5" width="150px"
+                                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+						</c:if>
+                        <c:if test="${userProfile.profile_url != null}"> 
+						<img class="rounded-circle mt-5" width="150px"
                                 src="${userProfile.profile_url }">
+						</c:if>
+                        <!--<img class="rounded-circle mt-5" width="150px"
+                                src="${userProfile.profile_url }"> -->
                         <span  class="font-weight-bold"><c:out value='${userProfile.fullName}'/></span>
                         <form action="upload" method="post" enctype="multipart/form-data" class="form-group w-100">
 						<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
