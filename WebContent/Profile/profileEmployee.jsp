@@ -60,14 +60,8 @@
                         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <!-- <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
-                        <c:if test="${userProfile.profile_url == null}"> 
 						<img class="rounded-circle mt-5" width="150px"
-                                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-						</c:if>
-                        <c:if test="${userProfile.profile_url != null}"> 
-						<img class="rounded-circle mt-5" width="150px"
-                                src="${userProfile.profile_url }">
-						</c:if>
+                                src="${userProfile.profile_url }" id="profile-image">	
                         <!--<img class="rounded-circle mt-5" width="150px"
                                 src="${userProfile.profile_url }"> -->
                         <span  class="font-weight-bold"><c:out value='${userProfile.fullName}'/></span>
@@ -153,8 +147,27 @@
 
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+    <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
         const inputPropertise = document.getElementsByClassName("form-control");
+        const avatar = document.getElementById("avatar");
+        const profileImg = document.getElementById("profile-image");
+
+        avatar.addEventListener("change", function(){
+            const file = this.files[0];
+            
+            if(file){
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function(){
+                    profileImg.setAttribute("src",this.result);
+                });
+                reader.readAsDataURL(file);
+            }
+        });
 
         function RemoveReadonly(){
         	var i;

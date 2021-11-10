@@ -60,7 +60,7 @@
                         <!-- <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
                         <img class="rounded-circle mt-5" width="150px" height="150px"
-                                src="${userProfile.profile_url }">
+                                src="${userProfile.profile_url }" id ="profile-image">
                         <span  class="font-weight-bold"> <c:out value='${userProfile.companyName}'/> </span>
                         <form action="upload" method="post" enctype="multipart/form-data" class="form-group w-100">
 						<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
@@ -137,7 +137,21 @@
 	<jsp:include page="../common/footer.jsp"></jsp:include>
     <script>
         const inputPropertise = document.getElementsByClassName("form-control");
+        const avatar = document.getElementById("avatar");
+        const profileImg = document.getElementById("profile-image");
 
+        avatar.addEventListener("change", function(){
+            const file = this.files[0];
+            
+            if(file){
+                const reader = new FileReader();
+
+                reader.addEventListener("load", function(){
+                    profileImg.setAttribute("src",this.result);
+                });
+                reader.readAsDataURL(file);
+            }
+        });
         function RemoveReadonly(){
         	inputPropertise.removeAttribute("readonly");
         }
