@@ -30,8 +30,12 @@ private MongoCollection<UserEmployer> USEREMPLOYER;
 		Bson update2 = Updates.set("phone", user.getPhone());
 		Bson update3 = Updates.set("address", user.getAddress());
 		Bson update4 = Updates.set("email", user.getEmail());
+		Bson update5 = Updates.set("website", user.getWebsite());
+		Bson update6 = Updates.set("quymo", user.getQuymo());
+		Bson update7 = Updates.set("nganhnghe", user.getNganhnghe());
+		Bson update8 = Updates.set("techstack", user.getTechstack());
 				
-		USEREMPLOYER.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1, update2, update3, update4));
+		USEREMPLOYER.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1, update2, update3, update4, update5, update6, update7, update8));
 	}
 	
 	public void UpdateUserEmployerUrl(UserEmployer user) {

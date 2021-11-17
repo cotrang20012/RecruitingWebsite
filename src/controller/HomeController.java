@@ -47,18 +47,21 @@ public class HomeController extends HttpServlet {
 			ObjectId id = accountDAO.getAccountIdFromCookie(Cookies);
 
 			if (id == null) {
-				request.setAttribute("is_logged", "false");
+				request.setAttribute("is_logged", false);
 			} else {
 				boolean is_logged=false;
 				if (session.getAttribute("is_logged") == null) {
 					is_logged = accountDAO.isLogged(Cookies);
 				}
+				else {
 				is_logged=(boolean) session.getAttribute("is_logged") ;
+				}
+				
 				if (!is_logged) {
-					session.setAttribute("is_logged", "false");
+					session.setAttribute("is_logged", false);
 				} else {
 					Account acc = accountDAO.getAccountFromAccountId(id);
-					session.setAttribute("is_logged", "true");
+					session.setAttribute("is_logged", true);
 					Object user = session.getAttribute("user");
 					if (user != null)
 						if (acc.getTypeUser().equals("EMPLOYER")) {

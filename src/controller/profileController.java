@@ -116,13 +116,6 @@ public class profileController extends HttpServlet {
 					
 					userEmployeeDAO.UpdateUserEmployee(userEmployee);
 					
-					SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
-					String tempFormatString = tempFormat.format(userEmployee.getBirthday());
-					try {
-						userEmployee.setBirthday(tempFormat.parse(tempFormatString));
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
 					request.setAttribute("userProfile", userEmployee);
 					urlString = "/Profile/profileEmployee.jsp";
 				} else if (type_user.equals("EMPLOYER")) {
@@ -132,9 +125,12 @@ public class profileController extends HttpServlet {
 					userEmployer.setCompanyName(request.getParameter("companyname"));
 					userEmployer.setPhone(request.getParameter("phone"));
 					userEmployer.setEmail(request.getParameter("email"));
+					userEmployer.setWebsite(request.getParameter("website"));
+					userEmployer.setQuymo(request.getParameter("quymo"));
+					userEmployer.setTechstack(request.getParameter("techstack"));		
+					userEmployer.setNganhnghe(request.getParameter("nganhnghe"));
 					
 					userEmployerDAO.UpdateUserEmployer(userEmployer);
-			
 					request.setAttribute("userProfile", userEmployer);
 					urlString = "/Profile/profileEmployer.jsp";
 				}
