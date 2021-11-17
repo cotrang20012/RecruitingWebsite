@@ -13,9 +13,11 @@
 <title>Thông tin người dùng</title>
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>  
-<script src="<c:url value = "/template/paging/jquery.twbsPagination.js"/>"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+<script
+	src="<c:url value = "/template/paging/jquery.twbsPagination.js"/>"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -32,152 +34,157 @@
 
 <body style="background: #eee; position: relative;">
 
-	<jsp:include page="../common/header.jsp"></jsp:include> 
+	<jsp:include page="../common/header.jsp"></jsp:include>
 	<fmt:formatDate value="${userProfile.birthday}" var="formatedBirthday"
 		type="date" pattern="dd/MM/yyyy" />
 
 	<main class="row" style="margin: 0;">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-2 sidebar-left">
-			<div class="sidebar-left-title">
-				<h1>Dashboard</h1>
-			</div>
-			<div class="sidebar-left-content">
-				<ul class="sidebar-list">
-					<a href="<c:url value = '/Profile/profileEmployee.jsp' />" class="item-link">
-						<li class="sidebar-item">
-							<h2>Profile</h2>
-					</li>
-					</a>
-
-					<a href="<c:url value='/Dashboard/dashboard_listpost.jsp' />" class="item-link">
-						<li class="sidebar-item item--active">
-							<h2>Post</h2>
-					</li>
-					</a>
-
-					<a href="" class="item-link">
-						<li class="sidebar-item">
-							<h2>Follow</h2>
-					</li>
-
-					</a>
-				</ul>
-
-			</div>
+	<div class="col-lg-2 col-md-2 col-sm-2 col-2 sidebar-left">
+		<div class="sidebar-left-title">
+			<h1>Dashboard</h1>
 		</div>
-		<div class="col-lg-10 col-md-10 col-sm-10 col-10 page-content ">
+		<div class="sidebar-left-content">
+			<ul class="sidebar-list">
+				<a href="<c:url value = '/Profile/profileEmployee.jsp' />"
+					class="item-link">
+					<li class="sidebar-item">
+						<h2>Profile</h2>
+				</li>
+				</a>
 
-			<div class="container">
-				<ul class="list-group mt-6">
-					<li class="row list-group-item">
-						<div class="col-10">
-							<h3 class="list-group-item-heading">
-								Amazing Item <span
-									class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-									tuyển</span>
-							</h3>
-							<p>
-								Lập trình C# <br />
-							</p>
-						</div>
-						<div class="col-2">
-							<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-							<a href="#" class="btn btn-warning col-10">Xoá</a>
-						</div>
+				<a href="<c:url value='/Dashboard/dashboard_listpost.jsp' />"
+					class="item-link">
+					<li class="sidebar-item item--active">
+						<h2>Post</h2>
+				</li>
+				</a>
 
-					</li>
+				<a href="" class="item-link">
+					<li class="sidebar-item">
+						<h2>Follow</h2>
+				</li>
 
-					<li class="row list-group-item">
-						<div class="col-10">
-							<h3 class="list-group-item-heading">
-								Amazing Item <span
-									class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-									tuyển</span>
-							</h3>
-							<p>
-								Lập trình C# <br />
-							</p>
-						</div>
-						<div class="col-2">
-							<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-							<a href="#" class="btn btn-warning col-10">Xoá</a>
-						</div>
-
-					</li>
-
-					<li class="row list-group-item">
-						<div class="col-10">
-							<h3 class="list-group-item-heading">
-								Amazing Item <span
-									class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-									tuyển</span>
-							</h3>
-							<p>
-								Lập trình C# <br />
-							</p>
-						</div>
-						<div class="col-2">
-							<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-							<a href="#" class="btn btn-warning col-10">Xoá</a>
-						</div>
-
-					</li>
-					<li class="row list-group-item">
-						<div class="col-10">
-							<h3 class="list-group-item-heading">
-								Amazing Item <span
-									class="badge badge-danger px-3 rounded-pill font-weight-normal">Dừng tuyển</span>
-							</h3>
-							<p>
-								Lập trình Java <br />
-							</p>
-						</div>
-						<div class="col-2">
-							<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-							<a href="#" class="btn btn-warning col-10">Xoá</a>
-						</div>
-
-					</li>
-					<li class="row list-group-item">
-						<div class="col-10">
-							<h3 class="list-group-item-heading">
-								Amazing Item <span
-									class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-									tuyển</span>
-							</h3>
-							<p>
-								Lập trình C/C++ <br /> 
-							</p>
-						</div>
-						<div class="col-2">
-							<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-							<a href="#" class="btn btn-warning col-10">Xoá</a>
-						</div>
-
-					</li>
-				</ul>
-				<ul class="pagination" id="pagination"></ul>
-			</div>
+				</a>
+			</ul>
 
 		</div>
+	</div>
+	<div class="col-lg-10 col-md-10 col-sm-10 col-10 page-content ">
+
+		<div class="container">
+			<ul class="list-group mt-6">
+				<li class="row list-group-item">
+					<div class="col-10">
+						<h3 class="list-group-item-heading">
+							Amazing Item <span
+								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
+								tuyển</span>
+						</h3>
+						<p>
+							Lập trình C# <br />
+						</p>
+					</div>
+					<div class="col-2">
+						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
+						<a href="#" class="btn btn-warning col-10">Xoá</a>
+					</div>
+
+				</li>
+
+				<li class="row list-group-item">
+					<div class="col-10">
+						<h3 class="list-group-item-heading">
+							Amazing Item <span
+								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
+								tuyển</span>
+						</h3>
+						<p>
+							Lập trình C# <br />
+						</p>
+					</div>
+					<div class="col-2">
+						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
+						<a href="#" class="btn btn-warning col-10">Xoá</a>
+					</div>
+
+				</li>
+
+				<li class="row list-group-item">
+					<div class="col-10">
+						<h3 class="list-group-item-heading">
+							Amazing Item <span
+								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
+								tuyển</span>
+						</h3>
+						<p>
+							Lập trình C# <br />
+						</p>
+					</div>
+					<div class="col-2">
+						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
+						<a href="#" class="btn btn-warning col-10">Xoá</a>
+					</div>
+
+				</li>
+				<li class="row list-group-item">
+					<div class="col-10">
+						<h3 class="list-group-item-heading">
+							Amazing Item <span
+								class="badge badge-danger px-3 rounded-pill font-weight-normal">Dừng
+								tuyển</span>
+						</h3>
+						<p>
+							Lập trình Java <br />
+						</p>
+					</div>
+					<div class="col-2">
+						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
+						<a href="#" class="btn btn-warning col-10">Xoá</a>
+					</div>
+
+				</li>
+				<li class="row list-group-item">
+					<div class="col-10">
+						<h3 class="list-group-item-heading">
+							Amazing Item <span
+								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
+								tuyển</span>
+						</h3>
+						<p>
+							${totalPage} <br />
+						</p>
+					</div>
+					<div class="col-2">
+						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
+						<a href="#" class="btn btn-warning col-10">Xoá</a>
+					</div>
+
+				</li>
+			</ul>
+			<ul class="pagination" id="pagination"></ul>
+		</div>
+
+	</div>
 
 	</main>
 
 
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	<script type="text/javascript">
-    $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: 10,
-            visiblePages: 5,
-            onPageClick: function (event, page) {
-                console.info(page + ' (from options)');
-            }
-        }).on('page', function (event, page) {
-            console.info(page + ' (from event listening)');
-        });
-    });
-</script>
+		$(function() {
+			window.pagObj = $('#pagination').twbsPagination({
+				totalPages :
+	<%=request.getAttribute("totalPage")%>
+		,
+				visiblePages : 3,
+				onPageClick : function(event, page) {
+					console.info(page + ' (from options)');
+				}
+			}).on('page', function(event, page) {
+				console.info(page + ' (from event listening)');
+			});
+		});
+	</script>
 </body>
 
 </html>
