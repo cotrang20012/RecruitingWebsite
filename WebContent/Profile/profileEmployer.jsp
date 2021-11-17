@@ -18,7 +18,7 @@
     
 </head>
 
-<body style="background: #eee; position: relative;">
+<body>
 
     <jsp:include page="../common/header.jsp"></jsp:include>
 	

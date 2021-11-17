@@ -27,7 +27,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class profileController
  */
-@WebServlet("/profile")
+@WebServlet("/dashboard/profile")
 public class profileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

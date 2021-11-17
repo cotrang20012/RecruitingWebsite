@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+
+	<excludes>
+		<pattern>/ajax*</pattern>
+	</excludes>
+
+	<decorator name="dashboard" page="dashboard.jsp" >
+		<pattern>/dashboard*</pattern>
+	</decorator>
+	<decorator name="web" page="web.jsp" >
+		<pattern>/*</pattern>
+	</decorator>
+
+</decorators>
