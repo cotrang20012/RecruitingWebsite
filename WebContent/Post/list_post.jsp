@@ -2,25 +2,23 @@
 <%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="<c:url value='/assets/img/favicon.ico'/>">
-<title>Thông tin người dùng</title>
+<title>Thông tin bài đăng</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/main.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/dashboard.css' />">
 
 </head>
 
 <body>
 
+
 	<jsp:include page="../common/main-dashboard-employee.jsp"></jsp:include>
 	
 	<div class="main-container">
 		<div class="pd-ltr-20">
-		
+			
 			<div class="card-box mb-30">
 					<div class="pd-20">
 						<h4 class="text-blue h4">Data Table Simple</h4>
@@ -272,12 +270,57 @@
 					</div>
 				</div>
 			
+			
 		</div>
 	</div>
 
 
+		<script src="<c:url value='/assets/plugins/datatables/js/jquery.dataTables.min.js' />"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/dataTables.bootstrap4.min.js' />"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/dataTables.responsive.min.js'/>"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/responsive.bootstrap4.min.js'/>"></script>
+	<!-- buttons for Export datatable -->
+	<script src="<c:url value='/assets/plugins/datatables/js/dataTables.buttons.min.js' />"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/buttons.bootstrap4.min.js'/>"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/buttons.print.min.js' />"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/buttons.html5.min.js' />"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/buttons.flash.min.js' />"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/pdfmake.min.js' />"></script>
+	<script src="<c:url value='/assets/plugins/datatables/js/vfs_fonts.js' />"></script>
+	<script src="<c:url value='/assets/script/datatable-setting.js' />"></script>
 
+	<script>
+		const inputPropertise = document.getElementsByClassName("form-control");
+		const avatar = document.getElementById("avatar");
+		const profileImg = document.getElementById("profile-image");
 
+		avatar.addEventListener("change", function() {
+			const file = this.files[0];
+
+			if (file) {
+				const reader = new FileReader();
+
+				reader.addEventListener("load", function() {
+					profileImg.setAttribute("src", this.result);
+				});
+				reader.readAsDataURL(file);
+			}
+		});
+
+		function RemoveReadonly() {
+			var i;
+			for (i = 0; i < inputPropertise.length; i++) {
+				inputPropertise[i].removeAttribute("readonly");
+			}
+		}
+
+		function EnableReadonly() {
+			var i;
+			for (i = 0; i < inputPropertise.length; i++) {
+				inputPropertise[i].setAttribute("readonly", "readonly");
+			}
+		}
+	</script>
 </body>
 
 </html>

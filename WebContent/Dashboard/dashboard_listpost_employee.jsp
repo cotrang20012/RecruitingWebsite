@@ -27,8 +27,7 @@
 	href="<c:url value='/assets/css/main.css'/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/assets/css/dashboard.css' />">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/assets/css/listpost.css' />">
+<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/listpost.css' />">
 
 </head>
 
