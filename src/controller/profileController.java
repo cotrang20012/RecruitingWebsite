@@ -27,7 +27,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class profileController
  */
-@WebServlet("/dashboard/profile")
+@WebServlet(name = "profile", urlPatterns = {"/dashboard/profile"})
 public class profileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -88,7 +88,7 @@ public class profileController extends HttpServlet {
 		}
 		if(action.equals("update")) {
 			HttpSession Session = request.getSession();
-			Account acc = (Account) Session.getAttribute("user");
+			Account acc = (Account) Session.getAttribute("acc");
 			MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 			UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
 			UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);

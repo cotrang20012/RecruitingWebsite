@@ -8,7 +8,7 @@
 <title>Thông tin người dùng</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/dashboard.css' />">
-
+<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/bootstrap-tagsinput.css' />">
 </head>
 
 <body>
@@ -33,6 +33,7 @@
                     </div>
                     </div>
                     <div class="col-md-5 border-right">
+                    <form action="profile" method="POST" >
                         <div class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="text-right">Cài đặt Profile</h4>
@@ -57,39 +58,44 @@
                                         class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Website</label><input type="text"
-                                        class="form-control" placeholder="Email" name="website" value="<c:out value='${userProfile.website}'/> " readonly="readonly">
+                                        class="form-control"  name="website" value="<c:out value='${userProfile.website}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Quy mô</label><input type="text"
-                                        class="form-control" placeholder="Email" name="quymo" value="<c:out value='${userProfile.quymo}'/> " readonly="readonly">
+                                        class="form-control"  name="quymo" value="<c:out value='${userProfile.quymo}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Ngành nghề</label><input type="text"
-                                        class="form-control" placeholder="Email" name="nganhnghe" value="<c:out value='${userProfile.nganhnghe}'/> " readonly="readonly">
+                                        class="form-control" name="nganhnghe" value="<c:out value='${userProfile.nganhnghe}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Tech stack</label><input type="text"
-                                        class="form-control" placeholder="Email" name="techstack" value="<c:out value='${userProfile.techstack}'/> " readonly="readonly">
+                                        class="form-control" name="techstack" value="<c:out value='${userProfile.techstack}'/> " data-role="tagsinput" readonly="readonly">
                                 </div>
                             </div>
 
-                            <div class="mt-5 text-center">
-                   				<form action="profile" method="POST" >
+                            <div class="mt-5 text-center d-flex">
                             	<input type="hidden" name="action" value="update">
-                   				<button class="btn btn-primary profile-button" type="button" onclick="EnableReadonly()">Save Profile</button>
-                   				</form>
+                   				<button class="btn btn-primary profile-button" type="submit" onclick="EnableReadonly()">Save Profile</button>                 				
                     			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
                 			</div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
 		</div>
 	</div>
 
-
+	<style>
+	.disableid{
+		display:none;
+	}
+	</style>
 
 	<script>
 		const inputPropertise = document.getElementsByClassName("form-control");
 		const avatar = document.getElementById("avatar");
 		const profileImg = document.getElementById("profile-image");
+		
+		
 
 		avatar.addEventListener("change", function() {
 			const file = this.files[0];
@@ -109,6 +115,10 @@
 			for (i = 0; i < inputPropertise.length; i++) {
 				inputPropertise[i].removeAttribute("readonly");
 			}
+			var disableid = document.getElementById("disableid");
+			disableid.classList.remove("disableid");
+			var disablediv = document.getElementById("disablediv");
+			disablediv.removeAttribute("style");
 		}
 
 		function EnableReadonly() {
@@ -116,8 +126,10 @@
 			for (i = 0; i < inputPropertise.length; i++) {
 				inputPropertise[i].setAttribute("readonly", "readonly");
 			}
+			disableid.className = "disableid";
 		}
 	</script>
+	<script src="<c:url value='/assets/script/bootstrap-tagsinput.js' />"></script>
 </body>
 
 </html>

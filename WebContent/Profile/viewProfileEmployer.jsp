@@ -8,6 +8,7 @@
 <title>Thông tin người dùng</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/dashboard.css' />">
+<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/bootstrap-tagsinput.css' />">
 
 </head>
 
@@ -50,19 +51,19 @@
                                         value="<c:out value='${userProfile.address}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text"
-                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                        class="form-control"  name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Website</label><input type="text"
-                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.website}'/> " readonly="readonly">
+                                        class="form-control"  name="email" value="<c:out value='${userProfile.website}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Quy mô</label><input type="text"
-                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.quymo}'/> " readonly="readonly">
+                                        class="form-control"  name="email" value="<c:out value='${userProfile.quymo}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Ngành nghề</label><input type="text"
-                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.nganhnghe}'/> " readonly="readonly">
+                                        class="form-control"  name="email" value="<c:out value='${userProfile.nganhnghe}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Tech stack</label><input type="text"
-                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.techstack}'/> " readonly="readonly">
+                                        class="form-control"  name="email" value="<c:out value='${userProfile.techstack}'/> " data-role="tagsinput" readonly="readonly" >
                                 </div>
                             </div>
 
@@ -76,7 +77,7 @@
 	</div>
 
 
-
+	<script src="<c:url value='/assets/script/bootstrap-tagsinput.js' />"></script>
 	
 </body>
 
