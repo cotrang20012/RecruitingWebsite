@@ -61,7 +61,7 @@
 										<label class="labels">Giới tính</label>
 										<div class="row">
 											<div class="col-md-6">
-												<input type="radio" name="gender" id="male" value="male" readonly="readonly"> <label for="male">Nam</label>
+												<input type="radio" name="gender" id="male" value="male" readonly="readonly" checked> <label for="male">Nam</label>
 											</div>
 											<div class="col-md-6">
 												<input type="radio" name="gender" id="female" value="female" readonly="readonly"> <label for="female">Nữ</label>

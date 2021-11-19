@@ -42,7 +42,7 @@ public class viewProfileController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = (String)request.getAttribute("user");
+		String username = (String)request.getParameter("user");
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		AccountDAO accountDAO = new AccountDAO(mongo);
 		UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);

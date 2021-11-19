@@ -29,14 +29,11 @@
 							<!--<img class="rounded-circle mt-5" width="150px"
                                 src="${userProfile.profile_url }"> -->
 							<span class="font-weight-bold"><c:out value='${userProfile.fullName}' /></span>
-							<form action="upload" method="post" enctype="multipart/form-data" class="form-group w-100">
-								<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"> <input type="submit" value="upload">
-							</form>
 						</div>
 					</div>
 
 					<div class="col-md-5 border-right">
-						<form action="profile" method="POST">
+						
 							<div class="p-3 py-5">
 								<div class="d-flex justify-content-between align-items-center mb-3">
 									<h4 class="text-right">Cài đặt Profile</h4>
@@ -61,7 +58,7 @@
 										<label class="labels">Giới tính</label>
 										<div class="row">
 											<div class="col-md-6">
-												<input type="radio" name="gender" id="male" value="male" readonly="readonly"> <label for="male">Nam</label>
+												<input type="radio" name="gender" id="male" value="male" readonly="readonly" checked> <label for="male">Nam</label>
 											</div>
 											<div class="col-md-6">
 												<input type="radio" name="gender" id="female" value="female" readonly="readonly"> <label for="female">Nữ</label>
@@ -73,14 +70,12 @@
 								<div class="mt-5 text-center">
 									<div>
 										<input type="hidden" name="action" value="update">
-										<button class="btn btn-primary profile-button" type="submit" onclick="EnableReadonly()">Save Profile</button>
-										<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
+										
 									</div>
 								</div>
 							</div>
-						</form>
+						
 					</div>
-					
 				</div>
 			</div>
 		</div>

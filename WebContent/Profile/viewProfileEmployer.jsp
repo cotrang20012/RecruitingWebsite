@@ -51,19 +51,19 @@
                                         value="<c:out value='${userProfile.address}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text"
-                                        class="form-control"  name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Website</label><input type="text"
-                                        class="form-control"  name="email" value="<c:out value='${userProfile.website}'/> " readonly="readonly">
+                                        class="form-control"  name="website" value="<c:out value='${userProfile.website}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Quy mô</label><input type="text"
-                                        class="form-control"  name="email" value="<c:out value='${userProfile.quymo}'/> " readonly="readonly">
+                                        class="form-control"  name="quymo" value="<c:out value='${userProfile.quymo}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Ngành nghề</label><input type="text"
-                                        class="form-control"  name="email" value="<c:out value='${userProfile.nganhnghe}'/> " readonly="readonly">
+                                        class="form-control" name="nganhnghe" value="<c:out value='${userProfile.nganhnghe}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Tech stack</label><input type="text"
-                                        class="form-control"  name="email" value="<c:out value='${userProfile.techstack}'/> " data-role="tagsinput" readonly="readonly" >
+                                        class="form-control" name="techstack" value="<c:out value='${userProfile.techstack}'/> " data-role="tagsinput" readonly="readonly">
                                 </div>
                             </div>
 
