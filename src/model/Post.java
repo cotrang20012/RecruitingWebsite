@@ -35,6 +35,7 @@ public class Post extends Model{
 	private String status;
 	private String category;
 	private ObjectId _id;
+	
 	public ObjectId get_id() {
 		return _id;
 	}
@@ -185,7 +186,6 @@ public class Post extends Model{
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	
 	public String getShortContent()
 	{
@@ -194,7 +194,22 @@ public class Post extends Model{
 		return (this.getContent().substring(0, 150) + "...");
 		
 	}
+	public Post(String title, ObjectId author_id, String content, boolean is_public, String thumbnail_url, String category) 
+	{
+		this._id = new ObjectId();
+		this.title = title;
+		this.author_id = author_id;
+		this.url = Utilities.createURL(title);
+		this.content = content;
+		this.published_at = this.updated_at = Utilities.GetCurrentDateTime();
+		this.views_count = 0;
+		this.points = 0;
+		this.is_public = is_public;
+		this.thumbnail_url = thumbnail_url;
+		this.category = category;
+		this.status = "Chờ duyệt";
+	}
 	
 
-	
+
 }
