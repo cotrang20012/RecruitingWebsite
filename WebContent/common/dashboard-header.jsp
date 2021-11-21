@@ -17,25 +17,23 @@ boolean is_employer = accountDAO.isEmployer(request.getCookies());
 
 	<div class="header-right">
 		<div class="user-info-dropdown">
-			<%
-			if (is_logged) {
-			%>
+			<c:choose>
+			<c:when test="${is_logged==true }">
 			<div class="dropdown">
 				<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"> <span class="user-icon"> <img src="vendors/images/photo1.jpg" alt="">
 				</span> <span class="user-name">Trần Bảo Duy</span>
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-					<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a> <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a> <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a> <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+					<a class="dropdown-item" href="<c:out value='dashboard/profile' />"><i class="dw dw-user1"></i> Profile</a>
+					<a class="dropdown-item" href="<c:out value='changepw' />"><i class="dw dw-help"></i> Đổi mật khẩu</a>
+					<a class="dropdown-item" href="<c:out value='logout' />"><i class="dw dw-logout"></i> Đăng xuất</a>
 				</div>
 			</div>
-			<%
-			} else {
-			%>
+			</c:when>
+			<c:otherwise>
 			<a class="nav-link" href="${pageContext.request.contextPath}/login">Đăng nhập</a> <a class="nav-link" href="${pageContext.request.contextPath}/signup">Đăng ký</a>
-			<%
-			}
-			%>
-
+			</c:otherwise>
+</c:choose>
 		</div>
 	</div>
 </div>
