@@ -16,8 +16,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-<script
-	src="<c:url value = "/template/paging/jquery.twbsPagination.js"/>"></script>
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -27,163 +26,66 @@
 	href="<c:url value='/assets/css/main.css'/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/assets/css/dashboard.css' />">
-<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/listpost.css' />">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/assets/css/listpost.css' />">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 </head>
 
 <body style="background: #eee; position: relative;">
+	<jsp:include page="../common/main-dashboard-employee.jsp"></jsp:include>
+	<div class="main-container">
+		<div class="pd-ltr-20">
 
-	<jsp:include page="../common/header.jsp"></jsp:include>
-	<fmt:formatDate value="${userProfile.birthday}" var="formatedBirthday"
-		type="date" pattern="dd/MM/yyyy" />
-
-	<main class="row" style="margin: 0;">
-	<div class="col-lg-2 col-md-2 col-sm-2 col-2 sidebar-left">
-		<div class="sidebar-left-title">
-			<h1>Dashboard</h1>
-		</div>
-		<div class="sidebar-left-content">
-			<ul class="sidebar-list">
-				<a href="<c:url value = '/Profile/profileEmployee.jsp' />"
-					class="item-link">
-					<li class="sidebar-item">
-						<h2>Profile</h2>
-				</li>
-				</a>
-
-				<a href="<c:url value='/Dashboard/dashboard_listpost.jsp' />"
-					class="item-link">
-					<li class="sidebar-item item--active">
-						<h2>Post</h2>
-				</li>
-				</a>
-
-				<a href="" class="item-link">
-					<li class="sidebar-item">
-						<h2>Follow</h2>
-				</li>
-
-				</a>
-			</ul>
-
+			<div class="card-box mb-30">
+				<div class="pd-20">
+					<h4 class="text-blue h4">Đã ứng tuyển</h4>
+				</div>
+				<div class="pb-20">
+				<table class="data-table table stripe hover nowrap">
+					<thead>
+						<tr>
+							<th class="table-plus datatable-nosort">STT</th>
+							<th class="table-plus datatable-nosort">Tiêu đề</th>
+							<th>Lương</th>
+							<th>Tình trạng</th>
+							<th class="datatable-nosort">Hành động</th>
+						</tr>
+						</thead>
+					<tbody>
+						<c:forEach items="${apply}" var="item" varStatus="loop">
+							<tr>
+								<td class="table-plus">${loop.index}</td>
+								<td>${item.title}</td>
+								<td></td>
+								<td>${item.status}</td>
+								<td>
+									<div class="dropdown">
+										<a
+											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+											href="#" role="button" data-toggle="dropdown"> <i
+											class="dw dw-more"></i>
+										</a>
+										<div
+											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+											<a class="dropdown-item" href="#"><i class="dw dw-eye"></i>
+												View</a> <a class="dropdown-item" href="#"><i
+												class="dw dw-edit2"></i> Edit</a> <a class="dropdown-item"
+												href="#"><i class="dw dw-delete-3"></i> Delete</a>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="col-lg-10 col-md-10 col-sm-10 col-10 page-content ">
-
-		<div class="container">
-			<ul class="list-group mt-6">
-				<li class="row list-group-item">
-					<div class="col-10">
-						<h3 class="list-group-item-heading">
-							Amazing Item <span
-								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-								tuyển</span>
-						</h3>
-						<p>
-							Lập trình C# <br />
-						</p>
-					</div>
-					<div class="col-2">
-						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-						<a href="#" class="btn btn-warning col-10">Xoá</a>
-					</div>
-
-				</li>
-
-				<li class="row list-group-item">
-					<div class="col-10">
-						<h3 class="list-group-item-heading">
-							Amazing Item <span
-								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-								tuyển</span>
-						</h3>
-						<p>
-							Lập trình C# <br />
-						</p>
-					</div>
-					<div class="col-2">
-						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-						<a href="#" class="btn btn-warning col-10">Xoá</a>
-					</div>
-
-				</li>
-
-				<li class="row list-group-item">
-					<div class="col-10">
-						<h3 class="list-group-item-heading">
-							Amazing Item <span
-								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-								tuyển</span>
-						</h3>
-						<p>
-							Lập trình C# <br />
-						</p>
-					</div>
-					<div class="col-2">
-						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-						<a href="#" class="btn btn-warning col-10">Xoá</a>
-					</div>
-
-				</li>
-				<li class="row list-group-item">
-					<div class="col-10">
-						<h3 class="list-group-item-heading">
-							Amazing Item <span
-								class="badge badge-danger px-3 rounded-pill font-weight-normal">Dừng
-								tuyển</span>
-						</h3>
-						<p>
-							Lập trình Java <br />
-						</p>
-					</div>
-					<div class="col-2">
-						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-						<a href="#" class="btn btn-warning col-10">Xoá</a>
-					</div>
-
-				</li>
-				<li class="row list-group-item">
-					<div class="col-10">
-						<h3 class="list-group-item-heading">
-							Amazing Item <span
-								class="badge badge-danger px-3 rounded-pill font-weight-normal">Đang
-								tuyển</span>
-						</h3>
-						<p>
-							${totalPage} <br />
-						</p>
-					</div>
-					<div class="col-2">
-						<a href="#" class="btn btn-primary col-10">Chỉnh sửa</a><br>
-						<a href="#" class="btn btn-warning col-10">Xoá</a>
-					</div>
-
-				</li>
-			</ul>
-			<ul class="pagination" id="pagination"></ul>
-		</div>
-
-	</div>
-
-	</main>
-
-
-	<jsp:include page="../common/footer.jsp"></jsp:include>
-	<script type="text/javascript">
-		$(function() {
-			window.pagObj = $('#pagination').twbsPagination({
-				totalPages :
-	<%=request.getAttribute("totalPage")%>
-		,
-				visiblePages : 3,
-				onPageClick : function(event, page) {
-					console.info(page + ' (from options)');
-				}
-			}).on('page', function(event, page) {
-				console.info(page + ' (from event listening)');
-			});
-		});
-	</script>
 </body>
 
 </html>

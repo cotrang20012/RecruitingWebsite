@@ -35,6 +35,11 @@ public class Post extends Model{
 	private String status;
 	private String category;
 	private ObjectId _id;
+	private ObjectId accountId;
+	private String title="";
+	private String content;
+	private Date dateStart=new Date();
+	private Date dateEnd =new Date();
 	
 	public ObjectId get_id() {
 		return _id;
@@ -74,11 +79,7 @@ public class Post extends Model{
 		this.dateEnd = dateEnd;
 	}
 
-	private ObjectId accountId;
-	private String title="";
-	private String content;
-	private Date dateStart=new Date();
-	private Date dateEnd =new Date();
+	
 	
 	public Post() {
 		this.set_id(new ObjectId());
