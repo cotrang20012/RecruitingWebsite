@@ -9,19 +9,19 @@ public class Apply extends Model {
 	private ObjectId _id;
 	private ObjectId account_id;
 	private ObjectId post_id;
-	private Date date = new Date();
+	private String date;
 	public Apply() {
 	}
-	public Apply(ObjectId id, ObjectId account_id,ObjectId post_id,Date date) {
+	public Apply(ObjectId id, ObjectId account_id,ObjectId post_id,String date) {
 		this._id = id;
 		this.account_id = account_id;
 		this.post_id = post_id;
 		this.date = date;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public ObjectId get_id() {
