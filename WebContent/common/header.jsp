@@ -44,7 +44,7 @@ boolean is_employer = accountDAO.isEmployer(request.getCookies());
                        
             <div class="user-info-dropdown d-flex align-items-center">
              <c:choose>
-			<c:when test="${is_logged==true }">
+			 <c:when test="${is_logged==true }">
 						<div class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                         <span class="user-icon">

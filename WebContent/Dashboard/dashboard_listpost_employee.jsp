@@ -71,15 +71,13 @@
 			</div>
 		</div>
 	</div>
+	<script src="<c:url value='/assets/script/jquery.dataTables.min.js' />"></script>
+<script src="<c:url value='/assets/script/dataTables.bootstrap4.min.js' />"></script>
+<script src="<c:url value='/assets/script/dataTables.responsive.min.js' />"></script>
+<script src="<c:url value='/assets/script/responsive.bootstrap4.min.js'/>"></script>
+<script src="<c:url value='/assets/script/datatable-setting.js'/>"></script>
 </body>
-<script src="scripts/core.js"></script>
-<script src="scripts/script.min.js"></script>
-<script src="scripts/process.js"></script>
-<script src="scripts/layout-settings.js"></script>
-<script src="plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<script src="scripts/datatable-setting.js"></script>
-</body>
+
+
+
 </html>
