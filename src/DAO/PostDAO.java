@@ -30,7 +30,9 @@ public class PostDAO extends Model {
 	public void Insert(Post post) {
 		POST.insertOne(post);
 	}
-	
+	public int Count() {
+		return (int)POST.estimatedDocumentCount();
+	}
 	public ArrayList<Post> GetListPost(int from, int to){
 		FindIterable<Post> cursor=POST.find().skip(from).limit(to);
 		Iterator<Post> iterator=cursor.iterator();
