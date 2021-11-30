@@ -88,9 +88,8 @@ public class HomeController extends HttpServlet {
 			currPage = 1;
 		} else
 			currPage = Integer.parseInt(currentPage);
-		int end = 4 * currPage;
-		int begin = end - 3;
-		ArrayList<Post> listPost = postDAO.GetListPost(begin, end);
+		int begin = 4 * currPage-4;
+		ArrayList<Post> listPost = postDAO.GetListPost(begin, 4);
 		request.setAttribute("posts", listPost);
 		if (listPost == null) {
 			System.out.println("Không có listpost");
