@@ -198,7 +198,7 @@
 		</section>
 
 		<section class="row justify-content-center mt-5 mb-5">
-			<div class="col-3 d-flex justify-content-center">
+			<div class="col-3 d-flex justify-content-center" style="font-size: medium">
 				<ul class="pagination">
 					<c:forEach var="item" items="${pageList}">
 						<li class="${item.getState()}"><a class="page-link"
@@ -206,7 +206,7 @@
 					</c:forEach>
 					<li class="page-item">
 						<form method="get" action="home">
-							<input style="width: 50px; height: 25px" type="number" value="" min="1"
+							<input style="width: 50px; height: 30px" type="number" value="" min="1"
 								max="${totalPage}" autocomplete="off" name="page" placeholder="">
 							<input type="submit" value="Go">
 						</form>
