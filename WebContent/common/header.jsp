@@ -4,7 +4,6 @@
 <%
 MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 AccountDAO accountDAO=new AccountDAO(mongoClient); 
-boolean is_logged = accountDAO.isLogged(request.getCookies());
 boolean is_employer = accountDAO.isEmployer(request.getCookies());
 %>
     
@@ -44,7 +43,7 @@ boolean is_employer = accountDAO.isEmployer(request.getCookies());
                        
             <div class="user-info-dropdown d-flex align-items-center">
              <c:choose>
-			 <c:when test="${is_logged==true }">
+			 <c:when test="${user!=null }">
 						<div class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                         <span class="user-icon">

@@ -48,22 +48,11 @@ public class HomeController extends HttpServlet {
 			AccountDAO accountDAO = new AccountDAO(mongoClient);
 			ObjectId id = accountDAO.getAccountIdFromCookie(Cookies);
 
-			if (id == null) {
-				request.setAttribute("is_logged", false);
-			} else {
-				boolean is_logged = false;
-				if (session.getAttribute("is_logged") == null) {
-					is_logged = accountDAO.isLogged(Cookies);
-				} else {
-					is_logged = (boolean) session.getAttribute("is_logged");
-				}
-
-				if (!is_logged) {
-					session.setAttribute("is_logged", false);
-				} else {
+			if (id != null) {
+				if (session.getAttribute("acc") == null || session.getAttribute("user") == null) {
 					Account acc = accountDAO.getAccountFromAccountId(id);
-					session.setAttribute("is_logged", true);
 					Object user = session.getAttribute("user");
+					session.setAttribute("acc", acc);
 					if (user != null)
 						if (acc.getTypeUser().equals("EMPLOYER")) {
 							UserEmployerDAO dao = new UserEmployerDAO(mongoClient);
@@ -88,7 +77,7 @@ public class HomeController extends HttpServlet {
 			currPage = 1;
 		} else
 			currPage = Integer.parseInt(currentPage);
-		int begin = 4 * currPage-4;
+		int begin = 4 * currPage - 4;
 		ArrayList<Post> listPost = postDAO.GetListPost(begin, 4);
 		request.setAttribute("posts", listPost);
 		if (listPost == null) {

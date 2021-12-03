@@ -2,7 +2,7 @@
 <decorators defaultdir="/decorators">
 
 	<excludes>
-		<pattern>/ajax*</pattern>
+		<pattern>/api-*</pattern>
 	</excludes>
 
 	<decorator name="dashboard" page="dashboard.jsp" >

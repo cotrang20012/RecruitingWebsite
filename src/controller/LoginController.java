@@ -89,8 +89,8 @@ public class LoginController extends HttpServlet {
 			uuid.setMaxAge(60*10); //thời gian lưu cookie
 			response.addCookie(uuid);
 			
-			session.setAttribute("is_logged", true);
-			session.setAttribute("acc", acc);
+			
+			session.setAttribute("acc", acc);//lưu thông tin account vào session
 			String status=acc.getStatus();
 			if(status.equals("non-active")) {
 				request.setAttribute("result", "none");

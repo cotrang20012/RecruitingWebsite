@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/common/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,18 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/png" href="<c:url value='/assets/img/favicon.ico'/>">
         <title>Đăng ký</title>
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,100&display=swap&subset=vietnamese"
-	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-        <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/main.css'/>">
         
 	<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/register.css'/>">
 </head>
 
 <body style="background: #eee; position: relative;">
 
-    <jsp:include page="../common/header.jsp"></jsp:include>
 
 
     <div class="app" style="min-height: 400px;">
@@ -50,8 +44,9 @@
                                     required>
                             </div>
                             <div class="row">
-                                <input type="text" class="form__input" name="email" placeholder="Email" required>
+                                <input type="text" class="form__input" id="email" name="email" placeholder="Email" required>
                             </div>
+                            <div id="msg-email"></div>
                             <div class="row">
                                 <input type="text" class="form__input" id="username" name="username"
                                     placeholder="Username" required>
@@ -77,8 +72,9 @@
                                     required>
                             </div>
                             <div class="row">
-                                <input type="text" class="form__input" name="email" placeholder="Email" required>
+                                <input type="text" class="form__input" id="email" name="email" placeholder="Email" required>
                             </div>
+                            <div id="msg-email"></div>
                             <div class="row">
                                 <input type="text" class="form__input" id="username" name="username"
                                     placeholder="Username" required>
@@ -133,7 +129,7 @@
 				var username=$('#username').val();
 					$.ajax({
 						type: "POST",
-						url: "checkusername",
+						url: "api-checkusername",
 						data: {username:username},
 						dataType: "html",
 						cache: false,
@@ -144,6 +140,28 @@
 						error: function(jqXHR, textStatus, errorThrown) {
 							$('#msg').show();
 							$('#msg').html(textStatus + " " + errorThrown);
+						}
+					});
+			});
+		});
+		
+		$(document).ready(function() {
+			$('#email').change(function() {
+				$('#msg-email').hide();
+				var email=$('#email').val();
+					$.ajax({
+						type: "POST",
+						url: "api-checkemail",
+						data: {email:email},
+						dataType: "html",
+						cache: false,
+						success: function(msg) {
+							$('#msg-email').show();
+							$('#msg-email').html(msg);
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							$('#msg-email').show();
+							$('#msg-email').html(textStatus + " " + errorThrown);
 						}
 					});
 			});
@@ -170,7 +188,6 @@
         }
 
     </script>
-	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 
 </html>

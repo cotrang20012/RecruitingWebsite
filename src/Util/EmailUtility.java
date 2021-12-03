@@ -21,10 +21,12 @@ public class EmailUtility {
  
         // sets SMTP server properties
         Properties properties = new Properties();
+        properties.put("mail.transport.protocol", "smtp");
         properties.put("mail.smtp.host", host);
         properties.put("mail.smtp.port", port);
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.debug", "true");
  
         // creates a new session with an authenticator
         Authenticator auth = new Authenticator() {

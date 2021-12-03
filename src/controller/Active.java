@@ -1,8 +1,6 @@
 package controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -74,7 +72,7 @@ public class Active extends HttpServlet {
 					String id = account.getId().toHexString().substring(10);
 					String email=account.getEmail();
 					String activeString = DigestUtils.sha256Hex(id);
-					String urlString = request.getContextPath() + "/active?action=active&"
+					String urlString = request.getScheme() + "://"+request.getServerName() + "/active?action=active&"
 							+ "email="+email+"&code="
 							+ activeString;
 					EmailUtility.sendEmail(host, port, user, pass, "tranbaoduy4@gmail.com", "Kích hoạt tài khoản",
