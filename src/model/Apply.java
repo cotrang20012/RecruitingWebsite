@@ -7,14 +7,14 @@ import org.bson.types.ObjectId;
 
 public class Apply extends Model {
 	private ObjectId _id;
-	private ObjectId account_id;
+	private ObjectId accountId;
 	private ObjectId post_id;
 	private String date;
 	public Apply() {
 	}
 	public Apply(ObjectId id, ObjectId account_id,ObjectId post_id,String date) {
 		this._id = id;
-		this.account_id = account_id;
+		this.accountId = account_id;
 		this.post_id = post_id;
 		this.date = date;
 	}
@@ -24,18 +24,13 @@ public class Apply extends Model {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public ObjectId get_id() {
+	public ObjectId getid() {
 		return _id;
 	}
-	public void set_id(ObjectId _id) {
+	public void setid(ObjectId _id) {
 		this._id = _id;
 	}
-	public ObjectId getAccount_id() {
-		return account_id;
-	}
-	public void setAccount_id(ObjectId account_id) {
-		this.account_id = account_id;
-	}
+	
 	public ObjectId getPost_id() {
 		return post_id;
 	}

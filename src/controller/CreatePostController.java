@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.naming.java.javaURLContextFactory;
 import org.bson.types.ObjectId;
@@ -16,6 +17,7 @@ import org.bson.types.ObjectId;
 import com.mongodb.client.MongoClient;
 
 import DAO.PostDAO;
+import model.Account;
 import model.Post;
 
 /**
@@ -50,10 +52,13 @@ public class CreatePostController extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		Account account = (Account) session.getAttribute("acc");
 		Post post = new Post();
 		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		PostDAO postDAO=new PostDAO(mongo);
 		post.setUrl(webfit.Utilities.createURL(request.getParameter("title")));
+		post.setAccountId(account.getId());
 		post.setTitle(request.getParameter("title"));
 		post.setPhone(request.getParameter("phone"));
 		post.setEmail(request.getParameter("email"));

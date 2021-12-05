@@ -31,11 +31,19 @@ public class ApplyDAO extends Model {
 	}
 	public ArrayList<Apply> GetApplyList(ObjectId account_id){
 		ArrayList<Apply> lApply = new ArrayList<Apply>();
-		FindIterable<Apply> listApply = APPLY.find(Filters.eq("accountID", account_id));
+		FindIterable<Apply> listApply = APPLY.find(Filters.eq("accountId", account_id));
 		Iterator<Apply> list = listApply.iterator();
 		while (list.hasNext()) {
 			lApply.add(list.next());
 		}
 		return lApply;
 	}
+	public void DeleteAllApplyWithAccID(ObjectId account_id) {
+		APPLY.deleteMany(Filters.eq("accountId", account_id));
+	}
+	
+	public void DeleteAllApplyWithPostID(ObjectId postID) {
+		APPLY.deleteMany(Filters.eq("_id", postID));
+	}
+	
 }

@@ -119,5 +119,7 @@ public class AccountDAO extends Model{
 		FindIterable<Account> listAccounts =  ACCOUNT.find();
 		return listAccounts;
 	}
-	
+	public void DeleteAccountWitd(ObjectId accId) {
+		ACCOUNT.deleteOne(Filters.eq("_id",accId));
+	}
 }

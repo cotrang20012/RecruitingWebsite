@@ -14,6 +14,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
+import model.Apply;
 import model.Model;
 import model.Post;
 import webfit.Utilities;
@@ -66,11 +67,11 @@ public class PostDAO extends Model {
 				
 				// Handle data in database
 				String tilte = Utilities.removeAccent(post.getTitle().toLowerCase());
-				String category = Utilities.removeAccent(post.getCategory().toLowerCase());
+				//String category = Utilities.removeAccent(post.getCategory().toLowerCase());
 				String status = Utilities.removeAccent(post.getStatus().toLowerCase());
 				
 				if (tilte.indexOf(query) != -1
-						|| category.indexOf(query) != -1
+		//				|| category.indexOf(query) != -1
 						|| String.valueOf(post.getViews_count()).indexOf(query) != -1
 						|| String.valueOf(post.getPoints()).indexOf(query) != -1
 						|| status.indexOf(query) != -1) {
@@ -136,19 +137,6 @@ public class PostDAO extends Model {
 	}
 
 	
-	public List<Post> GetAllPostByAccountID(ObjectId account_id) {
-		FindIterable<Post> cursor = POST.find(new BasicDBObject("author_id", account_id));
-		Iterator<Post> it = cursor.iterator();
-		List<Post> lstPost = new ArrayList<Post>();
-		if (it.hasNext()) {
-			while (it.hasNext()) {
-				lstPost.add(it.next());
-			}
-		}
-		//System.out.print(lstPost.size());
-		return lstPost;
-	}
-
 	public String Update(String p, String title, String new_title, String content, 
 			boolean is_public, String thumbnail_url, String category) {
 		
@@ -164,6 +152,19 @@ public class PostDAO extends Model {
 						Updates.set("updated_at", Utilities.GetCurrentDateTime()),
 						Updates.set("thumbnail_url", thumbnail_url)));
 		return newURL;
-		
+	}
+	
+	public ArrayList<Post> GetPostListWithAccID(ObjectId accountID){
+		ArrayList<Post> lPost = new ArrayList<Post>();
+		FindIterable<Post> listPost = POST.find(Filters.eq("accountId", accountID));
+		Iterator<Post> list = listPost.iterator();
+		while (list.hasNext()) {
+			lPost.add(list.next());
+		}
+		return lPost;
+	}
+	
+	public void DeleteAllPostWithAccID (ObjectId accountID) {
+		POST.deleteMany(Filters.eq("accountId", accountID));
 	}
 }

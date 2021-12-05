@@ -24,7 +24,7 @@ import webfit.Utilities;
 
 
 public class Post extends Model{
-	private ObjectId author_id;
+//	private ObjectId author_id;
 	private String url;
 	private String published_at;
 	private String updated_at;
@@ -89,10 +89,10 @@ public class Post extends Model{
 	private Date dateStart=new Date();
 	private Date dateEnd =new Date();
 	
-	public ObjectId get_id() {
+	public ObjectId getid() {
 		return _id;
 	}
-	public void set_id(ObjectId _id) {
+	public void setid(ObjectId _id) {
 		this._id = _id;
 	}
 
@@ -130,7 +130,7 @@ public class Post extends Model{
 	
 	
 	public Post() {
-		this.set_id(new ObjectId());
+		this.setid(new ObjectId());
 	}
 	public String description() {
 		if(this.content.length()<100) {
@@ -140,7 +140,7 @@ public class Post extends Model{
 	}
 	
 	public void TestCreate() {
-		this.set_id(new ObjectId());
+		this.setid(new ObjectId());
 		title="Tuyển dụng lập trình viên Java";
 		content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
 		dateEnd= new Date(2021, 12, 03, 12, 0, 0);
@@ -162,13 +162,13 @@ public class Post extends Model{
 	}
 	
 
-	public ObjectId getAuthor_id() {
-		return author_id;
-	}
-
-	public void setAuthor_id(ObjectId author_id) {
-		this.author_id = author_id;
-	}
+//	public ObjectId getAuthor_id() {
+//		return author_id;
+//	}
+//
+//	public void setAuthor_id(ObjectId author_id) {
+//		this.author_id = author_id;
+//	}
 
 	public String getUrl() {
 		return url;
@@ -241,7 +241,7 @@ public class Post extends Model{
 	{
 		this._id = new ObjectId();
 		this.title = title;
-		this.author_id = author_id;
+		//this.author_id = author_id;
 		this.url = Utilities.createURL(title);
 		this.content = content;
 		this.published_at = this.updated_at = Utilities.GetCurrentDateTime();

@@ -48,5 +48,7 @@ private MongoCollection<UserEmployer> USEREMPLOYER;
 						
 		USEREMPLOYER.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1));
 	}
-	
+	public void DeleteUserWithAccID(ObjectId account_id) {
+		USEREMPLOYER.deleteOne(Filters.eq("accountID", account_id));
+	}
 }
