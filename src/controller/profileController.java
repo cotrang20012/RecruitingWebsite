@@ -122,7 +122,7 @@ public class profileController extends HttpServlet {
 					UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
 					
 					userEmployer.setAddress(request.getParameter("address"));
-					userEmployer.setCompanyName(request.getParameter("companyname"));
+					userEmployer.setFullName(request.getParameter("companyname"));
 					userEmployer.setPhone(request.getParameter("phone"));
 					userEmployer.setEmail(request.getParameter("email"));
 					userEmployer.setWebsite(request.getParameter("website"));

@@ -25,7 +25,7 @@
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
                         <img class="rounded-circle mt-5" width="150px" height="150px"
                                 src="${userProfile.profile_url }" id ="profile-image">
-                        <span  class="font-weight-bold"> <c:out value='${userProfile.companyName}'/> </span>
+                        <span  class="font-weight-bold"> <c:out value='${userProfile.fullName}'/> </span>
                         <form action="upload" method="post" enctype="multipart/form-data" class="form-group w-100">
 						<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
 						<input type="submit" value="upload">
@@ -42,7 +42,7 @@
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Tên công ty</label>
                                     <input type="text" class="form-control" placeholder="Tên công ty" name="companyname"
-                                        value="<c:out value='${userProfile.companyName}'/> " readonly="readonly">
+                                        value="<c:out value='${userProfile.fullName}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Số điện thoại</label>
