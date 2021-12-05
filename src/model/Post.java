@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicInterface2;
 import org.bson.Document;
 import org.bson.codecs.pojo.annotations.BsonIgnore;
 import org.bson.types.ObjectId;
@@ -230,13 +231,6 @@ public class Post extends Model{
 		this.status = status;
 	}
 	
-	public String getShortContent()
-	{
-		if(this.getContent().length() < 150)
-			return this.getContent();
-		return (this.getContent().substring(0, 150) + "...");
-		
-	}
 	public Post(String title, ObjectId author_id, String content, boolean is_public, String thumbnail_url, String category) 
 	{
 		this._id = new ObjectId();
@@ -250,6 +244,10 @@ public class Post extends Model{
 		this.is_public = is_public;
 		this.thumbnail_url = thumbnail_url;
 		this.status = "Chờ duyệt";
+	}
+	
+	public String ContentHTML() {
+		return this.content.replace("\n", "<br>");
 	}
 	
 

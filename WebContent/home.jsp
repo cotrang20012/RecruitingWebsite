@@ -165,10 +165,10 @@
 							<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
 								<div class="bg-white rounded shadow-sm work-item">
 									<img
-										src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg"
+										src="${post.thumbnail_url }"
 										alt="" class="img-fluid card-img-top">
 									<div class="p-4">
-										<a href="${pageContext.request.contextPath}/post"
+										<a href="<c:url value = '/post?p=${post.url }'></c:url>"
 											class="text-dark"><h2>
 												<c:out value="${post.title }" />
 											</h2></a>
@@ -178,7 +178,7 @@
 										<div
 											class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
 											<p class="mb-0 fs-14">
-												<span class="text-muted"></span>Quận 3, Hồ Chí Minh
+												<span class="text-muted">${post.location }</span>
 											</p>
 											<div class="badge badge-danger px-3 rounded-pill fs-primary">
 												<c:out value="${post.time() }" />

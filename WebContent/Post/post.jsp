@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png" href="<c:url value='/assets/img/favicon.ico'/>">
-<title>Hệ thống tuyển dụng</title>
+<title>${Post.title }</title>
 
 
 </head>
@@ -48,15 +48,15 @@
 						<div class="card-header">
 
 							<a class="card-link" href="#">
-								<h1 class="card-title">Technical Manager | 2,000 - 4,000 USD</h1>
+								<h1 class="card-title fs-22">${Post.title }</h1>
 							</a>
 							<div class="badge badge-primary">
-								<i class="fa fa-clock-o"></i>10 min ago
+								<i class="fa fa-clock-o mx-2 fs-14"></i>${Post.time() }
 							</div>
 						</div>
 
 						<div class="card-body">
-							<p class="card-text fs-15">${Post.content }</p>
+							<p class="card-text fs-15">${Post.ContentHTML() }</p>
 							<div style="font-size: 1.2rem;">
 								<span class="badge badge-primary">Technical</span> <span class="badge badge-primary">ManagerSoftware</span> <span class="badge badge-primary">Development</span> <span class="badge badge-primary">CTO</span>
 							</div>
@@ -99,7 +99,7 @@
 									</form>
 								</c:when>
 								<c:otherwise>
-									<c:if test="${acc.typeuser==EMPLOYEE }">
+									<c:if test="${acc.typeUser==EMPLOYEE }">
 										<form action="apply">
 											<input type="hidden" name="id" value="${acc.getId }">
 											<div class="row justify-content-center">
