@@ -122,4 +122,8 @@ public class AccountDAO extends Model{
 	public void DeleteAccountWitd(ObjectId accId) {
 		ACCOUNT.deleteOne(Filters.eq("_id",accId));
 	}
+	public void UpdateAccountStatus(ObjectId accId) {
+		ACCOUNT.updateOne(Filters.eq("_id",accId), Updates.set("status", "active"));
+	}
+	
 }

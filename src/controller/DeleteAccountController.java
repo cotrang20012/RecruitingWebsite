@@ -29,7 +29,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class DeleteAccountController
  */
-@WebServlet("/DeleteAccountController")
+@WebServlet("/admindelete")
 public class DeleteAccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
