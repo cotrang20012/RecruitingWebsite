@@ -10,23 +10,37 @@ public class Apply extends Model {
 	private ObjectId accountId;
 	private ObjectId post_id;
 	private String date;
+	
 	public Apply() {
 	}
+	
 	public Apply(ObjectId id, ObjectId account_id,ObjectId post_id,String date) {
 		this._id = id;
 		this.accountId = account_id;
 		this.post_id = post_id;
 		this.date = date;
 	}
+	
 	public String getDate() {
 		return date;
 	}
+	
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
 	public ObjectId getid() {
 		return _id;
 	}
+	
+	public ObjectId getAccountId() {
+		return accountId;
+	}
+	
+	public void setAccountId(ObjectId accountId) {
+		this.accountId = accountId;
+	}
+	
 	public void setid(ObjectId _id) {
 		this._id = _id;
 	}
