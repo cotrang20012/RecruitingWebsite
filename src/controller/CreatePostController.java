@@ -17,7 +17,7 @@ import model.Post;
 /**
  * Servlet implementation class CreatePostController
  */
-@WebServlet("/create-post")
+@WebServlet("/createpost")
 public class CreatePostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,13 +34,14 @@ public class CreatePostController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Post post=new Post();
-		
+		/*st=new Post();
 		post.TestCreate();
 		ObjectId id=new ObjectId();
 		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		PostDAO postDAO=new PostDAO(mongo);
-		postDAO.Insert(post);
+		postDAO.Insert(post);*/
+		String a=  request.getParameter("skill");
+		System.out.print(a);
 	}
 
 	/**
