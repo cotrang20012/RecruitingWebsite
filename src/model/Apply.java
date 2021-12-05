@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
 public class Apply extends Model {
 	private ObjectId _id;
 	private ObjectId accountId;
-	private ObjectId post_id;
+	private ObjectId postId;
 	private String date;
 	
 	public Apply() {
@@ -17,7 +17,7 @@ public class Apply extends Model {
 	public Apply(ObjectId id, ObjectId account_id,ObjectId post_id,String date) {
 		this._id = id;
 		this.accountId = account_id;
-		this.post_id = post_id;
+		this.postId = post_id;
 		this.date = date;
 	}
 	
@@ -29,7 +29,7 @@ public class Apply extends Model {
 		this.date = date;
 	}
 	
-	public ObjectId getid() {
+	public ObjectId getId() {
 		return _id;
 	}
 	
@@ -45,11 +45,11 @@ public class Apply extends Model {
 		this._id = _id;
 	}
 	
-	public ObjectId getPost_id() {
-		return post_id;
+	public ObjectId getPostId() {
+		return postId;
 	}
-	public void setPost_id(ObjectId post_id) {
-		this.post_id = post_id;
+	public void setPostId(ObjectId post_id) {
+		this.postId = post_id;
 	}
 	
 }

@@ -10,11 +10,13 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
+import com.mongodb.event.CommandListenerMulticaster;
 
 import model.Account;
 import model.Apply;
 import model.Model;
 import model.Post;
+import model.UserEmployee;
 
 public class ApplyDAO extends Model {
 	private MongoCollection<Apply> APPLY;
@@ -44,6 +46,19 @@ public class ApplyDAO extends Model {
 	
 	public void DeleteAllApplyWithPostID(ObjectId postID) {
 		APPLY.deleteMany(Filters.eq("_id", postID));
+	}
+	
+	public ArrayList<UserEmployee> getListEmployeeFromPostID(ObjectId postID){
+		ArrayList<Apply> list=new ArrayList<Apply>();
+		FindIterable<Apply> listApply = APPLY.find(Filters.eq("postId", postID));
+		Iterator<Apply> it = listApply.iterator();
+		ArrayList<UserEmployee> listEm=new ArrayList<UserEmployee>();
+		UserEmployeeDAO employeeDAO=new UserEmployeeDAO(mongoClient);
+		while (it.hasNext()) {
+			listEm.add(employeeDAO.findEmployeeWithID(it.next().getAccountId()));
+		}
+		return listEm;
+		
 	}
 	
 }

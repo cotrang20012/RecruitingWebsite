@@ -57,8 +57,9 @@ public class ListPostController extends HttpServlet {
 			request.setAttribute("apply", applies);
 			urlString = "/Dashboard/dashboard_listpost_employee.jsp";
 		} else if (type_user.equals("EMPLOYER")) {
-			UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
-			request.setAttribute("posts", userEmployer);
+			PostDAO postDAO=new PostDAO(mongo);
+			ArrayList<Post> posts=postDAO.getPostOfUser(acc.getId());
+			request.setAttribute("posts", posts);
 			urlString = "/Dashboard/dashboard_listpost.jsp";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(urlString);

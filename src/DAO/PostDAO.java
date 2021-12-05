@@ -95,9 +95,9 @@ public class PostDAO extends Model {
 	}
 
 	
-	public List<Post> getPostOfUser(int idUser) {
-		List<Post> lPost = new ArrayList<Post>();
-		FindIterable<Post> listPost = POST.find(Filters.eq("author_id", idUser));
+	public ArrayList<Post> getPostOfUser(ObjectId id) {
+		ArrayList<Post> lPost = new ArrayList<Post>();
+		FindIterable<Post> listPost = POST.find(Filters.eq("accountId", id));
 		Iterator<Post> list = listPost.iterator();
 		while (list.hasNext()) {
 			lPost.add(list.next());
