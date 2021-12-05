@@ -8,6 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.bson.types.ObjectId;
+
+import com.mongodb.client.MongoClient;
+
+import DAO.PostDAO;
+import DAO.UserEmployerDAO;
+import model.Post;
+import model.UserEmployer;
 
 /**
  * Servlet implementation class PostController
@@ -28,6 +38,32 @@ public class PostController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+
+		HttpSession session = request.getSession();
+		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		String idpost=request.getParameter("p");
+		if(idpost==null) {
+			response.sendRedirect("/home");
+			return;
+		}
+		PostDAO postDAO=new PostDAO(mongo);
+		Post post=new Post();
+		
+		ObjectId id=post.getAccountId();
+		UserEmployerDAO userEmployerDAO=new UserEmployerDAO(mongo);
+		UserEmployer userEmployer=userEmployerDAO.getUserEmployerFromId(id);
+		
+		request.setAttribute("Author", userEmployer);
+		request.setAttribute("Post", post);
+		
+		
+		
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/Post/post.jsp");
 		rd.forward(request, response);
 	}

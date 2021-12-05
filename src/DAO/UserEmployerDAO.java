@@ -8,6 +8,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
+import model.Account;
 import model.UserEmployee;
 import model.UserEmployer;
 
@@ -36,6 +37,10 @@ private MongoCollection<UserEmployer> USEREMPLOYER;
 		Bson update8 = Updates.set("techstack", user.getTechstack());
 				
 		USEREMPLOYER.updateOne(Filters.eq("_id",user.getId()),Updates.combine(update1, update2, update3, update4, update5, update6, update7, update8));
+	}
+	
+	public UserEmployer getUserEmployerFromId(ObjectId id) {		
+		return USEREMPLOYER.find(Filters.eq("_id",id)).first();
 	}
 	
 	public void UpdateUserEmployerUrl(UserEmployer user) {

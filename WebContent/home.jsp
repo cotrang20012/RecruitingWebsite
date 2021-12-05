@@ -172,12 +172,12 @@
 											class="text-dark"><h2>
 												<c:out value="${post.title }" />
 											</h2></a>
-										<p class="text-muted mb-0">
+										<p class="text-muted mb-0 fs-14">
 											<c:out value="${post.description() }" />
 										</p>
 										<div
 											class="d-flex align-items-center justify-content-between rounded-pill bg-light py-2 mt-4">
-											<p class="mb-0">
+											<p class="mb-0 fs-14">
 												<span class="text-muted"></span>Quận 3, Hồ Chí Minh
 											</p>
 											<div class="badge badge-danger px-3 rounded-pill fs-primary">

@@ -19,7 +19,7 @@
 
 
 	<div class="app">
-		<section class="container-fluid">
+		<section class="container-fluid d-flex justify-content-center">
 			<div class="row main-content bg-success text-center">
 				<div class="col-md-4 text-center company__info">
 					<span class="company__logo">

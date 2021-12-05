@@ -105,7 +105,7 @@ public class profileController extends HttpServlet {
 					userEmployee.setAddress(request.getParameter("address"));
 					userEmployee.setPhone(request.getParameter("phone"));
 					userEmployee.setEmail(request.getParameter("email"));
-					
+					String birthdate=request.getParameter("birthday");
 					Date date1 = new Date();
 					try {
 						date1 = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("birthday"));
