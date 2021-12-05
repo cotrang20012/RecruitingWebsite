@@ -46,7 +46,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class uploadController
  */
-@WebServlet("/upload")
+@WebServlet("/dashboard/upload")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)
@@ -135,7 +135,7 @@ public class uploadController extends HttpServlet {
 					// saves the file on disk
 					try {
 						HttpSession session = request.getSession();
-						Account acc = (Account) session.getAttribute("user");
+						Account acc = (Account) session.getAttribute("acc");
 						MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 						UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
 						UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
