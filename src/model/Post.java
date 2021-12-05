@@ -89,10 +89,10 @@ public class Post extends Model{
 	private Date dateStart=new Date();
 	private Date dateEnd =new Date();
 	
-	public ObjectId getid() {
+	public ObjectId getId() {
 		return _id;
 	}
-	public void setid(ObjectId _id) {
+	public void setId(ObjectId _id) {
 		this._id = _id;
 	}
 
@@ -130,7 +130,7 @@ public class Post extends Model{
 	
 	
 	public Post() {
-		this.setid(new ObjectId());
+		
 	}
 	public String description() {
 		if(this.content.length()<100) {
@@ -140,7 +140,7 @@ public class Post extends Model{
 	}
 	
 	public void TestCreate() {
-		this.setid(new ObjectId());
+		this.setId(new ObjectId());
 		title="Tuyển dụng lập trình viên Java";
 		content="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
 		dateEnd= new Date(2021, 12, 03, 12, 0, 0);

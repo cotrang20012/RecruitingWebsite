@@ -54,25 +54,23 @@ public class DeleteAccountController extends HttpServlet {
 		UserEmployeeDAO employeeDAO = new UserEmployeeDAO(mongo);
 		UserEmployerDAO employerDAO = new UserEmployerDAO(mongo);
 		String type_user = acc.getTypeUser();
-		String urlString = "/home.jsp";
 		if (type_user.equals("EMPLOYEE")) {
 			applyDAO.DeleteAllApplyWithPostID(acc.getId());
 			employeeDAO.DeleteUserWithAccID(acc.getId());
 			accountDAO.DeleteAccountWitd(acc.getId());
-			urlString = "/Admin/manager-account.jsp";
+			
 		} else if (type_user.equals("EMPLOYER")) {	
 			ArrayList<Post> listPosts = postDAO.GetPostListWithAccID(acc.getId());
 			for(Post post : listPosts) {
-				applyDAO.DeleteAllApplyWithPostID(post.getid());
+				applyDAO.DeleteAllApplyWithPostID(post.getId());
 			}
 			postDAO.DeleteAllPostWithAccID(acc.getId());
 			employerDAO.DeleteUserWithAccID(acc.getId());
 			accountDAO.DeleteAccountWitd(acc.getId());
-			urlString = "/Admin/manager-account.jsp";
+			
 		}
 			
-		RequestDispatcher rd = request.getRequestDispatcher(urlString);
-		rd.forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/ManagerAccount");
 	}
 
 	/**

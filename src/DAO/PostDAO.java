@@ -163,7 +163,14 @@ public class PostDAO extends Model {
 		}
 		return lPost;
 	}
-	
+	public void updatePostStatusAct(ObjectId postId) {
+		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "active"));
+				
+	}
+	public void updatePostStatusDeAct(ObjectId postId) {
+		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "non-active"));
+				
+	}
 	public void DeleteAllPostWithAccID (ObjectId accountID) {
 		POST.deleteMany(Filters.eq("accountId", accountID));
 	}

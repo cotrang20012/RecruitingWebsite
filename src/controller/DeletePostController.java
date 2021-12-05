@@ -9,24 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.bson.types.ObjectId;
+
 import com.mongodb.client.MongoClient;
 
-import DAO.AccountDAO;
-import DAO.ApplyDAO;
 import DAO.PostDAO;
-import model.Account;
 
 /**
- * Servlet implementation class AdminActiveController
+ * Servlet implementation class DeletePostController
  */
-@WebServlet("/adminactive")
-public class AdminActiveController extends HttpServlet {
+@WebServlet("/adminpostdelete")
+public class DeletePostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminActiveController() {
+    public DeletePostController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,15 +34,14 @@ public class AdminActiveController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String username = (String)request.getParameter("user");
-		String urlString = "/Admin/manager-account.jsp";
+		// TODO Auto-generated method stubString username = (String)request.getParameter("user");
+		String postID = (String) request.getParameter("id");
+		ObjectId id = new ObjectId(postID);
+		String urlString = "/Admin/manager-post.jsp";
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
-		AccountDAO accountDAO = new AccountDAO(mongo);
-		Account acc = accountDAO.getAccountFromUsername(username);
-		accountDAO.UpdateAccountStatus(acc.getId());
-	
-		response.sendRedirect(request.getContextPath()+"/ManagerAccount");
+		PostDAO postDAO = new PostDAO(mongo);
+		postDAO.Delete(id);
+		response.sendRedirect(request.getContextPath()+"/ManagerPost");
 	}
 
 	/**
