@@ -1463,7 +1463,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 
 .header {
     position: fixed;
-    height: 70px;
+    height: 56px;
     width: calc(100%) !important;
     background: var(--primary-color);
     right: 0;

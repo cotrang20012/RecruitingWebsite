@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <footer class="text-center text-lg-start bg-light" style="font-size: 1.6rem;">
     <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <div class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
       <!-- Left -->
       <div class="me-5 d-none d-lg-block">
         <span>Liên hệ với chúng tôi qua các mạng xã hội:</span>
@@ -31,11 +31,11 @@
         </a>
       </div>
       <!-- Right -->
-    </section>
+    </div>
     <!-- Section: Social media -->
 
     <!-- Section: Links  -->
-    <section class="">
+    <div class="">
       <div class="container text-center text-md-start mt-5">
         <!-- Grid row -->
         <div class="row mt-3">
@@ -114,7 +114,7 @@
         </div>
         <!-- Grid row -->
       </div>
-    </section>
+    </div>
     <!-- Section: Links  -->
 
     <!-- Copyright -->
