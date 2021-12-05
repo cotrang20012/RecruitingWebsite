@@ -26,6 +26,9 @@ public class SecurityConfig {
 
 		urlPatterns1.add("/logout");
 		urlPatterns1.add("/active");
+		urlPatterns1.add("/dashboard/profile");
+		urlPatterns1.add("/upload");
+		//urlPatterns1.add("/viewprofile");
 
 		mapConfig.put(ROLE_EMPLOYEE, urlPatterns1);
 
@@ -34,7 +37,9 @@ public class SecurityConfig {
 
 		urlPatterns2.add("/logout");
 		urlPatterns2.add("/active");
-
+		urlPatterns2.add("/dashboard/profile"); 
+		urlPatterns2.add("/upload");
+		//urlPatterns2.add("/viewprofile");
 		mapConfig.put(ROLE_EMPLOYER, urlPatterns2);
 	}
 
