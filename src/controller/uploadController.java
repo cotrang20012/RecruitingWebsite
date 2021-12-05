@@ -135,7 +135,7 @@ public class uploadController extends HttpServlet {
 					// saves the file on disk
 					try {
 						HttpSession session = request.getSession();
-						Account acc = (Account) session.getAttribute("user");
+						Account acc = (Account) session.getAttribute("acc");
 						MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 						UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
 						UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
