@@ -47,7 +47,7 @@ boolean is_employer = accountDAO.isEmployer(request.getCookies());
 						<div class="dropdown">
                     <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                         <span class="user-icon">
-							<img src="vendors/images/photo1.jpg" alt="">
+							<img src="${user.profile_url }" alt="">
 						</span>
                         <span class="user-name">${user.fullName }</span>
                     </a>

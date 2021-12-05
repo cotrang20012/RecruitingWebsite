@@ -22,25 +22,25 @@
 	<main>
 		<section class="container-fluid">
 			<div class="row text-center d-flex justify-content-center" 
-			style="max-width:720px;min-height:400px;margin:auto">
+			style="max-width:720px;min-height:400px;margin:80px auto">
 				<div class="col-8 mt-5 fs-16" style="border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);">
 				<c:choose>
 					<c:when test="${result== 'non-active' }"> 
-						<p>Đường dẫn kích hoạt tài khoản đã được gửi tới email của bạn.
+						<p style="padding-top:50px">Đường dẫn kích hoạt tài khoản đã được gửi tới email của bạn.
 						Hãy kiểm tra và kích hoạt tài khoản. Nếu vẫn chưa nhận được mail.
-						Hãy nhấn <a href="<c:url value="/active?action=send"/>">vào đây</a> để nhận lại</p>
+						Hãy nhấn <a href="<c:url value="/active?action=send"/>" style="color:blue">vào đây</a> để nhận lại</p>
 					</c:when>
 					<c:when test="${result== 'active' }">
-						<p>
+						<p style="padding-top:50px">
 						Tài khoản đã kích hoạt thành công. Hãy nhấn <a
-							href="<c:url value="/login"/>">vào đây</a> để đăng nhập
+							href="<c:url value="/login"/>" style="color:blue">vào đây</a> để đăng nhập
 					</p>
 					</c:when>
 					<c:otherwise>
-						<p>
+						<p style="padding-top:50px">
 						Tài khoản của bạn chưa kích hoạt. Hãy nhấn <a
-							href="<c:url value="/active?action=send"/>">vào đây</a> để nhận đường dẫn kích hoạt.
+							href="<c:url value="/active?action=send"/>" style="color:blue">vào đây</a> để nhận đường dẫn kích hoạt.
 					</p>
 					</c:otherwise>
 				</c:choose>
