@@ -202,7 +202,7 @@
 				<ul class="pagination">
 					<c:forEach var="item" items="${pageList}">
 						<li class="${item.getState()}"><a class="page-link"
-							href="${path}/home?page=${item.getValue()}">${item.getName()}</a></li>
+							href="<c:url value = '/home?page=${item.getValue()}'/>">${item.getName()}</a></li>
 					</c:forEach>
 					<li class="page-item">
 						<form method="get" action="home">
