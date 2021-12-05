@@ -2,6 +2,8 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.entity.ByteArrayEntity;
 import org.apache.naming.java.javaURLContextFactory;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
@@ -82,7 +85,10 @@ public class CreatePostController extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-
+		Post post = new Post();
+		String url = "";
+		String[] liStrings = new String[50];
+		int i = 0;
 		String urlString = "https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg";
 		try {
 
@@ -111,7 +117,34 @@ public class CreatePostController extends HttpServlet {
 			if (formItems != null && formItems.size() > 0) {
 
 				for (FileItem item : formItems) {
-
+					if(item.isFormField()) {
+						String variable = item.getFieldName();
+			            if (variable.equals("title")) { 
+			            	post.setTitle(item.getString("UTF-8"));
+			            	 url = webfit.Utilities.createURL(item.getString("UTF-8"));
+			            } else if (variable.equals("phone")) {
+			            	post.setPhone(item.getString("UTF-8"));
+			            } else if (variable.equals("email")) {
+			            	post.setEmail(item.getString("UTF-8"));
+			            } else if (variable.equals("pos")) {
+			            	post.setPosition(item.getString("UTF-8"));
+			            } else if (variable.equals("location")) {		            	
+			            	post.setLocation(item.getString("UTF-8"));
+			            } else if (variable.equals("quantity")) {
+			            	post.setQuantity(item.getString("UTF-8"));
+			            } else if (variable.equals("exp")) {
+			            	post.setExp(item.getString("UTF-8"));
+			            } else if (variable.equals("desc")) {		            	
+			            	post.setContent(item.getString("UTF-8"));
+			            } else if (variable.equals("date")) {
+			            	SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy hh:mm");
+			    			post.setDateEnd(format.parse(item.getString()));
+			            } else if (variable.equals("skill")) {
+			            	liStrings[i] = item.getString();
+			            	i++;
+			            }
+ 
+					}
 					// processes only fields that are not form fields
 					if (!item.isFormField()) {
 						String fileName = new File(item.getName()).getName();
@@ -143,44 +176,33 @@ public class CreatePostController extends HttpServlet {
 			urlString = "https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg";
 			// TODO: handle exception
 		}
-
+		
 		HttpSession session = request.getSession();
 		Account account = (Account) session.getAttribute("acc");
 		if (account == null) {
 			response.sendRedirect(request.getContextPath() + "/home");
 			return;
 		}
-		Post post = new Post();
+		
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		PostDAO postDAO = new PostDAO(mongo);
 
-		String url = webfit.Utilities.createURL(request.getParameter("title"));
 		post.setUrl(url);
-		// post.setAccountId(account.getId());
-
-		post.setTitle(request.getParameter("title"));
-		post.setPhone(request.getParameter("phone"));
-		post.setEmail(request.getParameter("email"));
-		post.setPosition(request.getParameter("pos"));
-		post.setLocation(request.getParameter("location"));
-		post.setQuantity(request.getParameter("quantity"));
+		post.setAccountId(account.getId());	
 		post.setStatus("Active");
-		post.setExp(request.getParameter("exp"));
 		post.setDateStart(java.util.Calendar.getInstance().getTime());
-		post.setContent(request.getParameter("desc"));
 		post.setThumbnail_url(urlString);
-		try {
-			SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy hh:mm");
-			post.setDateEnd(format.parse(request.getParameter("date")));
-			System.out.print(request.getParameter("time"));
-			String[] liStrings = request.getParameterValues("skill");
-			String temp = "";
-			for (String itemString : liStrings)
+		
+		String temp = "";
+		for (String itemString : liStrings) {
+			if(itemString != null) {
 				temp += itemString + ",";
-			post.setSkill(temp.substring(0, temp.length() - 1));
-		} catch (Exception e) {
-			// TODO: handle exception
+			}
+			else {
+				break;
+			}
 		}
+		post.setSkill(temp.substring(0, temp.length() - 1));
 		postDAO.Insert(post);
 		response.sendRedirect(request.getContextPath() + "/post?p=" + post.getUrl());
 	}

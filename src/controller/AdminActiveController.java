@@ -42,7 +42,6 @@ public class AdminActiveController extends HttpServlet {
 		AccountDAO accountDAO = new AccountDAO(mongo);
 		Account acc = accountDAO.getAccountFromUsername(username);
 		accountDAO.UpdateAccountStatus(acc.getId());
-	
 		response.sendRedirect(request.getContextPath()+"/ManagerAccount");
 	}
 
