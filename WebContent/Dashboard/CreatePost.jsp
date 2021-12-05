@@ -25,7 +25,13 @@
 	<div class="main-container">
 		<div class="pd-ltr-20">
 			<div class="pd-20 card-box mb-30">
-				<form action='/createpost' method="post">
+				<form action='createpost' method="POST">
+					<div class="form-group row">
+						<label class="col-sm-12 col-md-2 col-form-label">Title</label>
+						<div class="col-sm-12 col-md-10">
+							<input class="form-control" name="title" type="text" required>
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Your
 							Email</label>
@@ -49,7 +55,21 @@
 							<input class="form-control" name="pos" type="text" required>
 						</div>
 					</div>
-		
+					<div class="form-group row">
+						<label class="col-sm-12 col-md-2 col-form-label">Vị trí</label>
+						<div class="col-sm-12 col-md-10">
+							<input class="form-control" name="location"
+								value="Ex: TP.Hồ Chí Minh" type="text" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-12 col-md-2 col-form-label">Số lượng
+							ứng tuyển</label>
+						<div class="col-sm-12 col-md-10">
+							<input class="form-control" name="quantity" value="0"
+								type="number">
+						</div>
+					</div>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Kĩ năng
 							cần có</label>
@@ -85,7 +105,7 @@
 						<label class="col-sm-12 col-md-2 col-form-label">Trình độ
 							học vấn</label>
 						<div class="col-sm-12 col-md-10">
-							<select class="custom-select col-12">
+							<select name='exp' class="custom-select col-12">
 								<option selected="">--Experience Level--</option>
 								<option value="Fresher">Fresher</option>
 								<option value="1">One</option>
@@ -94,29 +114,31 @@
 							</select>
 						</div>
 					</div>
+
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Thời gian
 							ứng tuyển</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control date-picker" placeholder="Select Date"
-								type="text" required>
+							<input class="form-control datetimepicker" name='time'
+								placeholder="Choose Date and time" type="text">
 						</div>
 					</div>
+
+
 					<div class="form-group">
 						<label>Mô tả</label>
-						<textarea class="form-control"></textarea>
+						<textarea name='desc' class="form-control"></textarea>
 					</div>
+
 					<div class="row justify-content-center">
-						<input type="submit" value="Đăng nhập" class="btn btn-login"
+						<input type="submit" value="Đăng tuyển" class="btn btn-login"
 							style="font-size: 1.6rem;">
 					</div>
+
 				</form>
-
-
 			</div>
 		</div>
 	</div>
-
 </body>
 
 

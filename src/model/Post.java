@@ -33,11 +33,59 @@ public class Post extends Model{
 	private boolean is_public;
 	private String thumbnail_url;
 	private String status;
-	private String category;
 	private ObjectId _id;
 	private ObjectId accountId;
 	private String title="";
 	private String content;
+	private String phone;
+	private String position;
+	private String skill;
+	private String email;
+	private String location;
+	private String quantity;
+	private String Exp;
+	public String getExp() {
+		return Exp;
+	}
+	public void setExp(String exp) {
+		Exp = exp;
+	}
+	public String getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	private Date dateStart=new Date();
 	private Date dateEnd =new Date();
 	
@@ -174,12 +222,6 @@ public class Post extends Model{
 		this.thumbnail_url = thumbnail_url;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
 	
 	public String getStatus() {
 		return status;
@@ -207,7 +249,6 @@ public class Post extends Model{
 		this.points = 0;
 		this.is_public = is_public;
 		this.thumbnail_url = thumbnail_url;
-		this.category = category;
 		this.status = "Chờ duyệt";
 	}
 	
