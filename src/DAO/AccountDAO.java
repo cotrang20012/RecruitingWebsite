@@ -123,7 +123,12 @@ public class AccountDAO extends Model{
 		ACCOUNT.deleteOne(Filters.eq("_id",accId));
 	}
 	public void UpdateAccountStatus(ObjectId accId) {
-		ACCOUNT.updateOne(Filters.eq("_id",accId), Updates.set("status", "active"));
-	}
-	
+		Account acc=ACCOUNT.find(Filters.eq("_id", accId)).first();
+		if(acc.getStatus().equals("active")) {
+			ACCOUNT.updateOne(Filters.eq("_id",accId), Updates.set("status", "non-active"));
+		}
+		else {
+			ACCOUNT.updateOne(Filters.eq("_id",accId), Updates.set("status", "active"));
+		}
+	}	
 }
