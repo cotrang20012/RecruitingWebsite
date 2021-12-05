@@ -8,7 +8,7 @@ import org.bson.types.ObjectId;
 public class UserEmployer extends Model{
 	protected ObjectId _id;
 	protected ObjectId accountID;
-	protected String companyName;
+	protected String fullName;
 	protected String phone;
 	protected String address;
 	protected String email;
@@ -18,6 +18,12 @@ public class UserEmployer extends Model{
 	protected String techstack;
 	protected String profile_url;
 		
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 	public String getWebsite() {
 		return website;
 	}
@@ -66,12 +72,6 @@ public class UserEmployer extends Model{
 	public void setAccountID(ObjectId accountID) {
 		this.accountID = accountID;
 	}
-	public String getCompanyName() {
-		return companyName;
-	}
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
 	public String getPhone() {
 		return phone;
 	}
@@ -91,7 +91,7 @@ public class UserEmployer extends Model{
 	public UserEmployer(ObjectId accountID, String companyName, String phone, String address,String email ) {
 		this._id=new ObjectId();
 		this.accountID=accountID;
-		this.companyName=companyName;
+		this.fullName=companyName;
 		this.phone=phone;
 		this.address=address;
 		this.email=email;

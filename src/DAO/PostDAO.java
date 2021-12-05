@@ -90,6 +90,11 @@ public class PostDAO extends Model {
 		return POST.find(Filters.eq("_id", id)).first();
 	}
 
+	public Post GetPostByURL(String url) {
+		return POST.find(Filters.eq("url", url)).first();
+	}
+
+	
 	public List<Post> getPostOfUser(int idUser) {
 		List<Post> lPost = new ArrayList<Post>();
 		FindIterable<Post> listPost = POST.find(Filters.eq("author_id", idUser));

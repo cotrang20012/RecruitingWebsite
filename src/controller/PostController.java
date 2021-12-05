@@ -44,22 +44,20 @@ public class PostController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
-		String idpost=request.getParameter("p");
-		if(idpost==null) {
+		String url=request.getParameter("p");
+		if(url==null) {
 			response.sendRedirect("/home");
 			return;
 		}
 		PostDAO postDAO=new PostDAO(mongo);
-		Post post=new Post();
-		
+		Post post=postDAO.GetPostByURL(url);
+		System.out.println(post.getContent());
 		ObjectId id=post.getAccountId();
 		UserEmployerDAO userEmployerDAO=new UserEmployerDAO(mongo);
 		UserEmployer userEmployer=userEmployerDAO.getUserEmployerFromId(id);
 		
 		request.setAttribute("Author", userEmployer);
 		request.setAttribute("Post", post);
-		
-		
 		
 		
 		

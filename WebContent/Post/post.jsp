@@ -11,7 +11,6 @@
 
 </head>
 <body style="background: #eee; position: relative;">
-
 	<main>
 		<section class="container-fluid mt-5" style="padding: 70px 0">
 			<div class="row">
@@ -57,7 +56,7 @@
 						</div>
 
 						<div class="card-body">
-							<p class="card-text fs-15">${post.content }</p>
+							<p class="card-text fs-15">${Post.content }</p>
 							<div style="font-size: 1.2rem;">
 								<span class="badge badge-primary">Technical</span> <span class="badge badge-primary">ManagerSoftware</span> <span class="badge badge-primary">Development</span> <span class="badge badge-primary">CTO</span>
 							</div>
@@ -76,18 +75,21 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="h3">Thông tin</div>
-							<div class="h5 fw-400">Ngôn ngữ chính: C#,C++</div>
-							<div class="h5 fw-400">Mảng làm việc: Backend</div>
+							<div class="h5 fw-400">Vị trí: ${Post.position }</div>
+							<div class="h5 fw-400">Kĩ năng: ${Post.skill }</div>
+							<div class="h5 fw-400">Nơi làm việc: ${Post.location }</div>
 						</div>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
 								<div class="h3">Chỉ tiêu</div>
-								<div class="h5 fw-400">5.2342</div>
+								<div class="h5 fw-400">${Post.quantity }</div>
 							</li>
 							<li class="list-group-item">
-								<div class="h3">Đã ứng tuyển</div>
-								<div class="h5 fw-400">6758</div>
+								<div class="h3">Liên hệ</div>
+								<div class="h5 fw-400">${Post.email }</div>
+								<div class="h5 fw-400">${Post.phone }</div>
 							</li>
+							
 							<c:choose>
 								<c:when test="${acc==null }">
 									<form>
@@ -119,9 +121,6 @@
 
 
 	</main>
-
-
-
 
 </body>
 </html>

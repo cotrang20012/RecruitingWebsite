@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
 <%@page import="com.mongodb.client.MongoClient" %>
 <%@page import="DAO.*" %>
 <%
@@ -49,7 +50,7 @@ boolean is_employer = accountDAO.isEmployer(request.getCookies());
                         <span class="user-icon">
 							<img src="${user.profile_url }" alt="">
 						</span>
-                        <span class="user-name">${user.fullName }</span>
+                        <span class="user-name"><c:out value='${user.fullName }' /></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                         <a class="dropdown-item" href="<c:out value='dashboard/profile' />"><i class="dw dw-user1"></i> Profile</a>

@@ -27,7 +27,7 @@ private MongoCollection<UserEmployer> USEREMPLOYER;
 	}
 	
 	public void UpdateUserEmployer(UserEmployer user) {
-		Bson update1 = Updates.set("companyName", user.getCompanyName());
+		Bson update1 = Updates.set("companyName", user.getFullName());
 		Bson update2 = Updates.set("phone", user.getPhone());
 		Bson update3 = Updates.set("address", user.getAddress());
 		Bson update4 = Updates.set("email", user.getEmail());
