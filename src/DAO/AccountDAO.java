@@ -1,9 +1,12 @@
 package DAO;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.Cookie;
 
 import org.bson.types.ObjectId;
 
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
@@ -20,7 +23,6 @@ public class AccountDAO extends Model{
 	private MongoClient mongoClient;
 	
 	public AccountDAO() {
-		
 	}
 	
 	public AccountDAO(MongoClient mongo) {
@@ -113,5 +115,9 @@ public class AccountDAO extends Model{
 		ACCOUNT.updateOne(Filters.eq("email",email), Updates.set("status", "active"));
 	}
 	
+	public FindIterable<Account> getAllAccounts (){
+		FindIterable<Account> listAccounts =  ACCOUNT.find();
+		return listAccounts;
+	}
 	
 }

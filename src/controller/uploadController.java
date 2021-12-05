@@ -46,7 +46,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class uploadController
  */
-@WebServlet("/upload")
+@WebServlet("/dashboard/upload")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)
