@@ -50,6 +50,7 @@ public class ApplyPostController extends HttpServlet {
 		apply.setLuong(request.getParameter("salary"));
 		apply.setStatus(request.getParameter("status"));
 		apply.setTime(request.getParameter("time"));
+		apply.setUrl(request.getParameter("url"));
 		applyDAO.Insert(apply);
 		response.sendRedirect(request.getHeader("referer"));
 	}
