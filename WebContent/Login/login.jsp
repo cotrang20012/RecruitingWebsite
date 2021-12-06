@@ -39,7 +39,8 @@
 									<input type="password" name="password" id="password" class="form__input" placeholder="Password">
 								</div>
 								<div class="row align-items-baseline w-100">
-									<input type="checkbox" name="remember_me" id="remember_me" class="" style="margin-right: 4px;"> <label for="remember_me">Ghi nhớ tài khoản!</label>
+									<input type="checkbox" name="remember" id="remember_me" class="" style="margin-right: 4px;" value="yes">
+									 <label for="remember">Ghi nhớ tài khoản!</label>
 								</div>
 								<div class="row justify-content-center">
 									<input type="submit" value="Đăng nhập" class="btn btn-login" style="font-size: 1.6rem;">

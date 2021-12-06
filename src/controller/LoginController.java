@@ -70,6 +70,7 @@ public class LoginController extends HttpServlet {
 		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String remember = request.getParameter("remember");
 		String url = "/home";
 		if (username == null || password == null) {
 			RequestDispatcher rd = request.getRequestDispatcher("Login/login.jsp");
@@ -85,8 +86,11 @@ public class LoginController extends HttpServlet {
 		if (account_id != null) {
 			String uuidString=java.util.UUID.randomUUID().toString();//tạo mã UUID để lưu thông tin xác nhận login lên database
 			Cookie uuid = new Cookie("UUID", uuidString);
-			
-			uuid.setMaxAge(60*1); //thời gian lưu cookie
+			if(remember==null)
+				uuid.setMaxAge(60*60*24); //thời gian lưu cookie
+			else {
+				uuid.setMaxAge(60*60*24*30);
+			}
 			response.addCookie(uuid);
 			
 			

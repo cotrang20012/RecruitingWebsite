@@ -15,45 +15,47 @@
 </head>
 
 <body>
-
+	
 	<div class="main-container">
 		<div class="pd-ltr-20">
 			<div class="pd-20 card-box mb-30">
-				<form action='createpost' method="POST" enctype="multipart/form-data">
+				<form action='editpost' method="POST" enctype="multipart/form-data" >
+					<input type="text" name="action" value="edit" hidden>
+					<input type="text" name="postId" value="${Post.getId() }" hidden>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Title</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control" name="title" type="text" required>
+							<input class="form-control" name="title" type="text" value="${Post.title }" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Your Email</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control" name="email" value="example@mail.com" type="email" required>
+							<input class="form-control" name="email" value="${Post.email }" type="email" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Phone number</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control" name="phone" value="" type="tel" required>
+							<input class="form-control" name="phone" value="${Post.phone}" type="tel" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Vị trí ứng tuyển</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control" name="pos" type="text" required>
+							<input class="form-control" name="pos" type="text" value="${Post.position }" placeholder="Lập trình viên" required>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label class="col-sm-12 col-md-2 col-form-label">Vị trí</label>
+						<label class="col-sm-12 col-md-2 col-form-label">Nơi làm việc</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control" name="location" value="Ex: TP.Hồ Chí Minh" type="text" required>
+							<input class="form-control" name="location" value="${Post.location}" type="text" placeholder="Tp.Hồ Chí Minh" required>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Số lượng ứng tuyển</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control" name="quantity" value="0" type="number">
+							<input class="form-control" name="quantity" value="${Post.quantity}" type="number" required>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -90,21 +92,21 @@
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Thời gian ứng tuyển</label>
 						<div class="col-sm-12 col-md-10">
-							<input class="form-control datetimepicker" name='time' placeholder="Choose Date and time" type="text">
+							<input class="form-control datetimepicker" name='time' value="${Post.dateEnd }" placeholder="Choose Date and time" type="text">
 						</div>
 					</div>
 
 
 					<div class="form-group">
 						<label>Mô tả công việc</label>
-						<textarea name='desc' class="form-control"></textarea>
+						<textarea name='desc' class="form-control">${Post.content}</textarea>
 					</div>
 					<div class="form-group">
-						<label>Hình ảnh</label> 
+						<label>Hình ảnh</label>
 						<input type="file" id="thumbnail" name="thumbnail" accept="image/png, image/jpeg">
 						<img class="rounded-circle mt-5" width="150px" height="150px" src="${Post.thumbnail_url }" id="profile-image">
 					</div>
-
+					
 					<div class="row justify-content-center">
 						<input type="submit" value="Đăng tuyển" class="btn btn-primary" style="font-size: 1.6rem;">
 					</div>
@@ -114,6 +116,8 @@
 		</div>
 	</div>
 </body>
+
+
 
 <script>
 	const profileImg = document.getElementById("profile-image");

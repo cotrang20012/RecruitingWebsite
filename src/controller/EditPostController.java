@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Parameter;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -40,12 +41,12 @@ import model.UserEmployee;
 /**
  * Servlet implementation class CreatePostController
  */
-@WebServlet(name = "createpost", urlPatterns = { "/employer/createpost" })
+@WebServlet(name = "editpost", urlPatterns = { "/employer/editpost" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)
 
-public class CreatePostController extends HttpServlet {
+public class EditPostController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 // location to store file uploaded
@@ -59,7 +60,7 @@ public class CreatePostController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CreatePostController() {
+	public EditPostController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -73,7 +74,21 @@ public class CreatePostController extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		request.getRequestDispatcher("/Dashboard/CreatePost.jsp").forward(request, response);
+		if(request.getParameter("action")==null) {
+			String postUrl=request.getParameter("post_url");
+			MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
+			PostDAO postDAO=new PostDAO(mongo);
+			Post post=postDAO.GetPostByURL(postUrl);
+			if(post==null) {
+				response.sendRedirect(request.getContextPath()+"/employer/createpost");
+				return;
+			}
+			request.setAttribute("Post", post);
+			request.getRequestDispatcher("/Dashboard/EditPost.jsp").forward(request, response);
+			return;
+		}
+		response.sendRedirect(request.getContextPath()+"/employer/createpost");
+		
 	}
 
 	/**
@@ -86,7 +101,7 @@ public class CreatePostController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		Post post = new Post();
-		String url = "";
+		String postId = "";
 		String[] liStrings = new String[50];
 		int i = 0;
 		String urlString = "https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg";
@@ -121,7 +136,7 @@ public class CreatePostController extends HttpServlet {
 						String variable = item.getFieldName();
 			            if (variable.equals("title")) { 
 			            	post.setTitle(item.getString("UTF-8"));
-			            	 url = webfit.Utilities.createURL(item.getString("UTF-8"));
+			            	post.setUrl(webfit.Utilities.createURL(item.getString("UTF-8")));
 			            } else if (variable.equals("phone")) {
 			            	post.setPhone(item.getString("UTF-8"));
 			            } else if (variable.equals("email")) {
@@ -139,7 +154,9 @@ public class CreatePostController extends HttpServlet {
 			            } else if (variable.equals("date")) {
 			            	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-ddThh:mm");
 			    			post.setDateEnd(format.parse(item.getString()));
-			            } else if (variable.equals("skill")) {
+			            } else if (variable.equals("postId")) {
+			            	postId=item.getString("UTF-8");
+			            }else if (variable.equals("skill")) {
 			            	liStrings[i] = item.getString();
 			            	i++;
 			            }
@@ -186,11 +203,10 @@ public class CreatePostController extends HttpServlet {
 		
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		PostDAO postDAO = new PostDAO(mongo);
-		
-		post.setUrl(url);
+		System.out.println(postId);
+		post.setId(new ObjectId(postId));
 		post.setAccountId(account.getId());	
 		post.setStatus("Đang tuyển");
-		post.setDateStart(java.util.Calendar.getInstance().getTime());
 		post.setThumbnail_url(urlString);
 		
 		String temp = "";
@@ -203,7 +219,7 @@ public class CreatePostController extends HttpServlet {
 			}
 		}
 		post.setSkill(temp.substring(0, temp.length() - 1));
-		postDAO.Insert(post);
+		postDAO.UpdatePost(post);
 		response.sendRedirect(request.getContextPath() + "/post?p=" + post.getUrl());
 	}
 

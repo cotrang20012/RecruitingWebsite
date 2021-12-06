@@ -72,7 +72,7 @@
                             <div class="mt-5 text-center d-flex">
                             	<input type="hidden" name="action" value="update">
                    				<button class="btn btn-primary profile-button" type="submit" onclick="EnableReadonly()">Save Profile</button>                 				
-                    			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit</button>
+                    			<button class="btn btn-primary profile-button" type="button" onclick="RemoveReadonly()">Edit Profile</button>
                 			</div>
                         </div>
                         </form>

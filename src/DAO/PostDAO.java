@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bson.codecs.pojo.annotations.BsonIgnore;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import com.mongodb.BasicDBObject;
@@ -17,6 +18,7 @@ import com.mongodb.client.model.Updates;
 import model.Apply;
 import model.Model;
 import model.Post;
+import model.UserEmployee;
 import webfit.Utilities;
 
 public class PostDAO extends Model {
@@ -177,6 +179,28 @@ public class PostDAO extends Model {
 	}
 	public void DeleteAllPostWithAccID (ObjectId accountID) {
 		POST.deleteMany(Filters.eq("accountId", accountID));
+	}
+	
+	public void UpdatePost(Post post) {
+		Bson update1 = Updates.set("title", post.getTitle());
+		Bson update2 = Updates.set("url", post.getUrl());
+		Bson update3 = Updates.set("content", post.getContent());
+		Bson update4 = Updates.set("location", post.getLocation());
+		Bson update5 = Updates.set("position", post.getPosition());
+		Bson update6 = Updates.set("skill", post.getSkill());
+		Bson update7 = Updates.set("phone", post.getPhone());
+		Bson update8 = Updates.set("email", post.getEmail());
+		Bson update9 = Updates.set("thumbnail_url", post.getThumbnail_url());
+		Bson update10 = Updates.set("exp", post.getExp());
+		Bson update11 = Updates.set("luong", post.getLuong());
+		Bson update12 = Updates.set("dateEnd", post.getDateEnd());
+		Bson update13 = Updates.set("quantity", post.getQuantity());
+		Bson update14 = Updates.set("accountId", post.getAccountId());
+		
+		POST.updateOne(Filters.eq("_id",post.getId()),
+				Updates.combine(update1, update2, update3, update4, update5
+						,update6, update7, update8, update9, update10
+						,update11, update12, update13, update14));
 	}
 	
 }
