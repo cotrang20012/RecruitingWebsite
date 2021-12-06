@@ -57,6 +57,12 @@
 						</div>
 					</div>
 					<div class="form-group row">
+						<label class="col-sm-12 col-md-2 col-form-label">Lương</label>
+						<div class="col-sm-12 col-md-10">
+							<input class="form-control" name="salary" value="" type="text">
+						</div>
+					</div>
+					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Kĩ năng cần có</label>
 						<div class="col-sm-12 col-md-10">
 							<select name='skill' class="custom-select2 form-control fs-14" multiple="multiple" style="width: 100%;">
