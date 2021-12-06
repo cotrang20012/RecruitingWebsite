@@ -92,6 +92,7 @@
 							<div class="h5 fw-400">Vị trí: ${Post.position}</div>
 							<div class="h5 fw-400">Kĩ năng: ${Post.skill }</div>
 							<div class="h5 fw-400">Nơi làm việc: ${Post.location }</div>
+							<div class="h5 fw-400">Lương: ${Post.luong }</div>
 						</div>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
@@ -109,7 +110,7 @@
 									<form action="login">
 										<div class="row justify-content-center">
 											<input type="submit" value="Ứng tuyển ngay"
-												class="btn btn--common">
+												class="btn btn--common fs-14">
 										</div>
 									</form>
 								</c:when>
@@ -125,7 +126,7 @@
 												<input type="hidden" name="salary" value="${Post.getLuong()}"> 
 												<input type="hidden" name="status" value="${Post.getStatus()}">
 												<input type="hidden" name="postId" value="${Post.getId()}">
-												<input type="submit" value="Huỷ ứng tuyển" class="btn btn--common">
+												<input type="submit" value="Huỷ ứng tuyển" class="btn btn--common fs-14">
 											</div>
 										</form>
 											</c:when>

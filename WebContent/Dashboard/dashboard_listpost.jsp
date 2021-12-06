@@ -58,11 +58,8 @@
 													<a class="dropdown-item"
 													href="<c:url value='/employer/editpost?post_url=${item.getUrl()}'/>"><i
 													class="dw dw-edit2"></i> Edit</a> 
-													<a class="dropdown-item"
-													href="<c:url value='/adminpostactive?id=${item.getId()}'/>"><i
-													class="dw dw-edit2"></i> Active</a> 
 													 <a class="dropdown-item"
-													href="<c:url value='/adminpostdelete?id=${item.getId()}'/>"><i class="dw dw-delete-3"></i> Delete</a>
+													href="<c:url value='"/employer/postdelete?id=${item.getId()}'/>"><i class="dw dw-delete-3"></i> Delete</a>
 											</div>
 										</div>
 									</td>

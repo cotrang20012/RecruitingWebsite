@@ -27,8 +27,11 @@ public class SecurityConfig {
 
 		urlPatterns1.add("/logout");
 		urlPatterns1.add("/active");
-		urlPatterns1.add("/dashboard/profile");
+		urlPatterns1.add("/employee/profile");
+		urlPatterns1.add("/applypost");
+		urlPatterns1.add("/employee/list-post");
 		urlPatterns1.add("/upload");
+		urlPatterns1.add("/changepw");
 		//urlPatterns1.add("/viewprofile");
 
 		mapConfig.put(ROLE_EMPLOYEE, urlPatterns1);
@@ -38,17 +41,31 @@ public class SecurityConfig {
 
 		urlPatterns2.add("/logout");
 		urlPatterns2.add("/active");
-		urlPatterns2.add("/dashboard/profile"); 
+		urlPatterns2.add("/employer/profile");
+		urlPatterns2.add("/employer/createpost");
+		urlPatterns2.add("/employer/editpost");
+		urlPatterns1.add("/employer/list-post");
+		urlPatterns2.add("/changepw");
 		urlPatterns2.add("/upload");
+		urlPatterns2.add("/employer/postdelete");
+		
 		//urlPatterns2.add("/viewprofile");
 		mapConfig.put(ROLE_EMPLOYER, urlPatterns2);
 		
 		List<String> urlPatterns3 = new ArrayList<String>();
 
-		urlPatterns2.add("/logout");
-		urlPatterns2.add("/dashboard/profile"); 
+		urlPatterns3.add("/logout");
+		urlPatterns3.add("/adminactive"); 
+		urlPatterns3.add("/adminpostactive"); 
+		urlPatterns3.add("/admindelete"); 
+		urlPatterns3.add("/adminpostdelete"); 
+		urlPatterns3.add("/admin/ManagerAccount"); 
+		urlPatterns3.add("/admin/ManagerPost");
+		urlPatterns3.add("/admin/profile");
+		urlPatterns3.add("/upload");
+		urlPatterns3.add("/changepw");
 		//urlPatterns2.add("/viewprofile");
-		mapConfig.put(ROLE_EMPLOYER, urlPatterns2);
+		mapConfig.put(ROLE_ADMIN, urlPatterns3);
 	}
 
 	public static Set<String> getAllAppRoles() {

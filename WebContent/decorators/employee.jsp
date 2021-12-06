@@ -12,7 +12,7 @@
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/bootstrap.min.css' />">
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/icon-font.min.css' />">
-<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/core.css' />">
+<link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/core.min.css' />">
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/style.css' />">
 
 

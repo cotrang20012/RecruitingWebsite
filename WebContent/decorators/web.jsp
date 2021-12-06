@@ -14,7 +14,7 @@
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/style.css' />">
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/main.css' />">
-<script src="<c:url value='/assets/script/core.js' />"></script>
+<script src="<c:url value='/assets/script/core.min.js' />"></script>
 <script src="<c:url value='/assets/script/script.min.js' />"></script>
 
 </head>
