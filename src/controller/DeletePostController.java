@@ -41,7 +41,7 @@ public class DeletePostController extends HttpServlet {
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		PostDAO postDAO = new PostDAO(mongo);
 		postDAO.Delete(id);
-		response.sendRedirect(request.getContextPath()+"/ManagerPost");
+		response.sendRedirect(request.getContextPath()+"/admin/ManagerPost");
 	}
 
 	/**

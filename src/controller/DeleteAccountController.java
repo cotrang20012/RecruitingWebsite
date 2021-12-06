@@ -70,7 +70,7 @@ public class DeleteAccountController extends HttpServlet {
 			
 		}
 			
-		response.sendRedirect(request.getContextPath()+"/ManagerAccount");
+		response.sendRedirect(request.getContextPath()+"/admin/ManagerAccount");
 	}
 
 	/**

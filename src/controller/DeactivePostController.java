@@ -39,7 +39,7 @@ public class DeactivePostController extends HttpServlet {
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		PostDAO postDAO = new PostDAO(mongo);
 		postDAO.updatePostStatusDeAct(id);
-		response.sendRedirect(request.getContextPath()+"/ManagerPost");
+		response.sendRedirect(request.getContextPath()+"/admin/ManagerPost");
 	}
 
 	/**
