@@ -106,7 +106,7 @@
 
 							<c:choose>
 								<c:when test="${acc==null }">
-									<form>
+									<form action="login">
 										<div class="row justify-content-center">
 											<input type="submit" value="Ứng tuyển ngay"
 												class="btn btn--common">
@@ -114,7 +114,7 @@
 									</form>
 								</c:when>
 								<c:otherwise>
-									<c:if test="${acc.typeUser==EMPLOYEE }">
+									<c:if test="${acc.typeUser=='EMPLOYEE' }">
 										<form action="apply">
 											<input type="hidden" name="id" value="${acc.getId }">
 											<div class="row justify-content-center">
@@ -123,8 +123,7 @@
 												<input type="hidden" name="salary" value="${Post.getSalary()}"> 
 												<input type="hidden" name="status" value="${Post.getStatus}">
 												<input type="hidden" name="postId" value="${Post.getId()}">
-												<input type="submit" value="Ứng tuyển ngay"
-													class="btn btn--common">
+												<input type="submit" value="Ứng tuyển ngay" class="btn btn--common">
 											</div>
 										</form>
 									</c:if>

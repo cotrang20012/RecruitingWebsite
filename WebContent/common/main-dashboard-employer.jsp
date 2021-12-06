@@ -83,7 +83,12 @@
 				</li>
 				<li class="dropdown">
 					<a href="<c:url value='/employer/list-post'/>" class="dropdown-toggle no-arrow"> 
-					<span class="micon dw dw-edit2"></span><span class="mtext">Ứng tuyển</span>
+					<span class="micon dw dw-edit2"></span><span class="mtext">Bài đăng tuyển</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="<c:url value='/employer/createpost'/>" class="dropdown-toggle no-arrow"> 
+					<span class="micon dw dw-edit2"></span><span class="mtext">Đăng tuyển</span>
 					</a>
 				</li>
 				<li class="dropdown">
