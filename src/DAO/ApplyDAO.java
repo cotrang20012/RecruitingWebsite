@@ -45,7 +45,7 @@ public class ApplyDAO extends Model {
 	}
 	
 	public void DeleteAllApplyWithPostID(ObjectId postID) {
-		APPLY.deleteMany(Filters.eq("_id", postID));
+		APPLY.deleteMany(Filters.eq("postId", postID));
 	}
 	
 	public ArrayList<UserEmployee> getListEmployeeFromPostID(ObjectId postID){
