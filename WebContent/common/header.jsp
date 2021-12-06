@@ -26,7 +26,7 @@
 							<c:if test="${acc.typeUser=='EMPLOYER' }">
 							
 							<li class="nav-item"><a class="nav-link" aria-current="page"
-								href="${pageContext.request.contextPath}/Post/create_post.jsp">Đăng tuyển</a></li>
+								href="${pageContext.request.contextPath}/employer/createpost">Đăng tuyển</a></li>
 							</c:if>
 					
 						</ul>

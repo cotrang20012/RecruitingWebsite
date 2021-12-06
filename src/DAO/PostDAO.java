@@ -156,9 +156,24 @@ public class PostDAO extends Model {
 		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "active"));
 				
 	}
+	
 	public void updatePostStatusDeAct(ObjectId postId) {
 		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "non-active"));			
 	}
+	
+	public boolean updatePostAddApply(ObjectId postId) {
+		Post post= POST.find(Filters.eq("_id", postId)).first();
+		post.setApply(post.getApply()+1);
+		return POST.updateOne(Filters.eq("_id", postId),Updates.set("apply", post.getApply())).getModifiedCount()>0?true:false;			
+	}
+	
+	public boolean updatePostSubApply(ObjectId postId) {
+		Post post= POST.find(Filters.eq("_id", postId)).first();
+		post.setApply(post.getApply()-1);
+		return POST.updateOne(Filters.eq("_id", postId),Updates.set("apply", post.getApply())).getModifiedCount()>0?true:false;			
+	}
+	
+	
 	public void DeleteAllPostWithAccID (ObjectId accountID) {
 		POST.deleteMany(Filters.eq("accountId", accountID));
 	}

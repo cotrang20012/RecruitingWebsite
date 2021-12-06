@@ -19,7 +19,7 @@ import DAO.PostDAO;
 /**
  * Servlet implementation class DeletePostController
  */
-@WebServlet(name = "home", urlPatterns = { "/adminpostdelete", "/employer/postdelete" })
+@WebServlet(name = "postdelete", urlPatterns = { "/adminpostdelete", "/employer/postdelete" })
 public class DeletePostController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

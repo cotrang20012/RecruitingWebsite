@@ -13,6 +13,7 @@ import org.bson.types.ObjectId;
 import com.mongodb.client.MongoClient;
 
 import DAO.ApplyDAO;
+import DAO.PostDAO;
 import model.Account;
 import model.Apply;
 
@@ -52,6 +53,10 @@ public class ApplyPostController extends HttpServlet {
 		apply.setTime(request.getParameter("time"));
 		apply.setUrl(request.getParameter("url"));
 		applyDAO.Insert(apply);
+		
+		PostDAO postDAO=new PostDAO(mongo);
+		postDAO.updatePostAddApply(apply.getPostId());
+		
 		response.sendRedirect(request.getHeader("referer"));
 	}
 

@@ -52,13 +52,14 @@ public class DeleteApplyController extends HttpServlet {
 		try {
 			if (accountId == null) accountId = acc.getId();
 		} catch (Exception e) {
-			// TODO: handle exception
+			response.sendRedirect(request.getHeader("referer"));
+			return;
 		}
 		ApplyDAO applyDAO = new ApplyDAO(mongo);
 		if(applyDAO.DeletePostSelectedPost(accountId, postId)) {
 			PostDAO postDAO = new PostDAO(mongo);
+			postDAO.updatePostSubApply(postId);
 		}
-		
 		
 		request.setAttribute("msg", "Xoá thành công");
 		response.sendRedirect(request.getHeader("referer"));

@@ -3,7 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.servlet.*;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -12,12 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
-import com.mongodb.client.model.Filters;
-import com.opensymphony.module.sitemesh.Page;
 
 import DAO.AccountDAO;
 import DAO.PostDAO;
@@ -29,13 +26,12 @@ import model.Post;
 import model.UserEmployee;
 import model.UserEmployer;
 
-@WebServlet(name = "home", urlPatterns = { "/home" })
+@WebServlet(name = "home", urlPatterns = { "/home","/home2" })
 public class HomeController extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6700670231826404756L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
