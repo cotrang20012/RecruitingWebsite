@@ -1,11 +1,13 @@
 <%@ include file="/common/taglib.jsp"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="<c:url value='/assets/img/favicon.ico'/>">
+<link rel="icon" type="image/png"
+	href="<c:url value='/assets/img/favicon.ico'/>">
 <title>${Post.title }</title>
 
 
@@ -19,7 +21,9 @@
 						<div class="card-body">
 							<div class="d-flex align-items-center">
 								<div class="mr-2">
-									<img class="rounded-circle" width="45" src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.6435-9/244751300_3008463426100929_846146406731092230_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Bm0FvYRqHzsAX_7eZiI&_nc_ht=scontent.fdad1-1.fna&oh=9a1424bb50d06e203e33b8fe221deaf5&oe=6195D245" alt="">
+									<img class="rounded-circle" width="45"
+										src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.6435-9/244751300_3008463426100929_846146406731092230_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Bm0FvYRqHzsAX_7eZiI&_nc_ht=scontent.fdad1-1.fna&oh=9a1424bb50d06e203e33b8fe221deaf5&oe=6195D245"
+										alt="">
 								</div>
 								<div class="ml-2">
 									<div class="h3 m-0">${Author.fullName }</div>
@@ -49,20 +53,30 @@
 
 							<a class="card-link" href="#">
 								<h1 class="card-title fs-22">${Post.title }</h1>
+
 							</a>
 							<div class="badge badge-primary">
-								<i class="fa fa-clock-o mx-2 fs-14"></i>${Post.time() }
+								<i class="fa fa-clock-o mx-2 fs-14"></i>${Post.time()}
+
+
 							</div>
 						</div>
 
 						<div class="card-body">
 							<p class="card-text fs-15">${Post.ContentHTML() }</p>
 							<div style="font-size: 1.2rem;">
-								<span class="badge badge-primary">Technical</span> <span class="badge badge-primary">ManagerSoftware</span> <span class="badge badge-primary">Development</span> <span class="badge badge-primary">CTO</span>
+								<span class="badge badge-primary">Technical</span> <span
+									class="badge badge-primary">ManagerSoftware</span> <span
+									class="badge badge-primary">Development</span> <span
+									class="badge badge-primary">CTO</span>
 							</div>
 						</div>
 						<div class="card-footer">
-							<a href="#" class="card-link h5"><i class="fa fa-gittip"></i> Like</a> <a href="#" class="card-link h5"><i class="fa fa-comment"></i> Comment</a> <a href="#" class="card-link h5"><i class="fa fa-mail-forward"></i> Follow</a>
+							<a href="#" class="card-link h5"><i class="fa fa-gittip"></i>
+								Like</a> <a href="#" class="card-link h5"><i
+								class="fa fa-comment"></i> Comment</a> <a href="#"
+								class="card-link h5"><i class="fa fa-mail-forward"></i>
+								Follow</a>
 						</div>
 					</div>
 					<!-- Post /////-->
@@ -75,7 +89,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="h3">Thông tin</div>
-							<div class="h5 fw-400">Vị trí: ${Post.position }</div>
+							<div class="h5 fw-400">Vị trí: ${Post.position}</div>
 							<div class="h5 fw-400">Kĩ năng: ${Post.skill }</div>
 							<div class="h5 fw-400">Nơi làm việc: ${Post.location }</div>
 						</div>
@@ -89,12 +103,13 @@
 								<div class="h5 fw-400">${Post.email }</div>
 								<div class="h5 fw-400">${Post.phone }</div>
 							</li>
-							
+
 							<c:choose>
 								<c:when test="${acc==null }">
 									<form>
 										<div class="row justify-content-center">
-											<input type="submit" value="Ứng tuyển ngay" class="btn btn--common">
+											<input type="submit" value="Ứng tuyển ngay"
+												class="btn btn--common">
 										</div>
 									</form>
 								</c:when>
@@ -103,7 +118,13 @@
 										<form action="apply">
 											<input type="hidden" name="id" value="${acc.getId }">
 											<div class="row justify-content-center">
-												<input type="submit" value="Ứng tuyển ngay" class="btn btn--common">
+												<input type="hidden" name="title"  value="${Post.title}">
+												<input type="hidden" name="time"   value="${Post.getDateEnd()}"> 
+												<input type="hidden" name="salary" value="${Post.getSalary()}"> 
+												<input type="hidden" name="status" value="${Post.getStatus}">
+												<input type="hidden" name="postId" value="${Post.getId()}">
+												<input type="submit" value="Ứng tuyển ngay"
+													class="btn btn--common">
 											</div>
 										</form>
 									</c:if>

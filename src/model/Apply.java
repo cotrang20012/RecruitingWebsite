@@ -9,8 +9,51 @@ public class Apply extends Model {
 	private ObjectId _id;
 	private ObjectId accountId;
 	private ObjectId postId;
-	private String date;
-	
+	private String title;
+	private int luong;
+	private String status;
+	private String time;
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public int getLuong() {
+		return luong;
+	}
+
+	public void setLuong(int luong) {
+		this.luong = luong;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Apply() {
 	}
 	
@@ -18,15 +61,6 @@ public class Apply extends Model {
 		this._id = id;
 		this.accountId = account_id;
 		this.postId = post_id;
-		this.date = date;
-	}
-	
-	public String getDate() {
-		return date;
-	}
-	
-	public void setDate(String date) {
-		this.date = date;
 	}
 	
 	public ObjectId getId() {

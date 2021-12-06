@@ -36,6 +36,7 @@
 								<th class="table-plus datatable-nosort">Tiêu đề</th>
 								<th>Lương</th>
 								<th>Tình trạng</th>
+								<th>Hạn chót ứng tuyển</th>
 								<th class="datatable-nosort">Hành động</th>
 							</tr>
 						</thead>
@@ -43,9 +44,10 @@
 							<c:forEach items="${apply}" var="item" varStatus="loop">
 								<tr>
 									<td class="table-plus">${loop.index}</td>
-									<td>${item.getAccount_id()}</td>
-									<td>${item.getDate()}</td>
-									<td>${item.getPost_id()}</td>
+									<td>${item.getTitle()}</td>
+									<td>${item.getSalary()}</td>
+									<td>${item.getStatus()}</td>
+									<td>${item.getTime()}</td>
 									<td>
 										<div class="dropdown">
 											<a
