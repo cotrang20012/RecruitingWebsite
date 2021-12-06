@@ -15,7 +15,6 @@
 
 	<fmt:formatDate value="${userProfile.birthday}" var="formatedBirthday" type="date" pattern="dd/MM/yyyy" />
 
-	<jsp:include page="../common/main-dashboard-employee.jsp"></jsp:include>
 	
 	<div class="main-container">
 		<div class="pd-ltr-20">

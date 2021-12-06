@@ -21,7 +21,6 @@
 </head>
 
 <body>
-	<jsp:include page="../common/main-dashboard-employee.jsp"></jsp:include>
 	<div class="main-container">
 		<div class="pd-ltr-20">
 
@@ -58,7 +57,7 @@
 											</a>
 											<div
 												class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="<c:url value='/post?p=${item.getUrl()()}'/>"><i class="dw dw-eye"></i>
+												<a class="dropdown-item" href="<c:url value='/post?p=${item.getUrl()}'/>"><i class="dw dw-eye"></i>
 													View</a> <a class="dropdown-item"
 													href="<c:url value='/adminpostactive?id=${item.getId()}'/>"><i
 													class="dw dw-edit2"></i> Active</a> <a class="dropdown-item"

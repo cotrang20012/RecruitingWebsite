@@ -58,7 +58,7 @@ public class HomeController extends HttpServlet {
 							UserEmployerDAO dao = new UserEmployerDAO(mongoClient);
 							UserEmployer userEmployer = dao.findEmployerWithID(id);
 							session.setAttribute("user", userEmployer);
-						} else if (acc.getTypeUser().equals("EMPLOYEE")) {
+						} else {
 							UserEmployeeDAO dao = new UserEmployeeDAO(mongoClient);
 							UserEmployee userEmployee = dao.findEmployeeWithID(id);
 							session.setAttribute("user", userEmployee);

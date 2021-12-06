@@ -27,7 +27,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class profileController
  */
-@WebServlet(name = "profile", urlPatterns = {"/dashboard/profile"})
+@WebServlet(name = "profile", urlPatterns = { "/employee/profile", "/employer/profile", "/admin/profile" })
 public class profileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -52,7 +52,7 @@ public class profileController extends HttpServlet {
 		if (action == null) {
 			action = "view";
 		}
-		
+
 		if (action.equals("view")) {
 			HttpSession Session = request.getSession();
 			Account acc = (Account) Session.getAttribute("acc");
@@ -74,7 +74,7 @@ public class profileController extends HttpServlet {
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
-					
+
 					request.setAttribute("userProfile", userEmployee);
 					urlString = "/Profile/profileEmployee.jsp";
 				} else if (type_user.equals("EMPLOYER")) {
@@ -86,53 +86,53 @@ public class profileController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher(urlString);
 			rd.forward(request, response);
 		}
-		if(action.equals("update")) {
+		if (action.equals("update")) {
 			HttpSession Session = request.getSession();
 			Account acc = (Account) Session.getAttribute("acc");
 			MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 			UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
 			UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
-			
+
 			String urlString = "/home.jsp";
 			if (acc == null) {
 				urlString = "/home.jsp";
 			} else {
 				String type_user = acc.getTypeUser();
-				if (type_user.equals("EMPLOYEE")) {
-					UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
-					
-					userEmployee.setFullName(request.getParameter("username"));
-					userEmployee.setAddress(request.getParameter("address"));
-					userEmployee.setPhone(request.getParameter("phone"));
-					userEmployee.setEmail(request.getParameter("email"));
-					String birthdate=request.getParameter("birthday");
-					Date date1 = new Date();
-					try {
-						date1 = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday"));
-					} catch (ParseException e1) {
-						e1.printStackTrace();
-					}  
-					userEmployee.setBirthday(date1);
-					
-					userEmployeeDAO.UpdateUserEmployee(userEmployee);
-					
-					request.setAttribute("userProfile", userEmployee);
-					urlString = "/Profile/profileEmployee.jsp";
-				} else if (type_user.equals("EMPLOYER")) {
+				if (type_user.equals("EMPLOYER")) {
 					UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
-					
+
 					userEmployer.setAddress(request.getParameter("address"));
 					userEmployer.setFullName(request.getParameter("companyname"));
 					userEmployer.setPhone(request.getParameter("phone"));
 					userEmployer.setEmail(request.getParameter("email"));
 					userEmployer.setWebsite(request.getParameter("website"));
 					userEmployer.setQuymo(request.getParameter("quymo"));
-					userEmployer.setTechstack(request.getParameter("techstack"));		
+					userEmployer.setTechstack(request.getParameter("techstack"));
 					userEmployer.setNganhnghe(request.getParameter("nganhnghe"));
-					
+
 					userEmployerDAO.UpdateUserEmployer(userEmployer);
 					request.setAttribute("userProfile", userEmployer);
 					urlString = "/Profile/profileEmployer.jsp";
+				} else {
+					UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
+
+					userEmployee.setFullName(request.getParameter("username"));
+					userEmployee.setAddress(request.getParameter("address"));
+					userEmployee.setPhone(request.getParameter("phone"));
+					userEmployee.setEmail(request.getParameter("email"));
+					String birthdate = request.getParameter("birthday");
+					Date date1 = new Date();
+					try {
+						date1 = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday"));
+					} catch (ParseException e1) {
+						e1.printStackTrace();
+					}
+					userEmployee.setBirthday(date1);
+
+					userEmployeeDAO.UpdateUserEmployee(userEmployee);
+
+					request.setAttribute("userProfile", userEmployee);
+					urlString = "/Profile/profileEmployee.jsp";
 				}
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(urlString);

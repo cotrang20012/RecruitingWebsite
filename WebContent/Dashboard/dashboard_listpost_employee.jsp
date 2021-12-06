@@ -21,7 +21,6 @@
 </head>
 
 <body>
-	<jsp:include page="../common/main-dashboard-employee.jsp"></jsp:include>
 	<div class="main-container">
 		<div class="pd-ltr-20">
 

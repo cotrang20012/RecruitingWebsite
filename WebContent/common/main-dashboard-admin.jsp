@@ -56,9 +56,6 @@
 				</div>
 			</div>
 
-			<div class="reset-options pt-30 text-center">
-				<button class="btn btn-danger" id="reset-settings">Reset Settings</button>
-			</div>
 		</div>
 	</div>
 </div>
@@ -76,14 +73,19 @@
 		<div class="sidebar-menu">
 			<ul id="accordion-menu">
 				<li class="dropdown">
-				<a href="<c:url value='/employee/profile' />" class="dropdown-toggle no-arrow"> 
+				<a href="<c:url value='/admin/profile' />" class="dropdown-toggle no-arrow"> 
 					<span class="micon dw dw-user-2"></span>
 					<span class="mtext">Profile</span>
 				</a>
 				</li>
 				<li class="dropdown">
-					<a href="<c:url value='/employee/list-post'/>" class="dropdown-toggle no-arrow"> 
-					<span class="micon dw dw-edit2"></span><span class="mtext">Ứng tuyển</span>
+					<a href="<c:url value='/admin/ManagerPost'/>" class="dropdown-toggle no-arrow"> 
+					<span class="micon dw dw-edit2"></span><span class="mtext">Quản lý bài đăng</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="<c:url value='/admin/ManagerAccount'/>" class="dropdown-toggle no-arrow"> 
+					<span class="micon dw dw-password"></span><span class="mtext">Quản lý tài khoản</span>
 					</a>
 				</li>
 				<li class="dropdown">

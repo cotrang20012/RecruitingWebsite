@@ -46,7 +46,7 @@
               <i class="fas fa-gem me-3"></i>Lập trình WEB
             </h6>
             <p>
-              Website được thiết kế để thực hành các bài tập và lưu lạc kết quả làm việc của nhóm
+              Website được thiết kế để thực hành các bài tập và lưu lại kết quả làm việc của nhóm
             </p>
           </div>
           <!-- Grid column -->

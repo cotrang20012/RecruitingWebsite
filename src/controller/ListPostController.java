@@ -25,7 +25,8 @@ import model.*;
 /**
  * Servlet implementation class ListPost
  */
-@WebServlet("/dashboard/list-post")
+
+@WebServlet(name = "list-post", urlPatterns = { "/employer/list-post","/employee/list-post" })
 public class ListPostController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

@@ -5,8 +5,14 @@
 		<pattern>/api-*</pattern>
 	</excludes>
 
-	<decorator name="dashboard" page="dashboard.jsp" >
-		<pattern>/dashboard*</pattern>
+	<decorator name="employee" page="employee.jsp" >
+		<pattern>/employee*</pattern>
+	</decorator>
+	<decorator name="employer" page="employer.jsp" >
+		<pattern>/employer*</pattern>
+	</decorator>
+	<decorator name="admin" page="admin.jsp" >
+		<pattern>/admin*</pattern>
 	</decorator>
 	<decorator name="web" page="web.jsp" >
 		<pattern>/*</pattern>

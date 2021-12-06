@@ -27,7 +27,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class ManagerAccountController
  */
-@WebServlet("/ManagerAccount")
+@WebServlet("/admin/ManagerAccount")
 public class ManagerAccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

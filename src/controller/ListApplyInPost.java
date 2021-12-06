@@ -26,7 +26,7 @@ import model.UserEmployee;
 /**
  * Servlet implementation class ListApplyInPost
  */
-@WebServlet("/dashboard/list-apply-post")
+@WebServlet("/employer/list-apply-post")
 public class ListApplyInPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

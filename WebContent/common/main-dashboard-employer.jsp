@@ -76,13 +76,13 @@
 		<div class="sidebar-menu">
 			<ul id="accordion-menu">
 				<li class="dropdown">
-				<a href="<c:url value='/employee/profile' />" class="dropdown-toggle no-arrow"> 
+				<a href="<c:url value='/employer/profile' />" class="dropdown-toggle no-arrow"> 
 					<span class="micon dw dw-user-2"></span>
 					<span class="mtext">Profile</span>
 				</a>
 				</li>
 				<li class="dropdown">
-					<a href="<c:url value='/employee/list-post'/>" class="dropdown-toggle no-arrow"> 
+					<a href="<c:url value='/employer/list-post'/>" class="dropdown-toggle no-arrow"> 
 					<span class="micon dw dw-edit2"></span><span class="mtext">Ứng tuyển</span>
 					</a>
 				</li>

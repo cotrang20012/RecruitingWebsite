@@ -104,7 +104,7 @@ public class LoginController extends HttpServlet {
 				UserEmployer userEmployer=dao.findEmployerWithID(account_id);
 				session.setAttribute("user", userEmployer);
 			}
-			else if(acc.getTypeUser().equals("EMPLOYEE")) {
+			else {
 				UserEmployeeDAO dao=new UserEmployeeDAO(mongo);
 				UserEmployee userEmployee=dao.findEmployeeWithID(account_id);
 				session.setAttribute("user", userEmployee);

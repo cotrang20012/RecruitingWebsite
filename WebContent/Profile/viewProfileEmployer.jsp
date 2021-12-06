@@ -14,8 +14,6 @@
 
 <body>
 
-	<jsp:include page="../common/dashboard-header-employer.jsp"></jsp:include>
-	
 	<div class="main-container">
 		<div class="pd-ltr-20">
 			<div class="container rounded bg-white mb-5">

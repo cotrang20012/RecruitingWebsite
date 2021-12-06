@@ -50,10 +50,24 @@ boolean is_employer = accountDAO.isEmployer(request.getCookies());
                         <span class="user-icon">
 							<img src="${user.profile_url }" alt="" style="width:50px;height:50px">
 						</span>
-                        <span class="user-name"><c:out value='${user.fullName }' /></span>
+                        <span class="user-name">
+                        <c:out value='${user.fullName }' />
+                        
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                        <a class="dropdown-item" href="<c:out value='dashboard/profile' />"><i class="dw dw-user1"></i> Profile</a>
+                    	<c:choose>
+                        	<c:when test="${acc.typeUser=='EMPLOYEE' }">
+                        		<a class="dropdown-item" href="<c:out value='employee/profile' />"><i class="dw dw-user1"></i> Profile</a>
+                        	</c:when>
+                        	<c:when test="${acc.typeUser=='EMPLOYER' }">
+                        		<a class="dropdown-item" href="<c:out value='employer/profile' />"><i class="dw dw-user1"></i> Profile</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<a class="dropdown-item" href="<c:out value='admin/profile' />"><i class="dw dw-user1"></i> Profile</a>
+                        	</c:otherwise>
+                        </c:choose>
+                        
                    <!--      <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a> -->
                         <a class="dropdown-item" href="<c:out value='changepw' />"><i class="dw dw-help"></i> Đổi mật khẩu</a>
                         <a class="dropdown-item" href="<c:out value='logout' />"><i class="dw dw-logout"></i> Log Out</a>

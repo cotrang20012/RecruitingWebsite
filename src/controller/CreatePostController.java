@@ -40,7 +40,7 @@ import model.UserEmployee;
 /**
  * Servlet implementation class CreatePostController
  */
-@WebServlet(name = "createpost", urlPatterns = { "/dashboard/createpost" })
+@WebServlet(name = "createpost", urlPatterns = { "/employer/createpost" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)
