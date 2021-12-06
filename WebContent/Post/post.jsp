@@ -139,6 +139,7 @@
 												<input type="hidden" name="salary" value="${Post.getLuong()}"> 
 												<input type="hidden" name="status" value="${Post.getStatus()}">
 												<input type="hidden" name="postId" value="${Post.getId()}">
+												<input type="hidden" name="url" value = "${Post.getUrl}">
 												<input type="submit" value="Ứng tuyển ngay" class="btn btn--common fs-14">
 											</div>
 										</form>
