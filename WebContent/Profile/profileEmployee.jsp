@@ -21,11 +21,11 @@
 		<div class="pd-ltr-20">
 			<div class="container rounded bg-white mb-5">
 				<div class="row">
-					<div class="col-md-3 border-right">
+					<div class="col-md-5 border-right">
 						<div class="d-flex flex-column align-items-center text-center p-3 py-5">
 							<!-- <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
-							<img class="rounded-circle mt-5" width="150px" src="${userProfile.profile_url }" id="profile-image">
+							<img class="rounded-circle mt-5" width="150px" height="150px" src="${userProfile.profile_url }" id="profile-image">
 							<!--<img class="rounded-circle mt-5" width="150px"
                                 src="${userProfile.profile_url }"> -->
 							<span class="font-weight-bold"><c:out value='${userProfile.fullName}' /></span>
@@ -35,7 +35,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-5 border-right">
+					<div class="col-md-7 border-right">
 						<form action="profile" method="POST">
 							<div class="p-3 py-5">
 								<div class="d-flex justify-content-between align-items-center mb-3">

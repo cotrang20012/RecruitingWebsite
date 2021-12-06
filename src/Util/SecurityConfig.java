@@ -10,6 +10,7 @@ public class SecurityConfig {
 
 	public static final String ROLE_EMPLOYER = "EMPLOYER";
 	public static final String ROLE_EMPLOYEE = "EMPLOYEE";
+	public static final String ROLE_ADMIN = "ADMIN";
 
 	// String: Role
 	// List<String>: urlPatterns.
@@ -39,6 +40,13 @@ public class SecurityConfig {
 		urlPatterns2.add("/active");
 		urlPatterns2.add("/dashboard/profile"); 
 		urlPatterns2.add("/upload");
+		//urlPatterns2.add("/viewprofile");
+		mapConfig.put(ROLE_EMPLOYER, urlPatterns2);
+		
+		List<String> urlPatterns3 = new ArrayList<String>();
+
+		urlPatterns2.add("/logout");
+		urlPatterns2.add("/dashboard/profile"); 
 		//urlPatterns2.add("/viewprofile");
 		mapConfig.put(ROLE_EMPLOYER, urlPatterns2);
 	}
