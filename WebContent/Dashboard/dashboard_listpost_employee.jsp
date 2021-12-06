@@ -45,7 +45,7 @@
 								<tr>
 									<td class="table-plus">${loop.index}</td>
 									<td>${item.getTitle()}</td>
-									<td>${item.getSalary()}</td>
+									<td>${item.getLuong()}</td>
 									<td>${item.getStatus()}</td>
 									<td>${item.getTime()}</td>
 									<td>

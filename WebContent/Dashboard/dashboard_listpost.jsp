@@ -53,11 +53,11 @@
 											</a>
 											<div
 												class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="<c:url value='/dashboard/list-apply-post?post_url=${item.getUrl()}'/>"><i class="dw dw-eye"></i>
+												<a class="dropdown-item" href="<c:url value='/employer/list-apply-post?post_url=${item.getUrl()}'/>"><i class="dw dw-eye"></i>
 													View</a> 
 													<a class="dropdown-item"
-													href="<c:url value='/editpost?post_url=${item.getUrl()}'/>"><i
-													class="dw dw-edit2"></i> Active</a> 
+													href="<c:url value='/employer/editpost?post_url=${item.getUrl()}'/>"><i
+													class="dw dw-edit2"></i> Edit</a> 
 													<a class="dropdown-item"
 													href="<c:url value='/adminpostactive?id=${item.getId()}'/>"><i
 													class="dw dw-edit2"></i> Active</a> 

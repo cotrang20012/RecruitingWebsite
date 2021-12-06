@@ -48,11 +48,15 @@ public class viewProfileController extends HttpServlet {
 		UserEmployerDAO userEmployerDAO = new UserEmployerDAO(mongo);
 		UserEmployeeDAO userEmployeeDAO = new UserEmployeeDAO(mongo);
 		Account acc = accountDAO.getAccountFromUsername(username);
+		if(acc==null) {
+			response.sendRedirect(request.getContextPath()+"/home");
+			return;
+		}
 		String type_user = acc.getTypeUser();
 		String urlString = "/home.jsp";
 		if (type_user.equals("EMPLOYEE")) {
 			UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
-			SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat tempFormat = new SimpleDateFormat("yyyy-MM-dd");
 			String tempFormatString = tempFormat.format(userEmployee.getBirthday());
 			try {
 				userEmployee.setBirthday(tempFormat.parse(tempFormatString));

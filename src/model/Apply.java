@@ -10,17 +10,11 @@ public class Apply {
 	private ObjectId accountId;
 	private ObjectId postId;
 	private String title;
-	private int luong;
+	private String luong;
 	private String status;
 	private String time;
 
-	public ObjectId get_id() {
-		return _id;
-	}
-
-	public void set_id(ObjectId _id) {
-		this._id = _id;
-	}
+	
 
 	public String getTime() {
 		return time;
@@ -38,11 +32,11 @@ public class Apply {
 		this.title = title;
 	}
 
-	public int getLuong() {
+	public String getLuong() {
 		return luong;
 	}
 
-	public void setLuong(int luong) {
+	public void setLuong(String luong) {
 		this.luong = luong;
 	}
 

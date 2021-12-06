@@ -44,10 +44,10 @@ public class ApplyPostController extends HttpServlet {
 		Account acc = (Account) Session.getAttribute("acc");
 		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
 		ApplyDAO applyDAO = new ApplyDAO(mongo);
-		apply.setPostId(new ObjectId(request.getParameter("PostId")));
+		apply.setPostId(new ObjectId(request.getParameter("postId")));
 		apply.setAccountId(acc.getId());
 		apply.setTitle(request.getParameter(request.getParameter("title")));
-		apply.setLuong(Integer.parseInt(request.getParameter("salary")));
+		apply.setLuong(request.getParameter("salary"));
 		apply.setStatus(request.getParameter("status"));
 		apply.setTime(request.getParameter("time"));
 		applyDAO.Insert(apply);

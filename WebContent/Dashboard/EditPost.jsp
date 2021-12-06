@@ -65,7 +65,7 @@
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Kĩ năng cần có</label>
-						<div class="col-sm-12 col-md-10">
+						<div class="col-sm-12 col-md-10 fs-14">
 							<select name='skill' class="custom-select2 form-control fs-14" multiple="multiple" style="width: 100%;">
 								<optgroup label="Backend">
 									<option value="C++">C++</option>
@@ -83,7 +83,7 @@
 
 					<div class="form-group row">
 						<label class="col-sm-12 col-md-2 col-form-label">Kinh nghiệm</label>
-						<div class="col-sm-12 col-md-10">
+						<div class="col-sm-12 col-md-10 fs-14">
 							<select name='exp' class="custom-select col-12">
 								<option selected="">--Kinh nghiệm--</option>
 								<option value="Fresher">Fresher</option>
@@ -109,7 +109,7 @@
 					<div class="form-group">
 						<label>Hình ảnh</label>
 						<input type="file" id="thumbnail" name="thumbnail" accept="image/png, image/jpeg">
-						<img class="rounded-circle mt-5" width="150px" height="150px" src="${Post.thumbnail_url }" id="profile-image">
+						<img class="mt-5" width="150px" height="150px" src="${Post.thumbnail_url }" id="profile-image">
 					</div>
 					
 					<div class="row justify-content-center">
