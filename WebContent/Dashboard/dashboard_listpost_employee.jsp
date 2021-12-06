@@ -57,10 +57,9 @@
 											</a>
 											<div
 												class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i>
-													View</a> <a class="dropdown-item" href="#"><i
-													class="dw dw-edit2"></i> Edit</a> <a class="dropdown-item"
-													href="#"><i class="dw dw-delete-3"></i> Delete</a>
+												<a class="dropdown-item" href="/post?p=${item.getUrl()"}><i class="dw dw-eye"></i>
+													View</a><a class="dropdown-item"
+													href="/employer/delete-apply?postId=${item.getId()}"><i class="dw dw-delete-3"></i> Delete</a>
 											</div>
 										</div>
 									</td>

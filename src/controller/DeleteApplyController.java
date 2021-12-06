@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.binary.Hex;
 import org.bson.types.ObjectId;
@@ -14,6 +15,7 @@ import com.mongodb.client.MongoClient;
 
 import DAO.ApplyDAO;
 import DAO.PostDAO;
+import model.Account;
 import model.Apply;
 
 /**
@@ -39,14 +41,19 @@ public class DeleteApplyController extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		
+		HttpSession Session = request.getSession();
+		Account acc = (Account) Session.getAttribute("acc");
 		String idString=request.getParameter("postId");
 		System.out.println(idString);
 	
 		ObjectId postId = new ObjectId(idString);
 		ObjectId accountId = new ObjectId(request.getParameter("accountId"));
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
-		
+		try {
+			if (accountId == null) accountId = acc.getId();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		ApplyDAO applyDAO = new ApplyDAO(mongo);
 		if(applyDAO.DeletePostSelectedPost(accountId, postId)) {
 			PostDAO postDAO = new PostDAO(mongo);
