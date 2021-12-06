@@ -1,7 +1,7 @@
 package model;
 
 import org.bson.types.ObjectId;
-public class Confirm extends Model {
+public class Confirm{
 	private ObjectId id;
 	private ObjectId accountId;
 	private String uuid;

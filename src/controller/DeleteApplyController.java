@@ -44,12 +44,15 @@ public class DeleteApplyController extends HttpServlet {
 		System.out.println(idString);
 	
 		ObjectId postId = new ObjectId(idString);
-		
 		ObjectId accountId = new ObjectId(request.getParameter("accountId"));
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		
 		ApplyDAO applyDAO = new ApplyDAO(mongo);
-		applyDAO.DeletePostSelectedPost(accountId, postId);
+		if(applyDAO.DeletePostSelectedPost(accountId, postId)) {
+			PostDAO postDAO = new PostDAO(mongo);
+		}
+		
+		
 		request.setAttribute("msg", "Xoá thành công");
 		response.sendRedirect(request.getHeader("referer"));
 	}

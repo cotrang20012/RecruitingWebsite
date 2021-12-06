@@ -2,7 +2,7 @@ package model;
 import java.util.Date;
 import org.bson.types.ObjectId;
 
-public class UserEmployee extends Model{
+public class UserEmployee {
 	
 	protected ObjectId _id;
 	protected ObjectId accountID;

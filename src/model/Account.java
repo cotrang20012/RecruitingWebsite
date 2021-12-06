@@ -3,7 +3,7 @@ package model;
 import org.bson.types.ObjectId;
 
 
-public class Account extends Model{
+public class Account{
 	protected ObjectId _id;
 	protected String username;
 	protected String password;

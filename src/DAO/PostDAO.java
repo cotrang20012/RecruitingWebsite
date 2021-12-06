@@ -143,23 +143,6 @@ public class PostDAO extends Model {
 	}
 
 	
-	public String Update(String p, String title, String new_title, String content, 
-			boolean is_public, String thumbnail_url, String category) {
-		
-		String newURL = p;
-		if (!new_title.equals(title))
-			newURL = Utilities.createURL(title);
-		POST.updateOne(Filters.eq("url", p),
-				Updates.combine(Updates.set("url", newURL), 
-						Updates.set("title", new_title), 
-						Updates.set("content", content),
-						Updates.set("category", category), 
-						Updates.set("is_public", is_public),
-						Updates.set("updated_at", Utilities.GetCurrentDateTime()),
-						Updates.set("thumbnail_url", thumbnail_url)));
-		return newURL;
-	}
-	
 	public ArrayList<Post> GetPostListWithAccID(ObjectId accountID){
 		ArrayList<Post> lPost = new ArrayList<Post>();
 		FindIterable<Post> listPost = POST.find(Filters.eq("accountId", accountID));
@@ -174,8 +157,7 @@ public class PostDAO extends Model {
 				
 	}
 	public void updatePostStatusDeAct(ObjectId postId) {
-		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "non-active"));
-				
+		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "non-active"));			
 	}
 	public void DeleteAllPostWithAccID (ObjectId accountID) {
 		POST.deleteMany(Filters.eq("accountId", accountID));

@@ -19,8 +19,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script> 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 
 </head>
 <body style="background: #eee; position: relative;">
@@ -168,7 +166,8 @@
 										style="width:100%;height:200px">
 									<div class="p-4">
 										<a href="<c:url value = '/post?p=${post.url }'></c:url>"
-											class="text-dark"><h2>
+											class="text-dark">
+											<h2>
 												<c:out value="${post.title }" />
 											</h2></a>
 										<p class="text-muted mb-0 fs-14"

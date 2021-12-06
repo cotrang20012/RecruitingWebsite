@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 
 import webfit.Utilities;
 
-public class Post extends Model {
+public class Post {
 //	private ObjectId author_id;
 	private String url;
 	private int apply = 0;

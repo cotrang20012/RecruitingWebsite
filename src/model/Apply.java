@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.bson.types.ObjectId;
 
-public class Apply extends Model {
+public class Apply {
 	private ObjectId _id;
 	private ObjectId accountId;
 	private ObjectId postId;

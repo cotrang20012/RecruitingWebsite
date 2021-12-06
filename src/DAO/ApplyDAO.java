@@ -57,8 +57,8 @@ public class ApplyDAO extends Model {
 		
 	}
 	
-	public void DeletePostSelectedPost(ObjectId accoundID,ObjectId postId) {
-		APPLY.deleteMany(Filters.and(Filters.eq("accountId", accoundID),Filters.eq("postId",postId)));
+	public boolean DeletePostSelectedPost(ObjectId accoundID,ObjectId postId) {
+		return APPLY.deleteOne(Filters.and(Filters.eq("accountId", accoundID),Filters.eq("postId",postId))).getDeletedCount()>0?true:false;
 	}
 	
 	public Apply GetApplyFromAccountIdAndPost(ObjectId accoundID,ObjectId postId) {

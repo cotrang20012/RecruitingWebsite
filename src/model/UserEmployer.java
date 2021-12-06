@@ -4,7 +4,7 @@ package model;
 import org.bson.types.ObjectId;
 
 
-public class UserEmployer extends Model{
+public class UserEmployer{
 	protected ObjectId _id;
 	protected ObjectId accountID;
 	protected String fullName;
