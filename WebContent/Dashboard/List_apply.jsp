@@ -26,6 +26,7 @@
 					<h4 class="text-blue h4">BÀI ĐĂNG</h4>
 				</div>
 				<div class="pb-20">
+					<div class="fs-14">${msg}</div>
 					<table class="data-table table stripe hover nowrap">
 						<thead>
 							<tr>
@@ -51,7 +52,8 @@
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 												<a class="dropdown-item" href=""><i class="dw dw-eye"></i> View</a> 
-												<a class="dropdown-item" href=""><i class="dw dw-delete-3"></i> Delete</a>
+												<a class="dropdown-item" href="
+												<c:url value='/delete-apply?postId=${Post.HexStringId() }&accountId=${item.accountID}' />"><i class="dw dw-delete-3"></i> Delete</a>
 											</div>
 										</div>
 									</td>
@@ -69,5 +71,7 @@
 
 
 </body>
+
+
 
 </html>

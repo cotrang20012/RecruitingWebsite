@@ -41,7 +41,7 @@ public class Apply extends Model {
 		this.accountId = accountId;
 	}
 	
-	public void setid(ObjectId _id) {
+	public void setId(ObjectId _id) {
 		this._id = _id;
 	}
 	
@@ -50,6 +50,10 @@ public class Apply extends Model {
 	}
 	public void setPostId(ObjectId post_id) {
 		this.postId = post_id;
+	}
+	
+	public String HexStringId() {
+		return this._id.toHexString();
 	}
 	
 }

@@ -4,7 +4,6 @@
 <%
 MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 AccountDAO accountDAO = new AccountDAO(mongoClient);
-boolean is_logged = accountDAO.isLogged(request.getCookies());
 boolean is_employer = accountDAO.isEmployer(request.getCookies());
 %>
 

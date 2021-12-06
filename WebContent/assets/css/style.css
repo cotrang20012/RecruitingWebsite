@@ -1589,12 +1589,12 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 }
 
 .user-info-dropdown {
-    padding: 5px 10px 5px 0
+    padding: 0px 10px 5px 0
 }
 
 .user-info-dropdown .dropdown-toggle {
     display: block;
-    padding: 5px 0;
+    padding: 0;
     font-size: 16px
 }
 

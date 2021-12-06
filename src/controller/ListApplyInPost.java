@@ -49,11 +49,10 @@ public class ListApplyInPost extends HttpServlet {
 		
 		HttpSession session=request.getSession();
 		
-		Account account=(Account)session.getAttribute("acc");
-		if(account==null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
+		/*
+		 * Account account=(Account)session.getAttribute("acc"); if(account==null) {
+		 * response.sendRedirect(request.getContextPath()+"/login"); return; }
+		 */
 		
 		String postUrl=request.getParameter("post_url");
 		MongoClient mongoClient = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
@@ -70,14 +69,11 @@ public class ListApplyInPost extends HttpServlet {
 		ArrayList<UserEmployee> listEM=applyDAO.getListEmployeeFromPostID(postId);
 		System.out.println(listEM.size());
 		request.setAttribute("ListEmployee", listEM);
+		request.setAttribute("Post", post);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/Dashboard/List_apply.jsp");
 
 		rd.forward(request, response);
-		
-		
-		
-		
 		
 		
 	}

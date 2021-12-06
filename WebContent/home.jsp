@@ -162,17 +162,19 @@
 					<div class="row">
 						<!-- Gallery item -->
 						<c:forEach var="post" items="${posts}">
-							<div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+							<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 ">
 								<div class="bg-white rounded shadow-sm work-item">
 									<img
 										src="${post.thumbnail_url }"
-										alt="" class="img-fluid card-img-top">
+										alt="" class="img-fluid card-img-top"
+										style="width:100%;height:200px">
 									<div class="p-4">
 										<a href="<c:url value = '/post?p=${post.url }'></c:url>"
 											class="text-dark"><h2>
 												<c:out value="${post.title }" />
 											</h2></a>
-										<p class="text-muted mb-0 fs-14">
+										<p class="text-muted mb-0 fs-14"
+											style="overflow: hidden;text-overflow: ellipsis;height:80px">
 											<c:out value="${post.description() }" />
 										</p>
 										<div
@@ -208,7 +210,7 @@
 						<form method="get" action="home">
 							<input style="width: 50px; height: 30px" type="number" value="" min="1"
 								max="${totalPage}" autocomplete="off" name="page" placeholder="">
-							<input type="submit" value="Go">
+							<!-- <input type="submit" value="Go"> -->
 						</form>
 					</li>
 				</ul>

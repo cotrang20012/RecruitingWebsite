@@ -7,16 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Hex;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
 
+import DAO.ApplyDAO;
 import DAO.PostDAO;
+import model.Apply;
 
 /**
  * Servlet implementation class DeleteApplyController
  */
-@WebServlet("/DeleteApplyController")
+@WebServlet("/delete-apply")
 public class DeleteApplyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,12 +39,19 @@ public class DeleteApplyController extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		ObjectId postId = new ObjectId(request.getParameter("postID"));
+		
+		String idString=request.getParameter("postId");
+		System.out.println(idString);
+	
+		ObjectId postId = new ObjectId(idString);
+		
 		ObjectId accountId = new ObjectId(request.getParameter("accountId"));
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
-		PostDAO postDAO = new PostDAO(mongo);
-		postDAO.DeletePostSelectedPost(accountId, postId);
-		response.sendRedirect(request.getRequestURI());
+		
+		ApplyDAO applyDAO = new ApplyDAO(mongo);
+		applyDAO.DeletePostSelectedPost(accountId, postId);
+		request.setAttribute("msg", "Xoá thành công");
+		response.sendRedirect(request.getHeader("referer"));
 	}
 
 	/**

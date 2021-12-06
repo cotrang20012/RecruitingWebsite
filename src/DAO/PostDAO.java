@@ -179,7 +179,5 @@ public class PostDAO extends Model {
 	public void DeleteAllPostWithAccID (ObjectId accountID) {
 		POST.deleteMany(Filters.eq("accountId", accountID));
 	}
-	public void DeletePostSelectedPost(ObjectId accoundID,ObjectId postId) {
-		POST.deleteMany(Filters.and(Filters.eq("accountId", accoundID),Filters.eq("postId",postId)));
-	}
+	
 }
