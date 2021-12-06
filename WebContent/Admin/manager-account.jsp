@@ -35,6 +35,7 @@
 							<tr>
 								<th class="table-plus datatable-nosort">STT</th>
 								<th class="table-plus datatable-nosort">Tài khoản</th>
+								<th class="table-plus datatable-nosort">Email</th>
 								<th class="table-plus datatable-nosort">Loại tài khoản</th>
 								<th class="table-plus datatable-nosort">Trạng thái</th>
 								<th class="datatable-nosort">Hành động</th>
@@ -45,6 +46,7 @@
 								<tr>
 									<td class="table-plus">${loop.index}</td>
 									<td>${item.getUsername()}</td>
+									<td>${item.getEmail()}</td>
 									<td>${item.getTypeUser()}</td>
 									<td>${item.getStatus()}</td>
 									<td>

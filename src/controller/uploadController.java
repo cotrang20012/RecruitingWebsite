@@ -149,7 +149,7 @@ public class uploadController extends HttpServlet {
 							Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "dlwoxocw3", "api_key",
 									"763753897849765", "api_secret", "NvKoAXjdLpPsKG3M5F7O4c4LLew"));
 							
-							String public_id = acc.getUsername() + "pic";
+							String public_id = java.util.UUID.randomUUID().toString() + "pic";
 							
 							Map uploadResult = cloudinary.uploader().upload(filePath, ObjectUtils.asMap("public_id", public_id));
 							
@@ -166,8 +166,7 @@ public class uploadController extends HttpServlet {
 						} else if (type_user.equals("EMPLOYER")) {
 							Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "dlwoxocw3", "api_key",
 									"763753897849765", "api_secret", "NvKoAXjdLpPsKG3M5F7O4c4LLew"));
-							String public_id = acc.getUsername() + "pic";
-							cloudinary.uploader().upload(filePath, ObjectUtils.asMap("public_id", public_id));
+							String public_id = java.util.UUID.randomUUID().toString() + "pic";
 							Map uploadResult = cloudinary.uploader().upload(filePath, ObjectUtils.asMap("public_id", public_id));	
 							String profile_url = uploadResult.get("url").toString();
 							UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
