@@ -142,8 +142,9 @@ public class CreatePostController extends HttpServlet {
 			            } else if (variable.equals("skill")) {
 			            	liStrings[i] = item.getString();
 			            	i++;
+			            } else if (variable.equals("salary")) {
+			            	post.setLuong(item.getString("UTF-8"));
 			            }
- 
 					}
 					// processes only fields that are not form fields
 					if (!item.isFormField()) {
