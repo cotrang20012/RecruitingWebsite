@@ -14,8 +14,11 @@ import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
 
+import DAO.AccountDAO;
+import DAO.ApplyDAO;
 import DAO.PostDAO;
 import DAO.UserEmployerDAO;
+import model.Account;
 import model.Post;
 import model.UserEmployer;
 
@@ -51,7 +54,7 @@ public class PostController extends HttpServlet {
 		}
 		PostDAO postDAO=new PostDAO(mongo);
 		Post post=postDAO.GetPostByURL(url);
-		System.out.println(post.getContent());
+		
 		ObjectId id=post.getAccountId();
 		UserEmployerDAO userEmployerDAO=new UserEmployerDAO(mongo);
 		UserEmployer userEmployer=userEmployerDAO.getUserEmployerFromId(id);
@@ -59,8 +62,13 @@ public class PostController extends HttpServlet {
 		request.setAttribute("Author", userEmployer);
 		request.setAttribute("Post", post);
 		
-		
-		
+		Account account=(Account)session.getAttribute("acc");
+		if(account!=null) {
+			ApplyDAO applyDAO=new ApplyDAO(mongo);
+			if(applyDAO.GetApplyFromAccountIdAndPost(account.getId(), post.getId())!=null) {
+				request.setAttribute("Apply", "Apply");
+			}
+		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/Post/post.jsp");
 		rd.forward(request, response);

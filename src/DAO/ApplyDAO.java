@@ -61,4 +61,8 @@ public class ApplyDAO extends Model {
 		APPLY.deleteMany(Filters.and(Filters.eq("accountId", accoundID),Filters.eq("postId",postId)));
 	}
 	
+	public Apply GetApplyFromAccountIdAndPost(ObjectId accoundID,ObjectId postId) {
+		return APPLY.find(Filters.and(Filters.eq("accountId", accoundID),Filters.eq("postId",postId))).first();
+	}
+	
 }

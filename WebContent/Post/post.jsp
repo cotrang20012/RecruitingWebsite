@@ -22,7 +22,7 @@
 							<div class="d-flex align-items-center">
 								<div class="mr-2">
 									<img class="rounded-circle" width="45"
-										src="https://scontent.fdad1-1.fna.fbcdn.net/v/t1.6435-9/244751300_3008463426100929_846146406731092230_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=Bm0FvYRqHzsAX_7eZiI&_nc_ht=scontent.fdad1-1.fna&oh=9a1424bb50d06e203e33b8fe221deaf5&oe=6195D245"
+										src="${Author.profile_url }"
 										alt="">
 								</div>
 								<div class="ml-2">
@@ -115,17 +115,35 @@
 								</c:when>
 								<c:otherwise>
 									<c:if test="${acc.typeUser=='EMPLOYEE' }">
-										<form action="apply">
-											<input type="hidden" name="id" value="${acc.getId }">
+										<c:choose>
+											<c:when test="${Apply!=null }">
+												<form action="apply">
+											<input type="hidden" name="id" value="${acc.getId() }">
 											<div class="row justify-content-center">
 												<input type="hidden" name="title"  value="${Post.title}">
 												<input type="hidden" name="time"   value="${Post.getDateEnd()}"> 
-												<input type="hidden" name="salary" value="${Post.getSalary()}"> 
-												<input type="hidden" name="status" value="${Post.getStatus}">
+												<input type="hidden" name="salary" value="${Post.getLuong()}"> 
+												<input type="hidden" name="status" value="${Post.getStatus()}">
 												<input type="hidden" name="postId" value="${Post.getId()}">
-												<input type="submit" value="Ứng tuyển ngay" class="btn btn--common">
+												<input type="submit" value="Huỷ ứng tuyển" class="btn btn--common">
 											</div>
 										</form>
+											</c:when>
+											<c:otherwise>
+												<form action="apply">
+											<input type="hidden" name="id" value="${acc.getId() }">
+											<div class="row justify-content-center">
+												<input type="hidden" name="title"  value="${Post.title}">
+												<input type="hidden" name="time"   value="${Post.getDateEnd()}"> 
+												<input type="hidden" name="salary" value="${Post.getLuong()}"> 
+												<input type="hidden" name="status" value="${Post.getStatus()}">
+												<input type="hidden" name="postId" value="${Post.getId()}">
+												<input type="submit" value="Ứng tuyển ngay" class="btn btn--common fs-14">
+											</div>
+										</form>
+											</c:otherwise>
+										</c:choose>
+										
 									</c:if>
 								</c:otherwise>
 
