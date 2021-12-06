@@ -2,20 +2,16 @@ package DAO;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
-import com.mongodb.event.CommandListenerMulticaster;
 
-import model.Account;
+
 import model.Apply;
 import model.Model;
-import model.Post;
 import model.UserEmployee;
 
 public class ApplyDAO extends Model {

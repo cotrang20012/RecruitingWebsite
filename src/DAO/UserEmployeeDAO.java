@@ -10,7 +10,6 @@ import com.mongodb.client.model.Updates;
 
 import model.Model;
 import model.UserEmployee;
-import model.UserEmployer;
 
 public class UserEmployeeDAO extends Model{
 private MongoCollection<UserEmployee> USEREMPLOYEE;

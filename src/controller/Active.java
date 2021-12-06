@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.ClassPathUtils;
-import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
 
@@ -78,9 +76,11 @@ public class Active extends HttpServlet {
 					EmailUtility.sendEmail(host, port, user, pass, "tranbaoduy4@gmail.com", "Kích hoạt tài khoản",
 							urlString);
 					resultMessage = "The e-mail was sent successfully";
+					request.setAttribute("result", "non-active");
 				} catch (Exception ex) {
 					ex.printStackTrace();
-					resultMessage = "There were an error: " + ex.getMessage();
+					resultMessage = "Hệ thống email đang gặp trục trặc. Thử lại sau hoặc liên hệ quản trị viên để được kích hoạt";
+					request.setAttribute("result", "error");
 				} finally {
 					request.setAttribute("Message", resultMessage);
 					getServletContext().getRequestDispatcher("/Login/active.jsp").forward(request, response);

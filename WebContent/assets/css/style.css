@@ -1839,7 +1839,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 .left-side-bar {
     width: 280px;
     height: 100vh;
-    z-index: 5;
+    z-index: 1005;
     background: #002042
 }
 

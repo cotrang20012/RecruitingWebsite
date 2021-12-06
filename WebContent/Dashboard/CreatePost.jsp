@@ -60,40 +60,29 @@
 						<label class="col-sm-12 col-md-2 col-form-label">Kĩ năng cần có</label>
 						<div class="col-sm-12 col-md-10">
 							<select name='skill' class="custom-select2 form-control fs-14" multiple="multiple" style="width: 100%;">
-								<optgroup label="Alaskan/Hawaiian Time Zone">
-									<option value="AK">Alaska</option>
-									<option value="HI">Hawaii</option>
+								<optgroup label="Backend">
+									<option value="C++">C++</option>
+									<option value="C#">C#</option>
 								</optgroup>
-								<optgroup label="Pacific Time Zone">
-									<option value="CA">California</option>
-									<option value="NV">Nevada</option>
-									<option value="OR">Oregon</option>
-									<option value="WA">Washington</option>
-								</optgroup>
-								<optgroup label="Mountain Time Zone">
-									<option value="AZ">Arizona</option>
-									<option value="CO">Colorado</option>
-									<option value="ID">Idaho</option>
-									<option value="MT">Montana</option>
-									<option value="NE">Nebraska</option>
-									<option value="NM">New Mexico</option>
-									<option value="ND">North Dakota</option>
-									<option value="UT">Utah</option>
-									<option value="WY">Wyoming</option>
+								<optgroup label="Frontend">
+									<option value="CA">HTML CSS JS</option>
+									<option value="NV">ReactJS</option>
+									<option value="OR">AngulaJS</option>
+									<option value="WA">NodeJS</option>
 								</optgroup>
 							</select>
 						</div>
 					</div>
 
 					<div class="form-group row">
-						<label class="col-sm-12 col-md-2 col-form-label">Trình độ học vấn</label>
+						<label class="col-sm-12 col-md-2 col-form-label">Kinh nghiệm</label>
 						<div class="col-sm-12 col-md-10">
 							<select name='exp' class="custom-select col-12">
-								<option selected="">--Experience Level--</option>
+								<option selected="">--Kinh nghiệm--</option>
 								<option value="Fresher">Fresher</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<option value="1">1 năm</option>
+								<option value="2">1-5 năm</option>
+								<option value="3">trên năm</option>
 							</select>
 						</div>
 					</div>

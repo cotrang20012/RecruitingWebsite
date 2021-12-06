@@ -15,7 +15,6 @@ import com.mongodb.client.model.Updates;
 import model.Account;
 import model.Confirm;
 import model.Model;
-import model.UserEmployer;
 
 public class AccountDAO extends Model{
 	

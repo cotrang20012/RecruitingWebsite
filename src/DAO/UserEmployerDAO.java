@@ -8,8 +8,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
-import model.Account;
-import model.UserEmployee;
 import model.UserEmployer;
 
 public class UserEmployerDAO {

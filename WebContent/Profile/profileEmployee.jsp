@@ -13,7 +13,7 @@
 
 <body>
 
-	<fmt:formatDate value="${userProfile.birthday}" var="formatedBirthday" type="date" pattern="dd/MM/yyyy" />
+	<fmt:formatDate value="${userProfile.birthday}" var="formatedBirthday" type="date" pattern="yyyy-MM-dd" />
 
 	<jsp:include page="../common/main-dashboard-employee.jsp"></jsp:include>
 	
@@ -55,7 +55,8 @@
 										<label class="labels">Email</label> <input type="text" class="form-control" placeholder="Email" name="email" value="${userProfile.email}" readonly="readonly">
 									</div>
 									<div class="col-md-12 mt-3">
-										<label class="labels">Ngày sinh</label> <input type="text" class="form-control" placeholder="" name="birthday" value="${formatedBirthday}" readonly="readonly">
+										<label class="labels">Ngày sinh</label> 
+										<input type="date" class="form-control" placeholder="" name="birthday" value="${formatedBirthday}" readonly="readonly">
 									</div>
 									<div class="col-md-12 mt-3">
 										<label class="labels">Giới tính</label>

@@ -186,10 +186,10 @@ public class CreatePostController extends HttpServlet {
 		
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		PostDAO postDAO = new PostDAO(mongo);
-
+		
 		post.setUrl(url);
 		post.setAccountId(account.getId());	
-		post.setStatus("Active");
+		post.setStatus("Đang tuyển");
 		post.setDateStart(java.util.Calendar.getInstance().getTime());
 		post.setThumbnail_url(urlString);
 		

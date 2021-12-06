@@ -1,15 +1,6 @@
 package model;
 
-
-import java.util.Iterator;
-import javax.servlet.http.Cookie;
-import org.bson.Document;
 import org.bson.types.ObjectId;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Updates;
 public class Confirm extends Model {
 	private ObjectId id;
 	private ObjectId accountId;

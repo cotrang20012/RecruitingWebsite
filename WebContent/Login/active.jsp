@@ -37,6 +37,11 @@
 							href="<c:url value="/login"/>" style="color:blue">vào đây</a> để đăng nhập
 					</p>
 					</c:when>
+					<c:when test="${result== 'error' }">
+						<p style="padding-top:50px">
+						${message }
+					</p>
+					</c:when>
 					<c:otherwise>
 						<p style="padding-top:50px">
 						Tài khoản của bạn chưa kích hoạt. Hãy nhấn <a
@@ -44,6 +49,8 @@
 					</p>
 					</c:otherwise>
 				</c:choose>
+				<img alt="" src="<c:url value='/assets/img/lock_200px.png'/>">
+				</div>
 				
 				</div>
 		</section>

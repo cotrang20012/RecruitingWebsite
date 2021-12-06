@@ -64,8 +64,13 @@ public class HomeController extends HttpServlet {
 							session.setAttribute("user", userEmployee);
 						}
 				}
+			}else {
+				session.invalidate();
 			}
 
+		}
+		else {
+			session.invalidate();
 		}
 
 		PostDAO postDAO = new PostDAO(mongoClient);

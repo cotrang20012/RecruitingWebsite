@@ -72,8 +72,7 @@ public class PostDAO extends Model {
 				
 				if (tilte.indexOf(query) != -1
 		//				|| category.indexOf(query) != -1
-						|| String.valueOf(post.getViews_count()).indexOf(query) != -1
-						|| String.valueOf(post.getPoints()).indexOf(query) != -1
+						|| String.valueOf(post.getApply()).indexOf(query) != -1
 						|| status.indexOf(query) != -1) {
 					data.add(post);
 				}

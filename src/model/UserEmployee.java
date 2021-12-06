@@ -1,8 +1,5 @@
 package model;
 import java.util.Date;
-import java.util.Iterator;
-import javax.servlet.http.Cookie;
-import org.bson.Document;
 import org.bson.types.ObjectId;
 
 public class UserEmployee extends Model{

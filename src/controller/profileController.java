@@ -67,7 +67,7 @@ public class profileController extends HttpServlet {
 				String type_user = acc.getTypeUser();
 				if (type_user.equals("EMPLOYEE")) {
 					UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
-					SimpleDateFormat tempFormat = new SimpleDateFormat("dd/MM/yyyy");
+					SimpleDateFormat tempFormat = new SimpleDateFormat("yyyy-MM-dd");
 					String tempFormatString = tempFormat.format(userEmployee.getBirthday());
 					try {
 						userEmployee.setBirthday(tempFormat.parse(tempFormatString));
@@ -108,7 +108,7 @@ public class profileController extends HttpServlet {
 					String birthdate=request.getParameter("birthday");
 					Date date1 = new Date();
 					try {
-						date1 = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("birthday"));
+						date1 = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday"));
 					} catch (ParseException e1) {
 						e1.printStackTrace();
 					}  
