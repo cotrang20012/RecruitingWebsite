@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.tribes.ChannelSender;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.jasper.tagplugins.jstl.core.If;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.MongoClient;
@@ -67,17 +69,9 @@ public class ForgotPassword extends HttpServlet{
 		String action = request.getParameter("action");
 		HttpSession Session = request.getSession();
 		if(action==null) {
-			//Account account = (Account) Session.getAttribute("acc");
-			
-			Account account = accountDAO.getAccountFromEmail(userEmailString);
-			if(account==null) {
-				getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/Login/forgotpw.jsp").forward(request, response);
+				return;
 			}
-			else {
-				getServletContext().getRequestDispatcher("/Login/forgotPassword.jsp").forward(request, response);
-			}
-			return;
-		}
 		
 		if (action.equals("send")) {
 			String resultMessage = "";
@@ -122,7 +116,7 @@ public class ForgotPassword extends HttpServlet{
 			                + "</tr>\n"
 			                + "</tbody>\n"
 			                + "</table>";
-					EmailUtility.sendEmail(host, port, user, pass, account.getEmail(), "Quên mật khẩu", "Mật khẩu cũ: "+pass+"\n Click vào đây để đổi mật khẩu"+urlString);
+					EmailUtility.sendEmail(host, port, user, pass, account.getEmail(), "Quên mật khẩu", "Mật khẩu mới: "+pass+"\n Click vào đây để đổi mật khẩu"+urlString);
 					resultMessage = "The e-mail was sent successfully";
 				} catch (Exception ex) {
 					ex.printStackTrace();
@@ -130,7 +124,7 @@ public class ForgotPassword extends HttpServlet{
 					request.setAttribute("result", "error");
 				} finally {
 					request.setAttribute("Message", resultMessage);
-					getServletContext().getRequestDispatcher("/Login/forgotPassword.jsp").forward(request, response);
+					getServletContext().getRequestDispatcher("/Login/forgotpw.jsp").forward(request, response);
 				}
 			}
 			else {

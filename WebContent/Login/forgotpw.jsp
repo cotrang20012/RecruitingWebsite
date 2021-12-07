@@ -41,16 +41,14 @@
 									<input type="text" name="email" id="email"
 										class="form__input" placeholder="Email đăng ký">
 								</div>
+								<input type = "text" name  = "action" value = "send" hidden >
 								<div class="row justify-content-center">
-										<p>
-											<a href="<c:url value="/forgotpassword?action=send"/>" style="color:blue">Gửi mã xác nhận</a>.
-										</p>
+									<input type="submit" value="Đăng nhập" class="btn btn-login" style="font-size: 1.6rem;">
 								</div>
 							</form>
 						</div>
 						<div class="row justify-content-center">
 							<p>
-							
 								Bạn đã có tài khoản chưa? <a href="${pageContext.request.contextPath}/signup">Đăng ký tại đây</a>
 							</p>
 						</div>

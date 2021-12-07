@@ -58,6 +58,7 @@ public class ApplyPostController extends HttpServlet {
 		postDAO.updatePostAddApply(apply.getPostId());
 		
 		response.sendRedirect(request.getHeader("referer"));
+		
 	}
 
 	/**
