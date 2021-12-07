@@ -43,7 +43,7 @@
 								</div>
 								<input type = "text" name  = "action" value = "send" hidden >
 								<div class="row justify-content-center">
-									<input type="submit" value="Đăng nhập" class="btn btn-login" style="font-size: 1.6rem;">
+									<input type="submit" value="Gửi mật khẩu mới" class="btn btn-login" style="font-size: 1.6rem;">
 								</div>
 							</form>
 						</div>
