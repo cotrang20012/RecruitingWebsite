@@ -41,6 +41,10 @@ private MongoCollection<UserEmployer> USEREMPLOYER;
 		return USEREMPLOYER.find(Filters.eq("_id",id)).first();
 	}
 	
+	public UserEmployer getUserEmployerFromAccountId(ObjectId id) {		
+		return USEREMPLOYER.find(Filters.eq("accountID",id)).first();
+	}
+	
 	public void UpdateUserEmployerUrl(UserEmployer user) {
 		Bson update1 = Updates.set("profile_url", user.getProfile_url());
 						

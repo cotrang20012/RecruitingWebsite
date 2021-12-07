@@ -16,9 +16,20 @@
 						</span> <span class="user-name"><c:out value='${user.fullName }' /></span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-							<a class="dropdown-item" href="<c:out value='/profile' />"><i class="dw dw-user1"></i> Profile</a>
+							<c:choose>
+                        	<c:when test="${acc.typeUser=='EMPLOYEE' }">
+                        		<a class="dropdown-item" href="<c:url value='employee/profile' />"><i class="dw dw-user1"></i> Profile</a>
+                        	</c:when>
+                        	<c:when test="${acc.typeUser=='EMPLOYER' }">
+                        		<a class="dropdown-item" href="<c:url value='employer/profile' />"><i class="dw dw-user1"></i> Profile</a>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<a class="dropdown-item" href="<c:url value='admin/profile' />"><i class="dw dw-user1"></i> Profile</a>
+                        	</c:otherwise>
+                        </c:choose>
 							<!--      <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a> -->
-							<a class="dropdown-item" href="${pageContext.request.contextPath}changepw"><i class="dw dw-help"></i> Đổi mật khẩu</a> <a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="dw dw-logout"></i> Log Out</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}changepw"><i class="dw dw-help"></i> Đổi mật khẩu</a> 
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/logout"><i class="dw dw-logout"></i> Log Out</a>
 						</div>
 					</div>
 				</c:when>

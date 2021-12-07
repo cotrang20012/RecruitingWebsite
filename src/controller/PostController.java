@@ -56,8 +56,9 @@ public class PostController extends HttpServlet {
 		Post post=postDAO.GetPostByURL(url);
 		
 		ObjectId id=post.getAccountId();
+		
 		UserEmployerDAO userEmployerDAO=new UserEmployerDAO(mongo);
-		UserEmployer userEmployer=userEmployerDAO.getUserEmployerFromId(id);
+		UserEmployer userEmployer=userEmployerDAO.getUserEmployerFromAccountId(id);
 		
 		request.setAttribute("Author", userEmployer);
 		request.setAttribute("Post", post);
