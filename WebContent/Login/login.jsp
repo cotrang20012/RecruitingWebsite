@@ -52,6 +52,11 @@
 								Bạn đã có tài khoản chưa? <a href="${pageContext.request.contextPath}/signup">Đăng ký tại đây</a>
 							</p>
 						</div>
+						<div class="row justify-content-center">
+							<p>
+							Bạn quên mật khẩu? <a href="${pageContext.request.contextPath}/forgotPassword">Đặt lại mật khẩu tại đây</a>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

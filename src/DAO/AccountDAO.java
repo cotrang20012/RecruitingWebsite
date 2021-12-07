@@ -1,5 +1,6 @@
 package DAO;
 
+import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 
 import javax.servlet.http.Cookie;
@@ -129,5 +130,17 @@ public class AccountDAO extends Model{
 		else {
 			ACCOUNT.updateOne(Filters.eq("_id",accId), Updates.set("status", "active"));
 		}
-	}	
+	}
+	public Account getAccountFromEmail(String email) {		
+		Account acc=ACCOUNT.find(Filters.eq("email", email)).first();
+		if(acc!=null)
+			return acc;
+		return null;
+	}
+	public String getUsernameByEmail(String email) {
+		Account acc=ACCOUNT.find(Filters.eq("email", email)).first();
+		if(acc!=null)
+			return acc.getUsername();
+		return null;
+	}
 }
