@@ -118,13 +118,9 @@
 									<c:if test="${acc.typeUser=='EMPLOYEE' }">
 										<c:choose>
 											<c:when test="${Apply!=null }">
-												<form action="applypost" method="POST">
+												<form action="employer/delete-apply" method="POST">
 											<input type="hidden" name="id" value="${acc.getId() }">
 											<div class="row justify-content-center">
-												<input type="hidden" name="title"  value="${Post.title}">
-												<input type="hidden" name="time"   value="${Post.getDateEnd()}"> 
-												<input type="hidden" name="salary" value="${Post.getLuong()}"> 
-												<input type="hidden" name="status" value="${Post.getStatus()}">
 												<input type="hidden" name="postId" value="${Post.getId()}">
 												<input type="submit" value="Huỷ ứng tuyển" class="btn btn--common fs-14">
 											</div>
