@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                                                                                                            
+                                                                                                                                    
+    
+    
     
     
     
@@ -28,7 +30,9 @@
     
     <wb-module deploy-name="com.webfit-1.0">
         <wb-resource deploy-path="/WEB-INF/web.xml" source-path="/WebContent/WEB-INF/web.xml"/>
-                                                                                                                                        
+                                                                                                                                                        
+        
+        
         
         
         
@@ -45,7 +49,7 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                                                                                                                        
+                                                                                                                                                        
 	
         
         
@@ -61,8 +65,12 @@
         
         
         
+        
+        
         <wb-resource deploy-path="/" source-path="/WebContent/WEB-INF/m2e-wtp/web-resources"/>
-                                                                                                                                
+                                                                                                                                                
+        
+        
         
         
         
@@ -78,7 +86,9 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-                                                                                                                                
+                                                                                                                                                
+        
+        
         
         
         
@@ -94,7 +104,7 @@
         
         
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                        
         
         
         
@@ -124,8 +134,12 @@
         
         
         
+        
+        
         <property name="context-root" value="com.webfit"/>
-                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                        
+        
+        
         
         
         
@@ -156,7 +170,9 @@
         
         
         <property name="java-output-path" value="/com.webfit/target/classes"/>
-                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                    
+    
+    
     
     
     
@@ -187,7 +203,9 @@
     
     
     </wb-module>
-                                                                                                                        
+                                                                                                                                
+
+
 
 
 

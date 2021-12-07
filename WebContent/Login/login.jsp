@@ -54,7 +54,7 @@
 						</div>
 						<div class="row justify-content-center">
 							<p>
-							Bạn quên mật khẩu? <a href="${pageContext.request.contextPath}/forgotpw">Đặt lại mật khẩu tại đây</a>
+							Bạn quên mật khẩu? <a href="${pageContext.request.contextPath}/forgotpw"style="color:blue" >Đặt lại mật khẩu tại đây</a>
 							</p>
 						</div>
 					</div>
