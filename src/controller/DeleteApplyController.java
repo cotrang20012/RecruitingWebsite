@@ -47,10 +47,15 @@ public class DeleteApplyController extends HttpServlet {
 		System.out.println(idString);
 	
 		ObjectId postId = new ObjectId(idString);
-		ObjectId accountId = new ObjectId(request.getParameter("accountId"));
+		String accountIdString=request.getParameter("accountId");
+		ObjectId accountId=new ObjectId();
 		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
 		try {
-			if (accountId == null) accountId = acc.getId();
+			if (accountIdString == null)
+				accountId = acc.getId();
+			else {
+				accountId=new ObjectId(accountIdString);
+			}
 		} catch (Exception e) {
 			response.sendRedirect(request.getHeader("referer"));
 			return;
