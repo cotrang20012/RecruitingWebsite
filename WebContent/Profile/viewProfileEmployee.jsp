@@ -13,7 +13,7 @@
 
 <body>
 
-	<fmt:formatDate value="${userProfile.birthday}" var="formatedBirthday" type="date" pattern="yyyy-MM-dd" />
+	<fmt:formatDate value="${user.birthday}" var="formatedBirthday" type="date" pattern="yyyy-MM-dd" />
 
 	
 	<div class="main-container">
@@ -24,10 +24,10 @@
 						<div class="d-flex flex-column align-items-center text-center p-3 py-5">
 							<!-- <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
-							<img class="rounded-circle mt-5" width="150px" src="${userProfile.profile_url }" id="profile-image">
+							<img class="rounded-circle mt-5" width="150px" src="${user.profile_url }" id="profile-image">
 							<!--<img class="rounded-circle mt-5" width="150px"
-                                src="${userProfile.profile_url }"> -->
-							<span class="font-weight-bold"><c:out value='${userProfile.fullName}' /></span>
+                                src="${user.profile_url }"> -->
+							<span class="font-weight-bold"><c:out value='${user.fullName}' /></span>
 						</div>
 					</div>
 
@@ -39,16 +39,16 @@
 								</div>
 								<div class="row mt-2">
 									<div class="col-md-12 mt-3">
-										<label class="labels">Họ và tên</label> <input type="text" class="form-control" placeholder="Tên công ty" name="username" value="${userProfile.fullName}" readonly="readonly">
+										<label class="labels">Họ và tên</label> <input type="text" class="form-control" placeholder="Tên công ty" name="username" value="${user.fullName}" readonly="readonly">
 									</div>
 									<div class="col-md-12 mt-3">
-										<label class="labels">Số điện thoại</label> <input type="text" class="form-control" placeholder="Số điện thoại" name="phone" value="${userProfile.phone}" readonly="readonly">
+										<label class="labels">Số điện thoại</label> <input type="text" class="form-control" placeholder="Số điện thoại" name="phone" value="${user.phone}" readonly="readonly">
 									</div>
 									<div class="col-md-12 mt-3">
-										<label class="labels">Địa chỉ</label> <input type="text" class="form-control" placeholder="Địa chỉ" name="address" value="${userProfile.address}" readonly="readonly">
+										<label class="labels">Địa chỉ</label> <input type="text" class="form-control" placeholder="Địa chỉ" name="address" value="${user.address}" readonly="readonly">
 									</div>
 									<div class="col-md-12 mt-3">
-										<label class="labels">Email</label> <input type="text" class="form-control" placeholder="Email" name="email" value="${userProfile.email}" readonly="readonly">
+										<label class="labels">Email</label> <input type="text" class="form-control" placeholder="Email" name="email" value="${user.email}" readonly="readonly">
 									</div>
 									<div class="col-md-12 mt-3">
 										<label class="labels">Ngày sinh</label> <input type="date" class="form-control" placeholder="" name="birthday" value="${formatedBirthday}" readonly="readonly">

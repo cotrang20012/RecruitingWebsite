@@ -75,11 +75,11 @@ public class profileController extends HttpServlet {
 						e.printStackTrace();
 					}
 
-					request.setAttribute("userProfile", userEmployee);
+					request.setAttribute("user", userEmployee);
 					urlString = "/Profile/profileEmployee.jsp";
 				} else if (type_user.equals("EMPLOYER")) {
 					UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
-					request.setAttribute("userProfile", userEmployer);
+					request.setAttribute("user", userEmployer);
 					urlString = "/Profile/profileEmployer.jsp";
 				}
 			}
@@ -111,7 +111,7 @@ public class profileController extends HttpServlet {
 					userEmployer.setNganhnghe(request.getParameter("nganhnghe"));
 
 					userEmployerDAO.UpdateUserEmployer(userEmployer);
-					request.setAttribute("userProfile", userEmployer);
+					request.setAttribute("user", userEmployer);
 					urlString = "/Profile/profileEmployer.jsp";
 				} else {
 					UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
@@ -131,7 +131,7 @@ public class profileController extends HttpServlet {
 
 					userEmployeeDAO.UpdateUserEmployee(userEmployee);
 
-					request.setAttribute("userProfile", userEmployee);
+					request.setAttribute("user", userEmployee);
 					urlString = "/Profile/profileEmployee.jsp";
 				}
 			}

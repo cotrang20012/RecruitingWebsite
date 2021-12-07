@@ -3,6 +3,7 @@ package controller;
 import java.awt.print.Printable;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
 import java.sql.ResultSet;
 import java.text.ParseException;
@@ -46,7 +47,7 @@ import model.UserEmployer;
 /**
  * Servlet implementation class uploadController
  */
-@WebServlet(name = "upload", urlPatterns = { "/employee/upload", "/employer/upload", "/admin/upload" })
+@WebServlet(name = "upload", urlPatterns = { "/api-upload","/employee/upload", "/employer/upload", "/admin/upload" })
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 		maxFileSize = 1024 * 1024 * 50, // 50MB
 		maxRequestSize = 1024 * 1024 * 50)
@@ -119,6 +120,8 @@ public class uploadController extends HttpServlet {
 		if (!uploadDir.exists()) {
 			uploadDir.mkdir();
 		}
+		
+		PrintWriter out = response.getWriter();
 				
 		// parses the request's content to extract file data
 		List<FileItem> formItems = upload.parseRequest(new ServletRequestContext(request));
@@ -161,7 +164,8 @@ public class uploadController extends HttpServlet {
 							userEmployee.setProfile_url(profile_url);
 							userEmployeeDAO.UpdateUserEmployeeUrl(userEmployee);
 							
-							request.setAttribute("userProfile", userEmployee);
+							request.setAttribute("user", userEmployee);
+							
 							urlString = "/Profile/profileEmployee.jsp";
 						} else if (type_user.equals("EMPLOYER")) {
 							Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "dlwoxocw3", "api_key",
@@ -182,7 +186,8 @@ public class uploadController extends HttpServlet {
 				}
 			}
 		}
-		response.sendRedirect(request.getHeader("referer"));
+		//out.print(urlString);
+		//response.sendRedirect(request.getHeader("referer"));
 	}
 
 	private String extractFileName(Part part) {

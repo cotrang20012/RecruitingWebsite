@@ -22,11 +22,12 @@
                         <!-- <img class="rounded-circle mt-5" width="150px"
                                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"> -->
                         <img class="rounded-circle mt-5" width="150px" height="150px"
-                                src="${userProfile.profile_url }" id ="profile-image">
-                        <span  class="font-weight-bold"> <c:out value='${userProfile.fullName}'/> </span>
-                        <form action="upload" method="post" enctype="multipart/form-data" class="form-group w-100">
+                                src="${user.profile_url }" id ="profile-image">
+                        <span  class="font-weight-bold"> <c:out value='${user.fullName}'/> </span>
+                        <form action="upload" id="upload-form" method="post" enctype="multipart/form-data" class="form-group w-100">
 						<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
-						<input type="submit" value="upload">
+						<!-- <input type="submit" value="upload"> -->
+						<button class="btn btn-primary" type="button" id="upload" >Upload</button>
 						</form>
                     </div>
                     </div>
@@ -40,32 +41,32 @@
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Tên công ty</label>
                                     <input type="text" class="form-control" placeholder="Tên công ty" name="companyname"
-                                        value="<c:out value='${userProfile.fullName}'/> " readonly="readonly">
+                                        value="<c:out value='${user.fullName}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Số điện thoại</label>
                                     <input type="text" class="form-control" placeholder="Số điện thoại" name="phone"
-                                        value="<c:out value='${userProfile.phone}'/> " readonly="readonly">
+                                        value="<c:out value='${user.phone}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <label class="labels">Địa chỉ</label>
                                     <input type="text" class="form-control" placeholder="Địa chỉ" name="address"
-                                        value="<c:out value='${userProfile.address}'/> " readonly="readonly">
+                                        value="<c:out value='${user.address}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Email</label><input type="text"
-                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${userProfile.email}'/> " readonly="readonly">
+                                        class="form-control" placeholder="Email" name="email" value="<c:out value='${user.email}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Website</label><input type="text"
-                                        class="form-control"  name="website" value="<c:out value='${userProfile.website}'/> " readonly="readonly">
+                                        class="form-control"  name="website" value="<c:out value='${user.website}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Quy mô</label><input type="text"
-                                        class="form-control"  name="quymo" value="<c:out value='${userProfile.quymo}'/> " readonly="readonly">
+                                        class="form-control"  name="quymo" value="<c:out value='${user.quymo}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Ngành nghề</label><input type="text"
-                                        class="form-control" name="nganhnghe" value="<c:out value='${userProfile.nganhnghe}'/> " readonly="readonly">
+                                        class="form-control" name="nganhnghe" value="<c:out value='${user.nganhnghe}'/> " readonly="readonly">
                                 </div>
                                 <div class="col-md-12 mt-3"><label class="labels">Tech stack</label><input type="text"
-                                        class="form-control" name="techstack" value="<c:out value='${userProfile.techstack}'/> " data-role="tagsinput" readonly="readonly">
+                                        class="form-control" name="techstack" value="<c:out value='${user.techstack}'/> " data-role="tagsinput" readonly="readonly">
                                 </div>
                             </div>
 
@@ -126,6 +127,27 @@
 			}
 			disableid.className = "disableid";
 		}
+		
+		$(document).ready(function() {
+			$('#upload').click(function() {
+				var form = $("#upload-form")[0];
+	            var data = new FormData(form);
+					$.ajax({
+						type: "POST",
+						url: "upload",
+						processData : false,
+		                contentType : false,
+						data: data,
+						enctype: 'multipart/form-data',
+						success: function(msg) {
+							alert("Đổi Avatar thành công");
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							
+						}
+					});
+			});
+		});
 	</script>
 	<script src="<c:url value='/assets/script/bootstrap-tagsinput.js' />"></script>
 </body>

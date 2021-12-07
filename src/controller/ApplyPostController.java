@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +42,7 @@ public class ApplyPostController extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
 		Apply apply = new Apply();
 		HttpSession Session = request.getSession();
 		Account acc = (Account) Session.getAttribute("acc");
@@ -56,8 +59,8 @@ public class ApplyPostController extends HttpServlet {
 		
 		PostDAO postDAO=new PostDAO(mongo);
 		postDAO.updatePostAddApply(apply.getPostId());
-		
-		response.sendRedirect(request.getHeader("referer"));
+		out.print("thành công");
+		//response.sendRedirect(request.getHeader("referer"));
 		
 	}
 

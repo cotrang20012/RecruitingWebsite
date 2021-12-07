@@ -203,13 +203,13 @@
 						<li class="${item.getState()}"><a class="page-link"
 							href="<c:url value = '/home?page=${item.getValue()}'/>">${item.getName()}</a></li>
 					</c:forEach>
-					<li class="page-item">
+					<%-- <li class="page-item">
 						<form method="get" action="home">
 							<input style="width: 50px; height: 30px" type="number" value="" min="1"
 								max="${totalPage}" autocomplete="off" name="page" placeholder="">
 							<!-- <input type="submit" value="Go"> -->
 						</form>
-					</li>
+					</li> --%>
 				</ul>
 			</div>
 		</section>
