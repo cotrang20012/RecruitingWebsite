@@ -34,7 +34,7 @@ public class ForgotPassword extends HttpServlet{
 	private String port;
 	private String user;
 	private String pass;
-	AccountDAO accountDAO = new AccountDAO();
+	
 	static final String AB = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     static SecureRandom rnd = new SecureRandom();
 
@@ -64,15 +64,18 @@ public class ForgotPassword extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		AccountDAO accountDAO = new AccountDAO(mongoClient);
+		
+		HttpSession Session = request.getSession();
 		String userEmailString= request.getParameter("email");
 		String url = "/home";
 		String action = request.getParameter("action");
-		HttpSession Session = request.getSession();
+		
 		if(action==null) {
 				getServletContext().getRequestDispatcher("/Login/forgotpw.jsp").forward(request, response);
 				return;
-			}
-		
+		}
 		if (action.equals("send")) {
 			String resultMessage = "";
 			Account account = accountDAO.getAccountFromEmail(userEmailString);
@@ -137,8 +140,6 @@ public class ForgotPassword extends HttpServlet{
 			if(action.equals("forgotPassword")) {
 				String email=request.getParameter("email");
 				String code=request.getParameter("code");
-				MongoClient mongoClient=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
-				AccountDAO accountDAO=new AccountDAO(mongoClient);
 				String id=accountDAO.getAccountIdFromEmail(email).toHexString().substring(10);
 				String activeString = DigestUtils.sha256Hex(id);
 				if(code.equals(activeString)) {
