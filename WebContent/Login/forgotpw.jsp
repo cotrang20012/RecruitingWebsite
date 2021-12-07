@@ -36,20 +36,21 @@
 						</div>
 
 						<div class="row">
-							<form action="forgotPassword" method="post" class="form-group w-100">
+							<form action="forgotpw" method="post" class="form-group w-100">
 								<div class="row">
 									<input type="text" name="email" id="email"
 										class="form__input" placeholder="Email đăng ký">
 								</div>
 								<div class="row justify-content-center">
 										<p>
-											<a href="${pageContext.request.contextPath}/forgotPassword?action=send">Gửi mã xác nhận</a>
+											<a href="<c:url value="/forgotpassword?action=send"/>" style="color:blue">Gửi mã xác nhận</a>.
 										</p>
 								</div>
 							</form>
 						</div>
 						<div class="row justify-content-center">
 							<p>
+							
 								Bạn đã có tài khoản chưa? <a href="${pageContext.request.contextPath}/signup">Đăng ký tại đây</a>
 							</p>
 						</div>

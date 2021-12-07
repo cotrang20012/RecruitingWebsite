@@ -25,7 +25,7 @@ import model.Model;
 /**
  * Servlet implementation class ChangePassword
  */
-@WebServlet("/forgotPassword")
+@WebServlet("/forgotpw")
 public class ForgotPassword extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private String host;
