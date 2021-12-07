@@ -26,10 +26,15 @@
 										alt="">
 								</div>
 								<div class="ml-2">
-									<div class="h3 m-0">${Author.fullName }</div>
+									<div class="h3">Thông tin nhà tuyển dụng</div>
+									<div class="h5 fw-400">Tên công ty: ${Author.fullName }</div>
+									<div class="h5 fw-400">Công nghệ:${Author.techstack }</div>
+									<div class="h5 fw-400">Ngành nghề:${Author.nganhnghe }</div>
+									<div class="h5 fw-400">Quy mô:${Author.quymo }</div>
+									<div class="h5 fw-400">Số điện thoại:${Author.phone }</div>
+									<div class="h5 fw-400">Email:${Author.email }</div>
 								</div>
 							</div>
-							<div class="h5">${Author.techstack }</div>
 						</div>
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
@@ -64,12 +69,12 @@
 
 						<div class="card-body">
 							<p class="card-text fs-15">${Post.ContentHTML() }</p>
-							<div style="font-size: 1.2rem;">
+							<!-- <div style="font-size: 1.2rem;">
 								<span class="badge badge-primary">Technical</span> <span
 									class="badge badge-primary">ManagerSoftware</span> <span
 									class="badge badge-primary">Development</span> <span
 									class="badge badge-primary">CTO</span>
-							</div>
+							</div> -->
 						</div>
 						<div class="card-footer">
 							<a href="#" class="card-link h5"><i class="fa fa-gittip"></i>
