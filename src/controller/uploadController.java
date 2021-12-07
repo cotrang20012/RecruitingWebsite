@@ -182,8 +182,7 @@ public class uploadController extends HttpServlet {
 				}
 			}
 		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(urlString);
-		dispatcher.forward(request, response);
+		response.sendRedirect(request.getHeader("referer"));
 	}
 
 	private String extractFileName(Part part) {

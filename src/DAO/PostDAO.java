@@ -153,12 +153,12 @@ public class PostDAO extends Model {
 		return lPost;
 	}
 	public void updatePostStatusAct(ObjectId postId) {
-		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "active"));
+		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "Đang tuyển"));
 				
 	}
 	
 	public void updatePostStatusDeAct(ObjectId postId) {
-		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "non-active"));			
+		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "Dừng tuyển"));			
 	}
 	
 	public boolean updatePostAddApply(ObjectId postId) {
