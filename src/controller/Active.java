@@ -73,7 +73,7 @@ public class Active extends HttpServlet {
 					String urlString = request.getScheme() + "://"+request.getServerName() + "/active?action=active&"
 							+ "email="+email+"&code="
 							+ activeString;
-					EmailUtility.sendEmail(host, port, user, pass, "tranbaoduy4@gmail.com", "Kích hoạt tài khoản",
+					EmailUtility.sendEmail(host, port, user, pass, account.getEmail(), "Kích hoạt tài khoản",
 							urlString);
 					resultMessage = "The e-mail was sent successfully";
 					request.setAttribute("result", "non-active");
