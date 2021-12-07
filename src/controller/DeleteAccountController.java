@@ -55,7 +55,7 @@ public class DeleteAccountController extends HttpServlet {
 		UserEmployerDAO employerDAO = new UserEmployerDAO(mongo);
 		String type_user = acc.getTypeUser();
 		if (type_user.equals("EMPLOYEE")) {
-			applyDAO.DeleteAllApplyWithPostID(acc.getId());
+			applyDAO.DeleteAllApplyWithAccID(acc.getId());
 			employeeDAO.DeleteUserWithAccID(acc.getId());
 			accountDAO.DeleteAccountWitd(acc.getId());
 			

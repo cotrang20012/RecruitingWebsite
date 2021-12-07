@@ -118,7 +118,7 @@
 									<c:if test="${acc.typeUser=='EMPLOYEE' }">
 										<c:choose>
 											<c:when test="${Apply!=null }">
-												<form action="employer/delete-apply" method="POST">
+												<form action="employee/delete-apply" method="POST">
 											<input type="hidden" name="id" value="${acc.getId() }">
 											<div class="row justify-content-center">
 												<input type="hidden" name="postId" value="${Post.getId()}">

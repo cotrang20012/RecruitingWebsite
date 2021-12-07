@@ -21,7 +21,7 @@ import model.Apply;
 /**
  * Servlet implementation class DeleteApplyController
  */
-@WebServlet("/employer/delete-apply")
+@WebServlet(name = "delete-apply", urlPatterns = { "/employee/delete-apply", "/employer/delete-apply"})
 public class DeleteApplyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

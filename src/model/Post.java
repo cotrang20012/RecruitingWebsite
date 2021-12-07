@@ -232,5 +232,9 @@ public class Post {
 	public String ContentHTML() {
 		return this.content.replace("\n", "<br>");
 	}
+	
+	public String HexStringId() {
+		return this._id.toHexString();
+	}
 
 }

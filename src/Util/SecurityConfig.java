@@ -31,6 +31,7 @@ public class SecurityConfig {
 		urlPatterns1.add("/applypost");
 		urlPatterns1.add("/employee/list-post");
 		urlPatterns1.add("/employee/upload");
+		urlPatterns1.add("/employee/delete-apply");
 		urlPatterns1.add("/changepw");
 		//urlPatterns1.add("/viewprofile");
 
@@ -44,11 +45,11 @@ public class SecurityConfig {
 		urlPatterns2.add("/employer/profile");
 		urlPatterns2.add("/employer/createpost");
 		urlPatterns2.add("/employer/editpost");
-		urlPatterns1.add("/employer/list-post");
+		urlPatterns2.add("/employer/list-post");
 		urlPatterns2.add("/changepw");
 		urlPatterns2.add("/employer/upload");
 		urlPatterns2.add("/employer/postdelete");
-		
+		urlPatterns2.add("/employer/delete-apply");
 		//urlPatterns2.add("/viewprofile");
 		mapConfig.put(ROLE_EMPLOYER, urlPatterns2);
 		

@@ -51,7 +51,7 @@
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 												<a class="dropdown-item" href=""><i class="dw dw-eye"></i> View</a> 
 												<a class="dropdown-item" href="
-												<c:url value='/delete-apply?postId=${Post.HexStringId() }&accountId=${item.accountID}' />"><i class="dw dw-delete-3"></i> Delete</a>
+												<c:url value='/employer/delete-apply?postId=${Post.HexStringId() }&accountId=${item.accountID}' />"><i class="dw dw-delete-3"></i> Delete</a>
 											</div>
 										</div>
 									</td>
