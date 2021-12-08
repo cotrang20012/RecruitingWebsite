@@ -78,14 +78,14 @@ public class HomeController extends HttpServlet {
 			currPage = 1;
 		} else
 			currPage = Integer.parseInt(currentPage);
-		int begin = 4 * currPage - 4;
-		ArrayList<Post> listPost = postDAO.GetListPost(begin, 4);
+		int begin = 8 * currPage - 8;
+		ArrayList<Post> listPost = postDAO.GetListPost(begin, 8);
 		request.setAttribute("posts", listPost);
 		if (listPost == null) {
 			System.out.println("Không có listpost");
 		}
 		int totalPost = postDAO.Count();
-		int totalPage = totalPost / 3 + ((totalPost % 3 != 0) ? 1 : 0);
+		int totalPage = totalPost / 7 + ((totalPost % 7 != 0) ? 1 : 0);
 		ArrayList<Paging> pageList = new ArrayList<Paging>();
 		int max = 5;
 		pageList.add(new Paging(currentPage, currPage, "page-item active"));

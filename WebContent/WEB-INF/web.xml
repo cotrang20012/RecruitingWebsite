@@ -5,6 +5,10 @@
 		<welcome-file>home</welcome-file>
 	</welcome-file-list>
 	
+	<session-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+	
 	<context-param>
 		<param-name>MONGODB_HOST</param-name>
 		<param-value>mongodb+srv://tranbaoduy4:laptrinhweb@cluster0.sbpvz.mongodb.net/webfit</param-value>

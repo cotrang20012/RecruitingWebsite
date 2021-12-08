@@ -1,8 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.net.HttpCookie;
 import java.security.NoSuchAlgorithmException;
-
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +45,7 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ObjectId Login(Account acc,String password) {
+	public ObjectId Login(Account acc, String password) {
 		if (acc != null) {
 
 			String _password_ = acc.getPassword();
@@ -67,7 +67,15 @@ public class LoginController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		HttpSession session = request.getSession();
-		MongoClient mongo=(MongoClient)request.getServletContext().getAttribute("MONGODB_CLIENT");
+		MongoClient mongo = (MongoClient) request.getServletContext().getAttribute("MONGODB_CLIENT");
+
+		Cookie[] cookie = request.getCookies();
+		AccountDAO accountDAO = new AccountDAO(mongo);
+		if (accountDAO.getAccountIdFromCookie(cookie) != null) {
+			response.sendRedirect(request.getContextPath() + "/home");
+			return;
+		}
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String remember = request.getParameter("remember");
@@ -77,60 +85,55 @@ public class LoginController extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		}
-		AccountDAO accountDAO=new AccountDAO(mongo);
+
 		Account acc = accountDAO.getAccountFromUsername(username);
-		
-		ObjectId account_id = Login(acc,password);
+		ObjectId account_id = Login(acc, password);
 		HttpSession Session = request.getSession();
-		
+
 		if (account_id != null) {
-			String uuidString=java.util.UUID.randomUUID().toString();//tạo mã UUID để lưu thông tin xác nhận login lên database
+			String uuidString = java.util.UUID.randomUUID().toString();// tạo mã UUID để lưu thông tin xác nhận login
+																		// lên database
 			Cookie uuid = new Cookie("UUID", uuidString);
-			if(remember==null)
-				uuid.setMaxAge(60*60*24); //thời gian lưu cookie
+			if (remember == null)
+				uuid.setMaxAge(60 * 60 * 24); // thời gian lưu cookie
 			else {
-				uuid.setMaxAge(60*60*24*30);
+				uuid.setMaxAge(60 * 60 * 24 * 30);
 			}
 			response.addCookie(uuid);
-			
-			
-			session.setAttribute("acc", acc);//lưu thông tin account vào session
-			String status=acc.getStatus();
-			if(status.equals("non-active")) {
+			session.setAttribute("acc", acc);// lưu thông tin account vào session
+			String status = acc.getStatus();
+			if (status.equals("non-active")) {
 				request.setAttribute("result", "none");
 				url = getServletContext().getContextPath() + "/active";
 				response.sendRedirect(url);
 				return;
 			}
-			
-			if(acc.getTypeUser().equals("EMPLOYER")) {
-				UserEmployerDAO dao=new UserEmployerDAO(mongo);
-				UserEmployer userEmployer=dao.findEmployerWithID(account_id);
+
+			if (acc.getTypeUser().equals("EMPLOYER")) {
+				UserEmployerDAO dao = new UserEmployerDAO(mongo);
+				UserEmployer userEmployer = dao.findEmployerWithID(account_id);
 				session.setAttribute("user", userEmployer);
-			}
-			else {
-				UserEmployeeDAO dao=new UserEmployeeDAO(mongo);
-				UserEmployee userEmployee=dao.findEmployeeWithID(account_id);
+			} else {
+				UserEmployeeDAO dao = new UserEmployeeDAO(mongo);
+				UserEmployee userEmployee = dao.findEmployeeWithID(account_id);
 				session.setAttribute("user", userEmployee);
 			}
-			
-			
-			Confirm confirm=new Confirm(account_id,uuidString);
-			
-			ConfirmDAO confirmDAO=new ConfirmDAO(mongo);
-			if(confirmDAO.Update(confirm))//cập nhật lại mã UUID
+
+			Confirm confirm = new Confirm(account_id, uuidString);
+
+			ConfirmDAO confirmDAO = new ConfirmDAO(mongo);
+			if (confirmDAO.Update(confirm))// cập nhật lại mã UUID
 			{
-				
+
 			}
-			url = request.getContextPath() + "/home"; 
+			url = request.getContextPath() + "/home";
 			response.sendRedirect(url);
-			 
 
 		} else {
 			request.setAttribute("username", username);
 			request.setAttribute("password", password);
 			request.setAttribute("msg", "Vui lòng kiểm tra lại username hoặc mật khẩu!");
-			RequestDispatcher rd=request.getRequestDispatcher("/Login/login.jsp");		
+			RequestDispatcher rd = request.getRequestDispatcher("/Login/login.jsp");
 			rd.forward(request, response);
 		}
 	}

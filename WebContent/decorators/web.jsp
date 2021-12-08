@@ -11,7 +11,6 @@
 
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/bootstrap.min.css'/>">
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/icon-font.min.css' />">
-
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/style.css' />">
 <link rel="stylesheet" type="text/css" href="<c:url value='/assets/css/main.css' />">
 <script src="<c:url value='/assets/script/core.min.js' />"></script>

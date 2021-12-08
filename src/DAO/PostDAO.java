@@ -24,28 +24,31 @@ import webfit.Utilities;
 public class PostDAO extends Model {
 	private MongoCollection<Post> POST;
 	private MongoClient mongoClient;
-	
+
 	public PostDAO(MongoClient mongo) {
-		mongoClient=mongo;
+		mongoClient = mongo;
 		POST = mongo.getDatabase("Webfit").getCollection("POST", Post.class);
 	}
-	
+
 	public void Insert(Post post) {
 		POST.insertOne(post);
 	}
+
 	public int Count() {
-		return (int)POST.estimatedDocumentCount();
+		return (int) POST.estimatedDocumentCount();
 	}
-	public ArrayList<Post> GetListPost(int from, int limit){
-		FindIterable<Post> cursor=POST.find().skip(from).limit(limit);
-		Iterator<Post> iterator=cursor.iterator();
-		ArrayList<Post> posts=new ArrayList<Post>();
-		while(iterator.hasNext()) {
+
+	public ArrayList<Post> GetListPost(int from, int limit) {
+		FindIterable<Post> cursor = POST.find().skip(from).limit(limit);
+		Iterator<Post> iterator = cursor.iterator();
+		ArrayList<Post> posts = new ArrayList<Post>();
+		while (iterator.hasNext()) {
 			posts.add(iterator.next());
 		}
 		return posts;
-		
+
 	}
+
 	@BsonIgnore
 	public List<Post> getAllPosts() {
 		FindIterable<Post> cursor = POST.find();
@@ -58,35 +61,33 @@ public class PostDAO extends Model {
 		}
 		return data;
 	}
-	public List<Post> search(String query) {
+
+	public ArrayList<Post> search(String query) {
 		query = Utilities.removeAccent(query.toLowerCase());
 		FindIterable<Post> cursor = POST.find();
 		Iterator<Post> it = cursor.iterator();
-		List<Post> data = new ArrayList<Post>();
+		ArrayList<Post> data = new ArrayList<Post>();
 		if (it.hasNext()) {
 			while (it.hasNext()) {
 				Post post = it.next();
-				
+
 				// Handle data in database
 				String tilte = Utilities.removeAccent(post.getTitle().toLowerCase());
-				//String category = Utilities.removeAccent(post.getCategory().toLowerCase());
-				String status = Utilities.removeAccent(post.getStatus().toLowerCase());
-				
-				if (tilte.indexOf(query) != -1
-		//				|| category.indexOf(query) != -1
-						|| String.valueOf(post.getApply()).indexOf(query) != -1
-						|| status.indexOf(query) != -1) {
-					data.add(post);
-				}
-				
+				String skill = Utilities.removeAccent(post.getSkill().toLowerCase());
+				if (post.getStatus().equals("Đang tuyển"))
+					if (tilte.indexOf(query) != -1 || skill.indexOf(query) != -1) {
+						data.add(post);
+					}
+
 			}
 		}
 		return data;
 	}
-	
+
 	public void Delete(ObjectId postId) {
 		POST.deleteOne(Filters.eq("_id", postId));
 	}
+
 	public Post GetPostByID(ObjectId id) {
 		return POST.find(Filters.eq("_id", id)).first();
 	}
@@ -95,7 +96,6 @@ public class PostDAO extends Model {
 		return POST.find(Filters.eq("url", url)).first();
 	}
 
-	
 	public ArrayList<Post> getPostOfUser(ObjectId id) {
 		ArrayList<Post> lPost = new ArrayList<Post>();
 		FindIterable<Post> listPost = POST.find(Filters.eq("accountId", id));
@@ -106,13 +106,12 @@ public class PostDAO extends Model {
 
 		return lPost;
 	}
-	
-	
+
 	// Duyệt bài post
 	public boolean acceptPost(ObjectId postId) {
 		try {
 //			POST.updateOne(Filters.eq("_id", postId), new Document("$set", new Document("status", "Đã duyệt")));
-			POST.updateOne(Filters.eq("_id", postId), 
+			POST.updateOne(Filters.eq("_id", postId),
 					Updates.combine(Updates.set("status", "Đã duyệt"), Updates.set("is_public", true)));
 			System.out.println("Accepted post!");
 			return true;
@@ -121,17 +120,15 @@ public class PostDAO extends Model {
 			return false;
 		}
 	}
-	
+
 	public Post GetPost(String p) {
 		Post post = POST.findOneAndUpdate(Filters.eq("url", p), Updates.inc("views_count", 1));
 		return post;
 	}
-	
-	public ArrayList<Post> GetLastestPost(int skip, int lim)
-	{
-		FindIterable<Post> cursor = POST.find(Filters.eq("is_public", true))
-										.sort(new BasicDBObject("_id", -1))
-										.skip(skip).limit(lim);
+
+	public ArrayList<Post> GetLastestPost(int skip, int lim) {
+		FindIterable<Post> cursor = POST.find(Filters.eq("is_public", true)).sort(new BasicDBObject("_id", -1))
+				.skip(skip).limit(lim);
 		Iterator<Post> it = cursor.iterator();
 		ArrayList<Post> topPost = new ArrayList<Post>();
 		if (it.hasNext()) {
@@ -142,8 +139,7 @@ public class PostDAO extends Model {
 		return topPost;
 	}
 
-	
-	public ArrayList<Post> GetPostListWithAccID(ObjectId accountID){
+	public ArrayList<Post> GetPostListWithAccID(ObjectId accountID) {
 		ArrayList<Post> lPost = new ArrayList<Post>();
 		FindIterable<Post> listPost = POST.find(Filters.eq("accountId", accountID));
 		Iterator<Post> list = listPost.iterator();
@@ -152,32 +148,36 @@ public class PostDAO extends Model {
 		}
 		return lPost;
 	}
+
 	public void updatePostStatusAct(ObjectId postId) {
-		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "Đang tuyển"));
-				
+		POST.updateOne(Filters.eq("_id", postId), Updates.set("status", "Đang tuyển"));
+
 	}
-	
+
 	public void updatePostStatusDeAct(ObjectId postId) {
-		POST.updateOne(Filters.eq("_id", postId),Updates.set("status", "Dừng tuyển"));			
+		POST.updateOne(Filters.eq("_id", postId), Updates.set("status", "Dừng tuyển"));
 	}
-	
+
 	public boolean updatePostAddApply(ObjectId postId) {
-		Post post= POST.find(Filters.eq("_id", postId)).first();
-		post.setApply(post.getApply()+1);
-		return POST.updateOne(Filters.eq("_id", postId),Updates.set("apply", post.getApply())).getModifiedCount()>0?true:false;			
+		Post post = POST.find(Filters.eq("_id", postId)).first();
+		post.setApply(post.getApply() + 1);
+		return POST.updateOne(Filters.eq("_id", postId), Updates.set("apply", post.getApply())).getModifiedCount() > 0
+				? true
+				: false;
 	}
-	
+
 	public boolean updatePostSubApply(ObjectId postId) {
-		Post post= POST.find(Filters.eq("_id", postId)).first();
-		post.setApply(post.getApply()-1);
-		return POST.updateOne(Filters.eq("_id", postId),Updates.set("apply", post.getApply())).getModifiedCount()>0?true:false;			
+		Post post = POST.find(Filters.eq("_id", postId)).first();
+		post.setApply(post.getApply() - 1);
+		return POST.updateOne(Filters.eq("_id", postId), Updates.set("apply", post.getApply())).getModifiedCount() > 0
+				? true
+				: false;
 	}
-	
-	
-	public void DeleteAllPostWithAccID (ObjectId accountID) {
+
+	public void DeleteAllPostWithAccID(ObjectId accountID) {
 		POST.deleteMany(Filters.eq("accountId", accountID));
 	}
-	
+
 	public void UpdatePost(Post post) {
 		Bson update1 = Updates.set("title", post.getTitle());
 		Bson update2 = Updates.set("url", post.getUrl());
@@ -193,11 +193,9 @@ public class PostDAO extends Model {
 		Bson update12 = Updates.set("dateEnd", post.getDateEnd());
 		Bson update13 = Updates.set("quantity", post.getQuantity());
 		Bson update14 = Updates.set("accountId", post.getAccountId());
-		
-		POST.updateOne(Filters.eq("_id",post.getId()),
-				Updates.combine(update1, update2, update3, update4, update5
-						,update6, update7, update8, update9, update10
-						,update11, update12, update13, update14));
+
+		POST.updateOne(Filters.eq("_id", post.getId()), Updates.combine(update1, update2, update3, update4, update5,
+				update6, update7, update8, update9, update10, update11, update12, update13, update14));
 	}
-	
+
 }

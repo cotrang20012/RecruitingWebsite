@@ -28,9 +28,11 @@
 				class="row height d-flex justify-content-center align-items-center">
 				<div class="col-md-8">
 					<div class="search">
+						<form action="search" method="post" class="d-flex" style="margin-top:70px"> 
 						<i class="fa fa-search"></i> <input type="text"
-							class="form-control" placeholder="Have a question? Ask Now">
-						<button class="btn btn-primary">Search</button>
+							class="form-control" name="query" placeholder="Have a question? Ask Now">
+						<input type="submit" class="btn btn-primary fs-14" value="Tìm kiếm">
+						</form>
 					</div>
 				</div>
 			</div>
@@ -159,7 +161,7 @@
 						<!-- Gallery item -->
 						<c:forEach var="post" items="${posts}">
 							<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 ">
-								<div class="bg-white rounded shadow-sm work-item">
+								<div class="bg-white rounded shadow-sm work-item" style="border-top: 3px solid #dc3545;border-bottom: 5px solid #dc3545;">
 									<img
 										src="${post.thumbnail_url }"
 										alt="" class="img-fluid card-img-top"
