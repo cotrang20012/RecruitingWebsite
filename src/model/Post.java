@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.bson.types.ObjectId;
 
-import webfit.Utilities;
+import Util.Utilities;
 
 public class Post {
 //	private ObjectId author_id;

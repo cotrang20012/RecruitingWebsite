@@ -63,7 +63,7 @@ public class SecurityConfig {
 		urlPatterns3.add("/admin/ManagerAccount"); 
 		urlPatterns3.add("/admin/ManagerPost");
 		urlPatterns3.add("/admin/profile");
-		urlPatterns3.add("/upload");
+		urlPatterns3.add("/admin/upload");
 		urlPatterns3.add("/changepw");
 		//urlPatterns2.add("/viewprofile");
 		mapConfig.put(ROLE_ADMIN, urlPatterns3);

@@ -49,7 +49,7 @@ public class HomeController extends HttpServlet {
 					Account acc = accountDAO.getAccountFromAccountId(id);
 					Object user = session.getAttribute("user");
 					session.setAttribute("acc", acc);
-					if (user != null)
+					if (user == null)
 						if (acc.getTypeUser().equals("EMPLOYER")) {
 							UserEmployerDAO dao = new UserEmployerDAO(mongoClient);
 							UserEmployer userEmployer = dao.findEmployerWithID(id);

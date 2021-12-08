@@ -136,7 +136,7 @@ public class EditPostController extends HttpServlet {
 						String variable = item.getFieldName();
 			            if (variable.equals("title")) { 
 			            	post.setTitle(item.getString("UTF-8"));
-			            	post.setUrl(webfit.Utilities.createURL(item.getString("UTF-8")));
+			            	post.setUrl(Util.Utilities.createURL(item.getString("UTF-8")));
 			            } else if (variable.equals("phone")) {
 			            	post.setPhone(item.getString("UTF-8"));
 			            } else if (variable.equals("email")) {

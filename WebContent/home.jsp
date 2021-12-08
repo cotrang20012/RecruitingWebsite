@@ -31,7 +31,7 @@
 						<form action="search" method="post" class="d-flex" style="margin-top:70px"> 
 						<i class="fa fa-search"></i> <input type="text"
 							class="form-control" name="query" placeholder="Have a question? Ask Now">
-						<input type="submit" class="btn btn-primary fs-14" value="Tìm kiếm">
+						<input type="submit" class="btn btn-primary fs-15" value="Tìm kiếm" style="padding-right: 25px;">
 						</form>
 					</div>
 				</div>

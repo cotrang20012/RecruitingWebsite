@@ -15,11 +15,11 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 
+import Util.Utilities;
 import model.Apply;
 import model.Model;
 import model.Post;
 import model.UserEmployee;
-import webfit.Utilities;
 
 public class PostDAO extends Model {
 	private MongoCollection<Post> POST;

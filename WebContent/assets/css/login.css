@@ -65,15 +65,15 @@ form{
 	transition: all .5s ease;
 	width: 40%;
 	border-radius: 30px;
-	color:var(--primary-color);
+	color:var(--primary-color) !important;
 	font-weight: 600;
-	background-color: #fff;
-	border: 1px solid var(--primary-color);
+	background-color: #fff !important;
+	border: 1px solid var(--primary-color) !important;
 	margin-top: 1.5em;
 	margin-bottom: 1em;
     min-height: 40px;
 }
 .btn:hover, .btn:focus{
-	background-color: var(--primary-color);
-	color:#fff;
+	background-color: var(--primary-color) !important;
+	color:#fff !important;
 }

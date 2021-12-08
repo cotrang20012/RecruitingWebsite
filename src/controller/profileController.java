@@ -65,7 +65,11 @@ public class profileController extends HttpServlet {
 				urlString = "/home.jsp";
 			} else {
 				String type_user = acc.getTypeUser();
-				if (type_user.equals("EMPLOYEE")) {
+				if (type_user.equals("EMPLOYER")) {
+					UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
+					request.setAttribute("user", userEmployer);
+					urlString = "/Profile/profileEmployer.jsp";
+				} else {
 					UserEmployee userEmployee = userEmployeeDAO.findEmployeeWithID(acc.getId());
 					SimpleDateFormat tempFormat = new SimpleDateFormat("yyyy-MM-dd");
 					String tempFormatString = tempFormat.format(userEmployee.getBirthday());
@@ -77,10 +81,6 @@ public class profileController extends HttpServlet {
 
 					request.setAttribute("user", userEmployee);
 					urlString = "/Profile/profileEmployee.jsp";
-				} else if (type_user.equals("EMPLOYER")) {
-					UserEmployer userEmployer = userEmployerDAO.findEmployerWithID(acc.getId());
-					request.setAttribute("user", userEmployer);
-					urlString = "/Profile/profileEmployer.jsp";
 				}
 			}
 			RequestDispatcher rd = request.getRequestDispatcher(urlString);

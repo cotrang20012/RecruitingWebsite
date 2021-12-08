@@ -47,12 +47,12 @@
 								</div>
 							</form>
 						</div>
-						<div class="row justify-content-center">
+						<div class="row mx-3">
 							<p>
 								Bạn đã có tài khoản chưa? <a href="${pageContext.request.contextPath}/signup" style="color:blue" >Đăng ký tại đây</a>
 							</p>
 						</div>
-						<div class="row justify-content-center">
+						<div class="row mx-3">
 							<p>
 							Bạn quên mật khẩu? <a href="${pageContext.request.contextPath}/forgotpw"style="color:blue" >Đặt lại mật khẩu tại đây</a>
 							</p>

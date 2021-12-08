@@ -121,7 +121,7 @@ public class CreatePostController extends HttpServlet {
 						String variable = item.getFieldName();
 			            if (variable.equals("title")) { 
 			            	post.setTitle(item.getString("UTF-8"));
-			            	 url = webfit.Utilities.createURL(item.getString("UTF-8"));
+			            	 url = Util.Utilities.createURL(item.getString("UTF-8"));
 			            } else if (variable.equals("phone")) {
 			            	post.setPhone(item.getString("UTF-8"));
 			            } else if (variable.equals("email")) {

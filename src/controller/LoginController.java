@@ -22,6 +22,7 @@ import DAO.*;
 import org.apache.catalina.tribes.ChannelSender;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.jasper.tagplugins.jstl.core.If;
 import org.apache.taglibs.standard.tag.common.xml.IfTag;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -72,8 +73,11 @@ public class LoginController extends HttpServlet {
 		Cookie[] cookie = request.getCookies();
 		AccountDAO accountDAO = new AccountDAO(mongo);
 		if (accountDAO.getAccountIdFromCookie(cookie) != null) {
-			response.sendRedirect(request.getContextPath() + "/home");
-			return;
+			if (session.getAttribute("acc") != null) {
+				response.sendRedirect(request.getContextPath() + "/home");
+				return;
+			}
+
 		}
 
 		String username = request.getParameter("username");

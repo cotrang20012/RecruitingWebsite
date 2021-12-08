@@ -92,19 +92,19 @@ s0.parentNode.insertBefore(s1,s0);
           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <!-- Links -->
             <h6 class="text-uppercase fw-bold mb-4" style="font-size: 2rem;">
-              Bài tập
+              Thông tin
             </h6>
             <p>
-              <a href="${pageContext.request.contextPath}/assignment1" class="text-reset">Bài tập 1</a>
+              <a href="${pageContext.request.contextPath}/assignment1" class="text-reset">Đăng tuyển</a>
             </p>
             <p>
-              <a href="${pageContext.request.contextPath}/assignment2" class="text-reset">Bài tập 2</a>
+              <a href="${pageContext.request.contextPath}/assignment2" class="text-reset">Tin tức</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">Bài tập 3</a>
+              <a href="#!" class="text-reset">About</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">Bài tập 4</a>
+              <a href="#!" class="text-reset">Chính sách</a>
             </p>
             <p>
               <a href="#!" class="text-reset">Bài tập 5</a>
@@ -133,12 +133,7 @@ s0.parentNode.insertBefore(s1,s0);
     </div>
     <!-- Section: Links  -->
 
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-      © 2021 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
+    
   </footer>
   <!-- Footer -->
   
