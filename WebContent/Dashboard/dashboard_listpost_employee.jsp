@@ -58,7 +58,7 @@
 												class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 												<a class="dropdown-item" href="<c:url value='/post?p=${item.getUrl()}'/>"><i class="dw dw-eye"></i>
 													View</a><a class="dropdown-item"
-													href="<c:url value='/employer/delete-apply?postId=${item.getId()}'/>"><i class="dw dw-delete-3"></i> Delete</a>
+													href="<c:url value='/employee/delete-apply?postId=${item.getPostId()}'/>"><i class="dw dw-delete-3"></i> Delete</a>
 											</div>
 										</div> 
 									</td>
