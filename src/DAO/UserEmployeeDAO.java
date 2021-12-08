@@ -11,7 +11,7 @@ import com.mongodb.client.model.Updates;
 import model.Model;
 import model.UserEmployee;
 
-public class UserEmployeeDAO extends Model{
+public class UserEmployeeDAO{
 private MongoCollection<UserEmployee> USEREMPLOYEE;
 	
 	public UserEmployeeDAO(MongoClient mongo) {

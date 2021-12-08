@@ -17,7 +17,7 @@ import model.Account;
 import model.Confirm;
 import model.Model;
 
-public class AccountDAO extends Model{
+public class AccountDAO{
 	
 	private MongoCollection<Account> ACCOUNT;
 	private MongoClient mongoClient;

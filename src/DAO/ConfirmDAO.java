@@ -10,7 +10,7 @@ import com.mongodb.client.model.Updates;
 import model.Confirm;
 import model.Model;
 
-public class ConfirmDAO extends Model{
+public class ConfirmDAO{
 private MongoCollection<Confirm> CONFIRM;
 	
 	public ConfirmDAO(MongoClient mongo) {

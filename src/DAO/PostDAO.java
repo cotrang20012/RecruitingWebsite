@@ -21,7 +21,7 @@ import model.Model;
 import model.Post;
 import model.UserEmployee;
 
-public class PostDAO extends Model {
+public class PostDAO {
 	private MongoCollection<Post> POST;
 	private MongoClient mongoClient;
 
@@ -39,7 +39,7 @@ public class PostDAO extends Model {
 	}
 
 	public ArrayList<Post> GetListPost(int from, int limit) {
-		FindIterable<Post> cursor = POST.find().skip(from).limit(limit);
+		FindIterable<Post> cursor = POST.find(Filters.eq("status","Đang tuyển")).skip(from).limit(limit);
 		Iterator<Post> iterator = cursor.iterator();
 		ArrayList<Post> posts = new ArrayList<Post>();
 		while (iterator.hasNext()) {

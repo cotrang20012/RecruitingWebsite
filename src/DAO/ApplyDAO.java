@@ -14,7 +14,7 @@ import model.Apply;
 import model.Model;
 import model.UserEmployee;
 
-public class ApplyDAO extends Model {
+public class ApplyDAO{
 	private MongoCollection<Apply> APPLY;
 	private MongoClient mongoClient;
 	public ApplyDAO(MongoClient mongo) {
